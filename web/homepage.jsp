@@ -174,6 +174,31 @@
                         </div>
                     </nav>
 
+                        
+                        <!-- 
+                                     //SHOW THONG TIN CAC LOAI SACH
+                                     //SHOW CAC LOAI SACH + THONG TIN CHI TIET LOAI SACH + ...    
+                        -->  
+                        <div class="container">
+        <h1>Categories</h1>
+        <div class="category-list">
+            <!-- Đây là nơi danh sách category sẽ được hiển thị -->
+            <div class="category" onclick="showSubcategories(1)">
+                Fiction
+            </div>
+            <div class="category" onclick="showSubcategories(2)">
+                Non-Fiction
+            </div>
+            <div class="category" onclick="showSubcategories(3)">
+                Science Fiction
+            </div>
+            <!-- Thêm các category khác -->
+        </div>
+        <div class="subcategory-list" id="subcategory-list">
+            <!-- Subcategories sẽ được hiển thị ở đây -->
+        </div>
+    </div>
+                        
 
                     <!--BANNER VIEW -->
                     <div class="container-fluid">
@@ -206,33 +231,7 @@
                         </div>
                         </br>
 
-                        <!-- 
-                                     //SHOW THONG TIN CAC LOAI SACH
-                                     //SHOW CAC LOAI SACH + THONG TIN CHI TIET LOAI SACH + ...    
-                        -->  
-                        <div class="container-fluid">
-                            <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
-                                <h5 class="mb-0">Danh mục sách </h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <c:forEach var="cate" items="${listCategory}">
-                                <div class="col-xl-4 col-lg-4 col-md-4">
-                                    <a href="SubCateController?cateId=${cate.categoryID}" class="text-dark text-decoration-none">
-                                        <div class="bg-white shadow-sm rounded d-flex align-items-center p-1 mb-2 osahan-list">
-                                            <img src="img/bird/chimchaomao.jpg" class="img-fluid" width="100px" height="100px">
-                                            <div class="mx-3 py-2 w-100">
-                                                <p class="mb-2 text-black">${cate.categoryName}</p>
-                                                <p class="small mb-2">
-                                                    <i class="mdi mdi-star text-warning mr-1"></i> <span class="font-weight-bold text-dark">3.9</span> (803)
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </c:forEach>
-                        </div>
+                        
 
 
 
