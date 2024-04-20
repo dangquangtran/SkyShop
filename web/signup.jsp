@@ -44,6 +44,11 @@
                             ${errors.emailLengthErr}
                             </font><br/>
                         </c:if>
+                        <c:if test="${not empty errors.emailExisted}">
+                            <font color='red'>
+                            ${errors.emailExisted}
+                            </font><br/>
+                        </c:if>
                         <div class="d-flex align-items-center mb-4">
                             <div class="mr-3 bg-light rounded p-2 osahan-icon"><i class="mdi mdi-form-textbox-password"></i></div>
                             <div class="w-100">
@@ -68,7 +73,7 @@
                             ${errors.fullnameLengthErr}
                             </font><br/>
                         </c:if>
-                        <input type="submit" class="btn btn-primary" name="btAction" value="Sign up"/>
+                            <input type="submit" class="btn btn-primary" name="btAction" value="Sign up"/>
 
 
 
@@ -77,12 +82,9 @@
                             <p class="text-center">BẠN ĐÃ CÓ TÀI KHOẢN ? <a href="signin.jsp" class="text-danger text-decoration-none">ĐĂNG NHẬP</a></p>
                             <p class="text-center">VỀ <a href="index.jsp" class="text-danger text-decoration-none">TRANG CHỦ</a>
                         </div>
+
+
                         <%--
-                        <c:if test="${not empty errors.usernameExisted}">
-                            <font color='red'>
-                            ${errors.usernameExisted}
-                            </font><br/>
-                        </c:if>
                         <c:if test="${not empty errors.errorMsg}">
                             <font color='red'>
                             ${errors.errorMsg}

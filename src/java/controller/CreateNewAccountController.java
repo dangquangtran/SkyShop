@@ -58,6 +58,10 @@ public class CreateNewAccountController extends HttpServlet {
                     cusError.setEmailLengthErr("Email không được để trống");
                 }
             }
+            if (dao.findAccount(email) != null) {
+                cusError.setEmailExisted("Email bị trùng");
+                checkValidation = false;
+            }
             if(checkValidation){
                 Account ac = new Account(email, password, fullname, 0, 3);
                 dao.createAccount(ac);
@@ -66,7 +70,7 @@ public class CreateNewAccountController extends HttpServlet {
                 request.setAttribute("CREATE_ERROR", cusError);
             }
         } catch (Exception e) {
-            
+            System.out.println(e.getMessage());
         }
         request.getRequestDispatcher(url).forward(request, response);
     }

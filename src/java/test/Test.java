@@ -18,7 +18,6 @@ import javax.naming.NamingException;
 public class Test {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         AccountDAO dao = new AccountDAO();
-        dao.findAccount("admin", "123");
     }}
 
     
