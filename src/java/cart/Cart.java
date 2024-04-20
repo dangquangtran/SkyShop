@@ -13,7 +13,6 @@ import java.util.Map;
  *
  *
  */
-//Quang Vinh >>>>>>>>>>
 public class Cart {
 
     private Map<String, Book> cart;

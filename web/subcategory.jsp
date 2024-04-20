@@ -1,11 +1,11 @@
 <%-- 
-    Document   : index1
-    Created on : Apr 20, 2024, 12:21:17 PM
+    Document   : subcategory
+    Created on : Apr 20, 2024, 9:36:04 PM
     Author     : Quanglatui
 --%>
 
-<%@page import="dto.Book"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -175,36 +175,7 @@
                     </nav>
 
 
-                    <!--BANNER VIEW -->
-                    <div class="container-fluid">
-                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="img/banner/banner3.png" alt="First slide" height="450px">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/banner/banner3.jpg" alt="Second slide" height="450px">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/banner/banner8.jpg" alt="Third slide"height="450px">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/banner/banner5.jpg" alt="Second slide" height="450px">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/banner/banner6.jpg" alt="Second slide" height="450px">
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                        </br>
+                    
 
                         <!-- 
                                      //SHOW THONG TIN CAC LOAI SACH
@@ -212,18 +183,18 @@
                         -->  
                         <div class="container-fluid">
                             <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
-                                <h5 class="mb-0">Danh mục sách </h5>
+                                <h5 class="mb-0">Thể loại sách </h5>
                             </div>
                         </div>
 
                         <div class="row">
-                            <c:forEach var="cate" items="${listCategory}">
+                            <c:forEach var="subCate" items="${subList}">
                                 <div class="col-xl-4 col-lg-4 col-md-4">
-                                    <a href="SubCateController?cateId=${cate.categoryID}" class="text-dark text-decoration-none">
+                                    <a href="BookDetailController?cateId=${cateId}&subId=${subCate.subcategoryID}" class="text-dark text-decoration-none">
                                         <div class="bg-white shadow-sm rounded d-flex align-items-center p-1 mb-2 osahan-list">
                                             <img src="img/bird/chimchaomao.jpg" class="img-fluid" width="100px" height="100px">
                                             <div class="mx-3 py-2 w-100">
-                                                <p class="mb-2 text-black">${cate.categoryName}</p>
+                                                <p class="mb-2 text-black">${subCate.subName}</p>
                                                 <p class="small mb-2">
                                                     <i class="mdi mdi-star text-warning mr-1"></i> <span class="font-weight-bold text-dark">3.9</span> (803)
                                                 </p>

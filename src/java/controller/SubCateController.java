@@ -1,25 +1,23 @@
 package controller;
 
-import dao.BookDAO;
-import dao.CategoryDAO;
+import dao.SubCategoryDAO;
+import dto.SubCategory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dto.Book;
-import dto.Category;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author Quanglatui
  */
-@WebServlet(name = "HomeController", urlPatterns = {"/HomeController"})
-public class HomeController extends HttpServlet {
+@WebServlet(name = "SubCateController", urlPatterns = {"/SubCateController"})
+public class SubCateController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,12 +31,14 @@ public class HomeController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url= "homepage.jsp";
-        dao.CategoryDAO dao = new CategoryDAO();
-        List<Category> listCategory = new ArrayList<>();
-        listCategory = dao.getAllListCategory();
-        request.setAttribute("listCategory", listCategory);
-        request.getRequestDispatcher(url).forward(request, response);
+        String url = "subcategory.jsp";
+        String cateId = request.getParameter("cateId");
+        List<SubCategory> subList = new  ArrayList<>();
+        SubCategoryDAO dao = new SubCategoryDAO();
+        subList =dao.getSubByCategoryID(Integer.parseInt(cateId));
+        request.setAttribute("subList", subList);
+        request.setAttribute("cateId", cateId);
+        request.getRequestDispatcher(url).forward(request, response);    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -10,30 +10,49 @@ package dto;
  * @author DELL
  */
 public class Category {
-    int CategoryID;
-    String CategoryName;
+    private int categoryID;
+    private String categoryName;
+    private int status;
     public Category(){
     }
 
-    public Category(int CategoryID, String CategoryName) {
-        this.CategoryID = CategoryID;
-        this.CategoryName = CategoryName;
+    public Category(int categoryID, String categoryName, int status) {
+        this.categoryID = categoryID;
+        this.categoryName = categoryName;
+        this.status = status;
+    }
+
+    public Category(String categoryName, int status) {
+        this.categoryName = categoryName;
+        this.status = status;
     }
 
     public int getCategoryID() {
-        return CategoryID;
+        return categoryID;
     }
 
-    public void setCategoryID(int CategoryID) {
-        this.CategoryID = CategoryID;
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
     }
 
     public String getCategoryName() {
-        return CategoryName;
+        return categoryName;
     }
 
-    public void setCategoryName(String CategoryName) {
-        this.CategoryName = CategoryName;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    
+
+    
     
 }

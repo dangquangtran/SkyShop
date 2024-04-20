@@ -21,6 +21,7 @@ public class Book {
     private String translatorName;
     private Date publishDate;
     private int quantity;
+    private int subCategoryId;
     private float unitPrice;
     private int categoryId;
     private int status;
@@ -29,22 +30,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(String bookName, String description, String authorName, String publishingCompany, String issusingCompany, String translatorName, Date publishDate, int quantity, float unitPrice, int categoryId, int status, int totalFeedback) {
-        this.bookName = bookName;
-        this.description = description;
-        this.authorName = authorName;
-        this.publishingCompany = publishingCompany;
-        this.issusingCompany = issusingCompany;
-        this.translatorName = translatorName;
-        this.publishDate = publishDate;
-        this.quantity = quantity;
-        this.unitPrice = unitPrice;
-        this.categoryId = categoryId;
-        this.status = status;
-        this.totalFeedback = totalFeedback;
-    }
-
-    public Book(int bookId, String bookName, String description, String authorName, String publishingCompany, String issusingCompany, String translatorName, Date publishDate, int quantity, float unitPrice, int categoryId, int status, int totalFeedback) {
+    public Book(int bookId, String bookName, String description, String authorName, String publishingCompany, String issusingCompany, String translatorName, Date publishDate, int quantity, int subCategoryId, float unitPrice, int categoryId, int status, int totalFeedback) {
         this.bookId = bookId;
         this.bookName = bookName;
         this.description = description;
@@ -54,13 +40,29 @@ public class Book {
         this.translatorName = translatorName;
         this.publishDate = publishDate;
         this.quantity = quantity;
+        this.subCategoryId = subCategoryId;
         this.unitPrice = unitPrice;
         this.categoryId = categoryId;
         this.status = status;
         this.totalFeedback = totalFeedback;
     }
 
-    
+    public Book(String bookName, String description, String authorName, String publishingCompany, String issusingCompany, String translatorName, Date publishDate, int quantity, int subCategoryId, float unitPrice, int categoryId, int status, int totalFeedback) {
+        this.bookName = bookName;
+        this.description = description;
+        this.authorName = authorName;
+        this.publishingCompany = publishingCompany;
+        this.issusingCompany = issusingCompany;
+        this.translatorName = translatorName;
+        this.publishDate = publishDate;
+        this.quantity = quantity;
+        this.subCategoryId = subCategoryId;
+        this.unitPrice = unitPrice;
+        this.categoryId = categoryId;
+        this.status = status;
+        this.totalFeedback = totalFeedback;
+    }
+
     public int getBookId() {
         return bookId;
     }
@@ -133,6 +135,14 @@ public class Book {
         this.quantity = quantity;
     }
 
+    public int getSubCategoryId() {
+        return subCategoryId;
+    }
+
+    public void setSubCategoryId(int subCategoryId) {
+        this.subCategoryId = subCategoryId;
+    }
+
     public float getUnitPrice() {
         return unitPrice;
     }
@@ -165,9 +175,6 @@ public class Book {
         this.totalFeedback = totalFeedback;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" + "bookId=" + bookId + ", bookName=" + bookName + ", description=" + description + ", authorName=" + authorName + ", publishingCompany=" + publishingCompany + ", issusingCompany=" + issusingCompany + ", translatorName=" + translatorName + ", publishDate=" + publishDate + ", quantity=" + quantity + ", unitPrice=" + unitPrice + ", categoryId=" + categoryId + ", status=" + status + ", totalFeedback=" + totalFeedback + '}';
-    }
+    
     
 }

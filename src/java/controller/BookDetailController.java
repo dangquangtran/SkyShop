@@ -1,17 +1,18 @@
 package controller;
 
+import dao.BookDAO;
+import dto.Book;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Quanglatui
- */
+
 @WebServlet(name = "BookDetailController", urlPatterns = {"/BookDetailController"})
 public class BookDetailController extends HttpServlet {
 
@@ -27,8 +28,14 @@ public class BookDetailController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        System.out.println("asfdasdasdasd");
-        System.out.println("asdasjdnajdasnjd");
+        String url = "bookDetail.jsp";
+        dao.BookDAO dao = new BookDAO();
+        List<Book> bookList = new ArrayList<>();
+        String cateId = request.getParameter("cateId");
+        String subId = request.getParameter("subId");
+        bookList = dao.getBookByCateAndSubCate(Integer.parseInt(cateId),Integer.parseInt(subId));
+        request.setAttribute("bookList", bookList);
+        request.getRequestDispatcher(url).forward(request, response);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

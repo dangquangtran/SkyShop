@@ -7,6 +7,7 @@ package test;
 
 import dao.AccountDAO;
 import dao.BookDAO;
+import dao.SubCategoryDAO;
 import dto.Book;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,8 +19,9 @@ import javax.naming.NamingException;
  */
 public class Test {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        dao.BookDAO dao = new BookDAO();
-        System.out.println(dao.getBookByID(4));
+        dao.SubCategoryDAO daoo = new SubCategoryDAO();
+        dao.BookDAO daooo= new BookDAO();
+        System.out.println(daooo.getBookByCateAndSubCate(2,1));
     }}
 
     
