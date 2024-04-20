@@ -3,44 +3,31 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author THUAN
+ * @author Quanglatui
  */
-public class LogoutController extends HttpServlet {
+@WebServlet(name = "BookDetailController", urlPatterns = {"/BookDetailController"})
+public class BookDetailController extends HttpServlet {
 
-    private final String HOME_PAGE = "HomeController";
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = HOME_PAGE;
-        try {
-//            HttpSession session = request.getSession(false);
-//            if (session != null) {
-//                String username = (String)session.getAttribute("username");
-//                String custName = (String)session.getAttribute("custName");
-//                if (username != null) {
-//                    session.removeAttribute("username");
-//                }
-//                if (custName != null) {
-//                    session.removeAttribute("custName");
-//                }
-//                session.invalidate();
-//            }
-            HttpSession session = request.getSession();
-            if (session != null) {
-                session.invalidate();
-            }
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
-
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

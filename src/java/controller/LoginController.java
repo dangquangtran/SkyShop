@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
 public class LoginController extends HttpServlet {
 
     private final String LOGIN_PAGE = "signin.jsp";
-    private final String LOGIN_HOMEPAGE = "index.jsp";
+    private final String LOGIN_HOMEPAGE = "HomeController";
     private final String MANAGER_PAGE = "adminLAC.jsp";
     private final String ADMIN_PAGE = "adminDashboard.jsp";
 

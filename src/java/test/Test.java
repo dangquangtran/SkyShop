@@ -5,8 +5,9 @@
  */
 package test;
 
-
 import dao.AccountDAO;
+import dao.BookDAO;
+import dto.Book;
 import java.sql.SQLException;
 import java.util.List;
 import javax.naming.NamingException;
@@ -17,7 +18,8 @@ import javax.naming.NamingException;
  */
 public class Test {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        AccountDAO dao = new AccountDAO();
+        dao.BookDAO dao = new BookDAO();
+        System.out.println(dao.getBookByID(4));
     }}
 
     

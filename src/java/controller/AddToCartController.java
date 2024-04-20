@@ -5,8 +5,8 @@
  */
 package controller;
 import cart.Cart;
-import dao.ProductDAO;
-import dto.Product;
+import dao.BookDAO;
+import dto.Book;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -35,27 +35,27 @@ public class AddToCartController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
-        try {
-            String productID = request.getParameter("txtProductID"); //lay id product
-            int quantity = Integer.parseInt(request.getParameter("txtQuantity")); //lay so luong product
-            HttpSession session = request.getSession();
-            Cart cart = (Cart) session.getAttribute("CART"); // lay cart
-            if(cart==null){ //kiem tra cart co ton tai khong
-                cart = new Cart();
-            }
-            Product dto = new Product();
-            ProductDAO dao = new ProductDAO();
-            dto = dao.findProductForCart(productID, quantity);
-            cart.add(dto);
-            session.setAttribute("CART", cart);
-            request.setAttribute("MESSAGE", dto.getProductName() + "-" +dto.getQuantity()+" added successfully");
-            url = SUCCESS;
-            
-        } catch (Exception e) {
-            log("Error at Create Controller: " + e.toString());
-        }finally{
-            request.getRequestDispatcher(url).forward(request, response);
-        }
+//        try {
+//            String productID = request.getParameter("txtProductID"); //lay id product
+//            int quantity = Integer.parseInt(request.getParameter("txtQuantity")); //lay so luong product
+//            HttpSession session = request.getSession();
+//            Cart cart = (Cart) session.getAttribute("CART"); // lay cart
+//            if(cart==null){ //kiem tra cart co ton tai khong
+//                cart = new Cart();
+//            }
+//            Book dto = new Book();
+//            BookDAO dao = new BookDAO();
+//            dto = dao.findProductForCart(productID, quantity);
+//            cart.add(dto);
+//            session.setAttribute("CART", cart);
+//            request.setAttribute("MESSAGE", dto.getProductName() + "-" +dto.getQuantity()+" added successfully");
+//            url = SUCCESS;
+//            
+//        } catch (Exception e) {
+//            log("Error at Create Controller: " + e.toString());
+//        }finally{
+//            request.getRequestDispatcher(url).forward(request, response);
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

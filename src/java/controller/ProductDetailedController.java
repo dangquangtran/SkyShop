@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package controller;
-import dao.ProductDAO;
-import dto.Product;
+import dao.BookDAO;
+import dto.Book;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -37,17 +37,17 @@ public class ProductDetailedController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String iD = request.getParameter("txtProductID");
         String url = ERROR;
-        try {
-            ProductDAO dao = new ProductDAO();
-            Product product = dao.getProductByID(iD);
-            request.setAttribute("PRODUCT", product);
-
-        }
-        catch (SQLException ex) {
-            log("ShowItemsServlet _ SQL _ " + ex.getMessage());
-        } finally {
-             request.getRequestDispatcher(url).forward(request, response);
-        }
+//        try {
+//            BookDAO dao = new BookDAO();
+//            Book product = dao.getProductByID(iD);
+//            request.setAttribute("PRODUCT", product);
+//
+//        }
+//        catch (SQLException ex) {
+//            log("ShowItemsServlet _ SQL _ " + ex.getMessage());
+//        } finally {
+//             request.getRequestDispatcher(url).forward(request, response);
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

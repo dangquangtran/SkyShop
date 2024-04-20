@@ -6,8 +6,8 @@
 package controller;
 import dto.Picture;
 import dao.PictureDao;
-import dto.Product;
-import dao.ProductDAO;
+import dto.Book;
+import dao.BookDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -42,24 +42,24 @@ public class ShowAllProductController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
-        try {
-            HttpSession session = request.getSession();
-            ProductDAO dao = new ProductDAO();
-            List<Product> listProduct = dao.getListProduct();
-            if(listProduct.size()>0){
-                session.setAttribute("LIST_PRODUCT", listProduct);
-                url = SUCCESS;
-                PictureDao daoPic = new PictureDao();
-                List<Picture> listPicture = daoPic.getListPicture();
-                session.setAttribute("LIST_PICTURE", listPicture);
-            }
-            
-                    
-        } catch (Exception e) {
-            log("Error at SearchController: " + e.toString());
-        }finally{
-            request.getRequestDispatcher(url).forward(request, response);
-        }
+//        try {
+//            HttpSession session = request.getSession();
+//            BookDAO dao = new BookDAO();
+//            List<Book> listProduct = dao.getListProduct();
+//            if(listProduct.size()>0){
+//                session.setAttribute("LIST_PRODUCT", listProduct);
+//                url = SUCCESS;
+//                PictureDao daoPic = new PictureDao();
+//                List<Picture> listPicture = daoPic.getListPicture();
+//                session.setAttribute("LIST_PICTURE", listPicture);
+//            }
+//            
+//                    
+//        } catch (Exception e) {
+//            log("Error at SearchController: " + e.toString());
+//        }finally{
+//            request.getRequestDispatcher(url).forward(request, response);
+//        }
     }
 
 

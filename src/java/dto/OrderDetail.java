@@ -11,16 +11,16 @@ package dto;
  */
 public class OrderDetail {
     private Order order;
-    private Product product;
+    private Book product;
     float price;
     int quantity;
     public OrderDetail() {
         this.order = new Order();
-        this.product = new Product();
+        this.product = new Book();
         this.price = 0;
         this.quantity = 0;
     }
-    public OrderDetail(Order order, Product product, float price, int quanity) {
+    public OrderDetail(Order order, Book product, float price, int quanity) {
         this.order = order;
         this.product = product;
         this.price = price;
@@ -43,11 +43,11 @@ public class OrderDetail {
         this.order = order;
     }
 
-    public Product getProduct() {
+    public Book getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(Book product) {
         this.product = product;
     }
 
