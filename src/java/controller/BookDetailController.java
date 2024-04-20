@@ -28,13 +28,8 @@ public class BookDetailController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         System.out.println("asfdasdasdasd");
-<<<<<<< HEAD
         System.out.println("asdasjdnajdasnjd");
-        System.out.println("zxcnbzxmcxzbnc,m");
-=======
->>>>>>> b625d9d817151cb21d0ba9f6e235febbedd3ed41
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
