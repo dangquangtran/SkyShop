@@ -20,7 +20,7 @@
     <body id="page-top">
         <div id="wrapper">
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-                <a class="sidebar-brand d-flex align-items-center" href="AdminController">
+                <a class="sidebar-brand d-flex align-items-center" href="#">
                     <div class="sidebar-brand-icon">
                         <img src="img/R.png" class="img-fluid">
                     </div>
@@ -199,36 +199,98 @@
                                         <div class="table-title">
                                             <div class="row">
                                                 <div class="col-xs-5">
-                                                    <h2>Create Category</h2>
+                                                    <h2>Update Book</h2>
                                                 </div>
                                             </div>
                                         </div>
                                         <table class="table table-striped table-hover">
+                                       
                                             <tr>
-                                                <td>Category Name</td>
+                                                <td>Book Name</td>
                                                 <td>
-                                                    <input   name="txt_categoryName"  />
+                                                    <input  name="txt_bookName"   />
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td>Book Description</td>
+                                                <td>
+                                                    <input  name="txt_description" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Author Name</td>
+                                                <td>
+                                                    <input  name="txt_authorName"   />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Publishing Company</td>
+                                                <td>
+                                                    <input  name="txt_publishingCompany"   />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Issusing Company</td>
+                                                <td>
+                                                    <input  name="txt_issusingCompany"   />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Translator Name</td>
+                                                <td>
+                                                    <input  name="txt_translatorName"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Publish Date</td>
+                                                <td>
+                                                    <input type="date"  name="txt_publishDate"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Quantity </td>
+                                                <td>
+                                                    <input type="number"  name="txt_quantity"   />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sub Category Id</td>
+                                                <td>
+                                                    <input type="number"  name="txt_subCategoryId"   />
+                                                </td>
+                                            </tr>  
+                                            <tr>
+                                                <td>Unit Price</td>
+                                                <td>
+                                                    <input type="number"  name="txt_unitPrice"  />
+                                                </td>
+                                            </tr>
+                                              <tr>
+                                                <td>Category Id</td>
+                                                <td>
+                                                    <input type="number"  name="txt_categoryId"   />
+                                                </td>
+                                            </tr>  
                                             <tr>
                                                 <td>Status</td>
                                                 <td>
-                                                    <input   name="txt_status"  />
+                                                    <input type="number"  name="txt_status"   />
                                                 </td>
                                             </tr>
-                                               <tr>
-                                                <td></td>
+                                            <tr>
+                                                <td>Total Feedback</td>
                                                 <td>
-                                                    <input hidden=""  name="txt_Id"  />
+                                                    <input type="number"  name="txt_totalFeedback"  />
                                                 </td>
                                             </tr>
+                                            
                                             <tr>
                                                 <td>
                                                      <button type="submit" name="btAction" value="Manage Product">BACK</button>
                                                 </td>
-                                       
+                                         
                                                 <td>
-                                                    <button type="submit" name="btAction" value="Create Categogy">UPDATE</button>
+                                                    <button type="submit" name="btAction" value="Create Product">Create</button>
                                                 </td>
                                             </tr>
                                         </table>

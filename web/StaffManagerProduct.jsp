@@ -31,7 +31,7 @@
                         <i class="mdi mdi-home-variant-outline"></i>
                         <span>TRANG CHỦ</span></a>
                 </li>
-                <c:if test="${sessionScope.roleID == 2}">
+                <c:if test="${sessionScope.roleID == 3}">
                     <li class="nav-item">
                         <a class="nav-link" href="ManagerDashboardController" >
                             <i class="mdi mdi-book-open"></i>
