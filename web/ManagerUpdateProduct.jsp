@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" type="image/png" href="img/R.png">
-        <title>ADMIN</title>
+        <title>MANAGER</title>
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/osahan.css" rel="stylesheet">
         <link href="font/stylesheet.css" rel="stylesheet">
@@ -27,7 +27,6 @@
                 </a>
 
                 <li class="nav-item">
-
                 </li>
 
                 <hr class="sidebar-divider d-none d-md-block">
@@ -191,84 +190,121 @@
                         }
                     </style>
 
-                    <c:if test="${sessionScope.roleID == 1}">
-                        
-                        <div class="container"> <br></br>
-                            <div class="table-responsive">
-                                <div class="table-wrapper">
-                                    <div class="table-title">
-                                        <div class="row">
-                                            <div class="col-xs-5">
-                                                <h2>List <b>Accounts</b></h2>
+                    <c:if test="${sessionScope.roleID == 2}">
+                        <c:set var="book" value="${requestScope.book}" />
+                        <form action="MainController"method="post">
+                            <div class="container"> <br></br>
+                                <div class="table-responsive">
+                                    <div class="table-wrapper">
+                                        <div class="table-title">
+                                            <div class="row">
+                                                <div class="col-xs-5">
+                                                    <h2>Update Book</h2>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <form action="MainController">
-                                            Search Keyword: <input type="text" name="txtSearchName" value="" />
-                                            <input type="submit" value="Find" name="btAction" />
-                                        </form>
-                                    </div>
-                                    </br>
-                                    <table class="table table-striped table-hover">
-                                        <thead> <ta
+                                        <table class="table table-striped table-hover">
                                             <tr>
-                                                <th>UsersID</th>
-                                                <th>Email</th>  
-                                                <th>Password</th>
-                                                <th>Fullname</th>
-                                                <th>NumberOfLotus</th>
-                                                <th>RoleID</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <td>Book ID</td>
+                                                <td>
+                                                    ${book.bookId}
+                                                    <input  hidden name="txt_bookId" value="${book.bookId}"  />
+                                                </td>
                                             </tr>
-                                            </thead>
-                                            <tbody>
-                                                <c:forEach items="${list}" var="ac" varStatus="counter">
-                                                <form action="MainController" method="post">
-                                                    <tr>
-                                                        <td>${ac.userId}</td>
-                                                        <td>${ac.email}</td>
-                                                        <td>${ac.password}</td>
-                                                        <td>${ac.fullname}</td>
-                                                        <td>${ac.numberOfLotus}</td>
-                                                        <c:if test="${ac.roleId == 1}">
-                                                            <td>Admin</td>
-                                                        </c:if>
-                                                        <c:if test="${ac.roleId == 2}">
-                                                            <td>Manager</td>
-                                                        </c:if>  
-                                                        <c:if test="${ac.roleId == 3}">
-                                                            <td>Staff</td>
-                                                        </c:if>      
-                                                         <c:if test="${ac.roleId == 4}">
-                                                            <td>Customer</td>
-                                                        </c:if>      
-                                                         <c:if test="${ac.status == 1}">
-                                                            <td>Avaiable</td>
-                                                        </c:if>
-                                                        <c:if test="${ac.status == 2}">
-                                                            <td>Inavaiable</td>
-                                                        </c:if>  
-                                                        <td>
-                                                            <button>
-                                                                <a href="AdminUpdateController?ID=${ac.userId}" > EDIT </a>
-                                                            </button>
-                                                        </td>
-                                                        <td>
-                                                            <button>
-                                                                <a href="AdminDeleteAccountController?ID=${ac.userId}" > DELETE </a>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </form>
-                                            </c:forEach>
-                                            </tbody>
-                                    </table>
-                                </div>
-                            </div>      
-                        </div>   
+                                            <tr>
+                                                <td>Book Name</td>
+                                                <td>
+                                                    <input  name="txt_bookName" value="${book.bookName}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Book Description</td>
+                                                <td>
+                                                    <input  name="txt_description" value="${book.description}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Author Name</td>
+                                                <td>
+                                                    <input  name="txt_authorName" value="${book.authorName}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Publishing Company</td>
+                                                <td>
+                                                    <input  name="txt_publishingCompany" value="${book.publishingCompany}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Issusing Company</td>
+                                                <td>
+                                                    <input  name="txt_issusingCompany" value="${book.issusingCompany}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Translator Name</td>
+                                                <td>
+                                                    <input  name="txt_translatorName" value="${book.translatorName}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Publish Date</td>
+                                                <td>
+                                                    <input type="date"  name="txt_publishDate" value="${book.publishDate}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Quantity </td>
+                                                <td>
+                                                    <input type="number"  name="txt_quantity" value="${book.quantity}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sub Category Id</td>
+                                                <td>
+                                                    <input type="number"  name="txt_subCategoryId" value="${book.subCategoryId}"  />
+                                                </td>
+                                            </tr>  
+                                            <tr>
+                                                <td>Unit Price</td>
+                                                <td>
+                                                    <input type="number"  name="txt_unitPrice" value="${book.unitPrice}"  />
+                                                </td>
+                                            </tr>
+                                              <tr>
+                                                <td>Category Id</td>
+                                                <td>
+                                                    <input type="number"  name="txt_categoryId" value="${book.categoryId}"  />
+                                                </td>
+                                            </tr>  
+                                            <tr>
+                                                <td>Status</td>
+                                                <td>
+                                                    <input type="number"  name="txt_status" value="${book.status}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total Feedback</td>
+                                                <td>
+                                                    <input type="number"  name="txt_totalFeedback" value="${book.totalFeedback}"  />
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>
+                                                     <button type="submit" name="btAction" value="Manage Product">BACK</button>
+                                                </td>
+                                                <td>
+                                                    <button type="submit" name="btAction" value="MANAGER_UPDATE_PRODUCT">UPDATE</button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>      
+                            </div>   
+                        </form>
                     </c:if>
+
                     <script data-cfasync="false" src="js/email-decode.min.js"></script><script src="vendor/jquery/jquery.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
                     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
 

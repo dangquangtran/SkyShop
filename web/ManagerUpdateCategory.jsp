@@ -2,7 +2,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
-
     <!-- Mirrored from askbootstrap.com/preview/osahan-eat/theme-sidebar/index.html?fbclid=IwAR0nwIFNYzgqHa21f49Nzv1kLbeDTnnIQIEIfRudCclQdwQMDTmsCY1Ovq4 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:04:30 GMT -->
     <head>
         <meta charset="utf-8">
@@ -10,9 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" type="image/png" href="img/logo1.png">
-        <title>MANAGER DASHBOARD</title>
-
+        <link rel="icon" type="image/png" href="img/R.png">
+        <title>MANAGER</title>
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/osahan.css" rel="stylesheet">
         <link href="font/stylesheet.css" rel="stylesheet">
@@ -22,17 +20,15 @@
     <body id="page-top">
         <div id="wrapper">
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-                <a class="sidebar-brand d-flex align-items-center" href="admin.jsp">
+                <a class="sidebar-brand d-flex align-items-center" href="AdminController">
                     <div class="sidebar-brand-icon">
-                        <img src="img/logo1.png" class="img-fluid">
+                        <img src="img/R.png" class="img-fluid">
                     </div>
                 </a>
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.jsp">
-                        <i class="mdi mdi-home-variant-outline"></i>
-                        <span>TRANG CHỦ</span></a>
+                <li class="nav-item">
                 </li>
+
                 <hr class="sidebar-divider d-none d-md-block">
                 <div class="text-center d-none d-md-inline">
                     <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -41,11 +37,13 @@
 
 
             <div id="content-wrapper" class="d-flex flex-column">
+
                 <div id="content">
                     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow-sm osahan-nav-top">
                         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                             <i class="fa fa-bars"></i>
                         </button>
+
                         <style>
                             .dropdown-menu a {
                                 font-size: 15px;
@@ -56,30 +54,29 @@
 
                             }
                         </style>
-
                         <c:set var="name" value="${sessionScope.username}" />
                         <c:if test="${not empty name}">
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                                    </svg>  <b class="caret"> ${sessionScope.username} </b></a>
+                                    </svg>  <b class="caret">${sessionScope.username} </b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#"><i class="fa fa-user-o"></i><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-                                            </svg> Profile</a></li>
-                                    <!--                                                    <li><a href="#"><i class="fa fa-calendar-o"></i> Calendar</a></li>-->
-                                    <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
-                                            </svg>  Settings</a></li>
                                     <li class="divider"></li>
                                     <li><a href="LogoutController"><i class="material-icons">&#xE8AC;</i> Logout</a></li>
                                 </ul>
-                            </li>          
+                            </li>   
                         </c:if>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+
+                                </div>
+                            </li>
                     </nav>
-
-
                     <style>
                         .table-responsive {
                             margin: -50px 0;
@@ -89,7 +86,6 @@
                             background: #fff;
                             padding: 20px 25px;
                             border-radius: 3px;
-                            width: 1440px;
                             box-shadow: 0 1px 1px rgba(0,0,0,.05);
                         }
                         .table-title {
@@ -97,9 +93,8 @@
                             background: #c60021;
                             color: white;
                             padding: 16px 30px;
-                            margin: -10px -30px 20px;
-                            width: 1440px;
-                            border-radius: 3px 3px 0 0
+                            margin: -20px -25px 10px;
+                            border-radius: 3px 3px 0 0;
                         }
                         .table-title h2 {
                             margin: 5px 0 0;
@@ -195,108 +190,54 @@
                         }
                     </style>
 
-                    <div class="container"> <br></br>
-                        <div class="table-responsive">
-                            <div class="table-wrapper">
-                                <div class="table-title">
-                                    <div class="row">
-                                        <div class="col-xs-5">
-                                            <h2>Product <b>Management</b></h2>
+                    <c:if test="${sessionScope.roleID == 2}">
+                        <c:set var="cate" value="${requestScope.cate}" />
+                        <form action="MainController"method="post">
+                            <div class="container"> <br></br>
+                                <div class="table-responsive">
+                                    <div class="table-wrapper">
+                                        <div class="table-title">
+                                            <div class="row">
+                                                <div class="col-xs-5">
+                                                    <h2>Update Category</h2>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-7">
-                                            <a href="adminLAC.jsp" class="btn btn-primary"><span>Manage Account</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 
-                                    quản lí sản phẩm
-                                -->
-                                <div>
-                                    <form action="MainController" method="POST">
-                                        Search Keyword: <input type="text" name="txtSearchValue" value="" /> 
-                                        <input type="submit" value="Find" name="btAction" />
-                                        <input type="submit" value="Show all product" name="btAction" />
-                                    </form>
-                                </div>
-                                <br/>
-                                <c:if test="${not empty requestScope.PRO_RESULT}">
-                                    <table class="table table-striped table-hover">
-                                        <thead>
-                                            <tr class="row">
-                                                <th class="col-1">No.</th>
-                                                <th class="col-1">Image</th>                 
-                                                <th class="col-1">Product Name</th>
-                                                <th class="col-1">description</th>
-                                                <th class="col-1">Year Publish</th>
-                                                <th class="col-1">Price</th>
-                                                <th class="col-1">Category</th> 
-                                                <th class="col-1">Update</th>                     
-                                                <th class="col-1">Delete</th>                                         
+                                        <table class="table table-striped table-hover">
+                                            <tr>
+                                                <td>Category ID</td>
+                                                <td>
+                                                    ${cate.categoryID}
+                                                    <input  hidden name="txt_ID" value="${cate.categoryID}"  />
+                                                </td>
+                                                    </tr>
+                                                        <tr>
+                                                <td>Category Name</td>
+                                                <td>
+                                                    <input  name="txt_categoryName" value="${cate.categoryName}"  />
+                                                </td>
+                                                    </tr>
+                                                        <tr>
+                                                <td>Status</td>
+                                                <td>
+                                                    <input  name="txt_status" value="${cate.status}"  />
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <c:set var="pa" value="${requestScope.PRO_RESULT}"/>
-                                        <c:forEach var="result" items="${requestScope.PRO_RESULT}" varStatus="counter">
-                                            <form action="MainController">
-                                                <tbody>
-                                                <style>
-                                                    img {
-                                                        width: 60px;
-                                                        height: 60px;
-                                                    }
-                                                </style>
-                                                <tr class="row">
-                                                    <td class="col-1">
-                                                        ${counter.count}
-                                                        .</td>
-                                                    <td class="col-1">
-                                                        <img src="data:image/jpg;base64,${result.base64ImageData}" />
-                                                    </td>
-
-                                                    <td class="col-1"> <input type="hidden" name="txtProname" 
-                                                                              value="${result.proName}" />
-                                                        ${result.proName}
-                                                    </td class="col-1">
-                                                    <td class="col-1"> 
-                                                        <input type="hidden" name="txtProdes" 
-                                                               value="${result.description}" />${result.description}</td>                        
-                                                    <td class="col-1">
-                                                        <input type="hidden" name="txtYearPublish" 
-                                                               value="${result.yearPublish}" />${result.yearPublish}</td>
-                                                    <td class="col-1"><input type="hidden" name="txtPrice" 
-                                                                             value="${result.price}" />${result.price}</td>
-                                                    <td class="col-1">
-                                                        <input type="hidden" name="txtCateName" 
-                                                               value="${result.catgoryName}" />${result.catgoryName}
-                                                    </td>
-                                                    <td class="col-1">
-                                                        <input type="hidden" name="txtProID" 
-                                                               value="${result.productID}" />
-                                                        <input type="submit" value="Update Product" name="btAction" />
-                                                    </td>
-
-                                                    <td class="col-1">
-                                                        <input type="hidden" name="txtProID" 
-                                                               value="${img.productID}" />
-                                                        <input type="submit" value="Disable Product" name="btAction" />
-                                                    </td>
-
-                                                </tr>
-
-                                            </form>
-                                        </c:forEach>
-                                        </tbody>
-                                    </table>
-                                </c:if>
-                            </div>
-                        </div>      
-
-                    </div>    
-
-
-
-
-
+                                            
+                                            <tr>
+                                                <td>
+                                                     <button type="submit" name="btAction" value="Manage Product">BACK</button>
+                                                </td>
+                                                <td>
+                                                    <button type="submit" name="btAction" value="MANAGER_UPDATE_PRODUCT">UPDATE</button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>      
+                            </div>   
+                        </form>
+                    </c:if>
 
                     <script data-cfasync="false" src="js/email-decode.min.js"></script><script src="vendor/jquery/jquery.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
                     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
@@ -305,9 +246,6 @@
 
                     <script src="js/osahan.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
                     <script src="js/rocket-loader.min.js" data-cf-settings="4673c51028ea841130b80adc-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f9299e967d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
-
-
-
                     </body>
 
                     <!--Mirrored from askbootstrap.com/preview/osahan-eat/theme-sidebar/index.html?fbclid=IwAR0nwIFNYzgqHa21f49Nzv1kLbeDTnnIQIEIfRudCclQdwQMDTmsCY1Ovq4 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:04:46 GMT--> 

@@ -2,7 +2,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
-
     <!-- Mirrored from askbootstrap.com/preview/osahan-eat/theme-sidebar/index.html?fbclid=IwAR0nwIFNYzgqHa21f49Nzv1kLbeDTnnIQIEIfRudCclQdwQMDTmsCY1Ovq4 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:04:30 GMT -->
     <head>
         <meta charset="utf-8">
@@ -10,8 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" type="image/png" href="img/logo1.png">
-        <title>BMOSMANAGER</title>
+        <link rel="icon" type="image/png" href="img/R.png">
+        <title>MANAGER</title>
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/osahan.css" rel="stylesheet">
         <link href="font/stylesheet.css" rel="stylesheet">
@@ -21,17 +20,25 @@
     <body id="page-top">
         <div id="wrapper">
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-                <a class="sidebar-brand d-flex align-items-center" href="adminLAC.jsp">
+                <a class="sidebar-brand d-flex align-items-center" href="ManagerAccountController">
                     <div class="sidebar-brand-icon">
-                        <img src="img/logo1.png" class="img-fluid">
+                        <img src="img/R.png" class="img-fluid">
                     </div>
                 </a>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.jsp">
+                    <a class="nav-link" href="Showproduct">
                         <i class="mdi mdi-home-variant-outline"></i>
                         <span>TRANG CHỦ</span></a>
                 </li>
+                <c:if test="${sessionScope.roleID == 2}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="ManagerDashboardController" >
+                            <i class="mdi mdi-book-open"></i>
+                            <span>DASHBOARD</span></a>
+                    </li>
+
+                </c:if>
 
                 <hr class="sidebar-divider d-none d-md-block">
                 <div class="text-center d-none d-md-inline">
@@ -66,10 +73,10 @@
                                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                                     </svg>  <b class="caret">${sessionScope.username} </b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#"><i class="fa fa-user-o"></i><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                    <li><a href="AccountInfoController?ID=${sessionScope.username}"><i class="fa fa-user-o"></i><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
                                             </svg> Profile</a></li>
-                                    <li><a href="setting.jsp"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+                                    <li><a href="SettingController"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
                                             </svg> Settings</a></li>
                                     <li class="divider"></li>
@@ -202,95 +209,91 @@
                         }
                     </style>
 
-
-                    <div class="container"> <br></br>
-                        <div class="table-responsive">
-                            <div class="table-wrapper">
-                                <div class="table-title">
-                                    <div class="row">
-                                        <div class="col-xs-5">
-                                            <h2>User <b>Management</b></h2>
-                                        </div>
-                                        <div class="col-xs-7">
-                                            <a href="adminLPRD.jsp" class="btn btn-primary"><span>Manage Product</span></a>
+                    <c:if test="${sessionScope.roleID == 2}">
+                        <div class="container"> <br></br>
+                            <div class="table-responsive">
+                                <div class="table-wrapper">
+                                    <div class="table-title">
+                                        <div class="row">
+                                            <div class="col-xs-5">
+                                                <h2>Account <b>Management</b></h2>
+                                            </div>
+                                            <form action="MainController" method="post">
+                                                <div class="input-group-prepend ">
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Product" name="btAction" >
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage BLogs" name="btAction" >
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Category" name="btAction" >
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
-                                </div>
-
-
-
-                                <!-- 
-                                    tìm acc count và show all acc
-                                -->
-                                <div>
-                                    <form action="MainController" method="POST">
-                                        Search Keyword: <input type="text" name="txtSearchValue" value="" /> 
-                                        <input type="submit" value="Find Account" name="btAction" />
-                                        <input type="submit" value="Show all account" name="btAction" />
-                                    </form>
-                                </div><br/>
-                                <c:if test="${not empty requestScope.ACC_RESULT}">
+                                     <form action="MainController">
+                                            Search Keyword: <input type="text" name="txtSearchName" value="" />
+                                            <input type="submit" value="Find" name="btAction" />
+                                        </form>
                                     <table class="table table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th>No.</th>
-                                                <th>Username</th>
+                                                <th>UsersID</th>
+                                                <th>Email</th>  
                                                 <th>Password</th>
-                                                <th>Phone Number</th>
-                                                <th>Customer Name</th>
-                                                <th>Address</th>
-                                                <th>Email</th>    
+                                                <th>Fullname</th>
+                                                <th>NumberOfLotus</th>
+                                                <th>RoleID</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
-
                                             </tr>
                                         </thead>
-
-                                        <c:forEach var="result" items="${requestScope.ACC_RESULT}" varStatus="counter">
-                                            <form action="MainController">
-                                                <tbody>
-                                                    <tr>
+                                        <tbody>
+                                            <c:forEach items="${list}" var="ac" varStatus="counter">
+                                            <form action="MainController" method="post">
+                                               <tr>
+                                                        <td>${ac.userId}</td>
+                                                        <td>${ac.email}</td>
+                                                        <td>${ac.password}</td>
+                                                        <td>${ac.fullname}</td>
+                                                        <td>${ac.numberOfLotus}</td>
+                                                        <c:if test="${ac.roleId == 1}">
+                                                            <td>Admin</td>
+                                                        </c:if>
+                                                        <c:if test="${ac.roleId == 2}">
+                                                            <td>Manager</td>
+                                                        </c:if>  
+                                                        <c:if test="${ac.roleId == 3}">
+                                                            <td>Staff</td>
+                                                        </c:if>      
+                                                         <c:if test="${ac.roleId == 4}">
+                                                            <td>Customer</td>
+                                                        </c:if>      
+                                                         <c:if test="${ac.status == 1}">
+                                                            <td>Avaiable</td>
+                                                        </c:if>
+                                                        <c:if test="${ac.status == 2}">
+                                                            <td>Inavaiable</td>
+                                                        </c:if>  
                                                         <td>
-                                                            ${counter.count}
-                                                            .</td>
-                                                        <td> ${result.username}
-                                                            <input type="hidden" name="txtUsername" 
-                                                                   value="${result.username}" /></td>
-                                                        <td> ${result.password}
-                                                            <input type="hidden" name="txtPassword" 
-                                                                   value="${result.password}" /></td>                        
-                                                        <td>
-                                                            ${result.phoneNum}
-                                                            <input type="hidden" name="txtPhoneNum" 
-                                                                   value="${result.phoneNum}" /></td>
-                                                        <td>${result.custName} 
-                                                            <input type="hidden" name="txtCustName" 
-                                                                   value="${result.custName}" /></td>
-                                                        <td>
-                                                            ${result.address}
-                                                            <input type="hidden" name="txtAddress" 
-                                                                   value="${result.address}" />
+                                                            <button>
+                                                                <a href="UpdateAccountController?ID=${ac.userId}" > EDIT </a>
+                                                            </button>
                                                         </td>
-                                                        <td>
-                                                            ${result.email}
-                                                            <input type="hidden" name="txtEmail" 
-                                                                   value="${result.email}" />
-
-                                                        </td>
-                                                        <td> <input type="submit" value="Ban Account" name="btAction" /></td>
                                                     </tr>
-
                                             </form>
                                         </c:forEach>
                                         </tbody>
                                     </table>
+                                </div>
+                            </div>      
+                        </div>   
 
-                                </c:if>
 
-                            </div>
 
-                        </div>      
-
-                    </div>    
+                    </c:if>
                     <script data-cfasync="false" src="js/email-decode.min.js"></script><script src="vendor/jquery/jquery.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
                     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
 

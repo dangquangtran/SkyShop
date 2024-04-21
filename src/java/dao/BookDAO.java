@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import static util.DBContext.getConnection;
+
 /**
  *
  * @author DELL
@@ -112,5 +114,47 @@ public class BookDAO{
         return listBook;
     }
     
-
+    public Book getBookID(String id){
+        String query = "Select * from Books where BookId = ?";
+        try {
+                conn = new DBContext().getConnection();
+                ps = conn.prepareStatement(query);
+                ps.setString(1, id);
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    return new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getDate(8), rs.getInt(9),rs.getInt(10), rs.getFloat(11), rs.getInt(12),
+                        rs.getInt(13), rs.getInt(14));
+                }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+        return null;
+    }
+    
+      public Book updateBook(Book edittedItem) {
+        try {
+            String sql = "update Books set BookName=?, Description=?, AuthorName=?, PublishingCompany=?,"
+                    +  "IssusingCompany=?, TranslatorName=?, PublishDate=?, Quantity=?, SubCategoryId=?, UnitPrice=?, CategoryID=?, Status=?, TotalFeedback=?  where BookId=? ";
+         
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.setString(1, edittedItem.getBookName());
+            stmt.setString(2, edittedItem.getDescription());
+            stmt.setString(3, edittedItem.getAuthorName());
+            stmt.setString(4, edittedItem.getPublishingCompany());
+            stmt.setString(5, edittedItem.getIssusingCompany());
+            stmt.setString(6, edittedItem.getTranslatorName());
+            stmt.setDate(7, edittedItem.getPublishDate());
+            stmt.setInt(8, edittedItem.getQuantity());
+            stmt.setInt(9, edittedItem.getSubCategoryId());
+            stmt.setInt(10, edittedItem.getCategoryId());
+            stmt.setInt(11, edittedItem.getStatus());
+            stmt.setInt(12, edittedItem.getTotalFeedback());
+            stmt.setInt(13, edittedItem.getBookId());
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

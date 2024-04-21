@@ -179,25 +179,7 @@
                                      //SHOW THONG TIN CAC LOAI SACH
                                      //SHOW CAC LOAI SACH + THONG TIN CHI TIET LOAI SACH + ...    
                         -->  
-                        <div class="container">
-        <h1>Categories</h1>
-        <div class="category-list">
-            <!-- Đây là nơi danh sách category sẽ được hiển thị -->
-            <div class="category" onclick="showSubcategories(1)">
-                Fiction
-            </div>
-            <div class="category" onclick="showSubcategories(2)">
-                Non-Fiction
-            </div>
-            <div class="category" onclick="showSubcategories(3)">
-                Science Fiction
-            </div>
-            <!-- Thêm các category khác -->
-        </div>
-        <div class="subcategory-list" id="subcategory-list">
-            <!-- Subcategories sẽ được hiển thị ở đây -->
-        </div>
-    </div>
+           
                         
 
                     <!--BANNER VIEW -->
