@@ -25,8 +25,13 @@ public class LoginController extends HttpServlet {
 
     private final String LOGIN_PAGE = "signin.jsp";
     private final String LOGIN_HOMEPAGE = "HomeController";
-    private final String MANAGER_PAGE = "adminLAC.jsp";
-    private final String ADMIN_PAGE = "adminDashboard.jsp";
+    // Admin Page
+    private final String ADMIN_PAGE = "AdminController";
+    // Manager Page
+    private final String MANAGER_PAGE = "ManagerAccountController";
+    // Staff Page
+    private final String STAFF_PAGE = "StaffController";
+  
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -52,10 +57,14 @@ public class LoginController extends HttpServlet {
                     session.setAttribute("roleID", roleID);
 
                 } else if (roleID == 3) {
+                    url = STAFF_PAGE;
+                    session.setAttribute("username", username);
+                    session.setAttribute("roleID", roleID);
+                } else if (roleID == 4) {
                     url = LOGIN_HOMEPAGE;
                     session.setAttribute("username", username);
                     session.setAttribute("roleID", roleID);
-                } else {
+                }else {
                     session.setAttribute("ERROR_MESSAGE", "Your role is not support");
                 }
             } else {

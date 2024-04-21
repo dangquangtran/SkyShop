@@ -27,7 +27,6 @@
                 </a>
 
                 <li class="nav-item">
-
                 </li>
 
                 <hr class="sidebar-divider d-none d-md-block">
@@ -191,84 +190,78 @@
                         }
                     </style>
 
-                    <c:if test="${sessionScope.roleID == 1}">
-                        
-                        <div class="container"> <br></br>
-                            <div class="table-responsive">
-                                <div class="table-wrapper">
-                                    <div class="table-title">
-                                        <div class="row">
-                                            <div class="col-xs-5">
-                                                <h2>List <b>Accounts</b></h2>
+                    <c:if test="${sessionScope.roleID == 2}">
+                        <c:set var="user" value="${requestScope.user}" />
+                        <form action="MainController"method="post">
+                            <div class="container"> <br></br>
+                                <div class="table-responsive">
+                                    <div class="table-wrapper">
+                                        <div class="table-title">
+                                            <div class="row">
+                                                <div class="col-xs-5">
+                                                    <h2>Update Account</h2>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <form action="MainController">
-                                            Search Keyword: <input type="text" name="txtSearchName" value="" />
-                                            <input type="submit" value="Find" name="btAction" />
-                                        </form>
-                                    </div>
-                                    </br>
-                                    <table class="table table-striped table-hover">
-                                        <thead> <ta
+                                        <table class="table table-striped table-hover">
                                             <tr>
-                                                <th>UsersID</th>
-                                                <th>Email</th>  
-                                                <th>Password</th>
-                                                <th>Fullname</th>
-                                                <th>NumberOfLotus</th>
-                                                <th>RoleID</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <td>User ID</td>
+                                                <td>
+                                                    ${user.userId}
+                                                    <input  hidden name="txt_userId" value="${user.userId}"  />
+                                                </td>
                                             </tr>
-                                            </thead>
-                                            <tbody>
-                                                <c:forEach items="${list}" var="ac" varStatus="counter">
-                                                <form action="MainController" method="post">
-                                                    <tr>
-                                                        <td>${ac.userId}</td>
-                                                        <td>${ac.email}</td>
-                                                        <td>${ac.password}</td>
-                                                        <td>${ac.fullname}</td>
-                                                        <td>${ac.numberOfLotus}</td>
-                                                        <c:if test="${ac.roleId == 1}">
-                                                            <td>Admin</td>
-                                                        </c:if>
-                                                        <c:if test="${ac.roleId == 2}">
-                                                            <td>Manager</td>
-                                                        </c:if>  
-                                                        <c:if test="${ac.roleId == 3}">
-                                                            <td>Staff</td>
-                                                        </c:if>      
-                                                         <c:if test="${ac.roleId == 4}">
-                                                            <td>Customer</td>
-                                                        </c:if>      
-                                                         <c:if test="${ac.status == 1}">
-                                                            <td>Avaiable</td>
-                                                        </c:if>
-                                                        <c:if test="${ac.status == 2}">
-                                                            <td>Inavaiable</td>
-                                                        </c:if>  
-                                                        <td>
-                                                            <button>
-                                                                <a href="AdminUpdateController?ID=${ac.userId}" > EDIT </a>
-                                                            </button>
-                                                        </td>
-                                                        <td>
-                                                            <button>
-                                                                <a href="AdminDeleteAccountController?ID=${ac.userId}" > DELETE </a>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </form>
-                                            </c:forEach>
-                                            </tbody>
-                                    </table>
-                                </div>
-                            </div>      
-                        </div>   
+                                            <tr>
+                                                <td>Email:</td>
+                                                <td>
+                                                  <input  name="txt_email" value="${user.email}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>PASSWORD:</td>
+                                                <td>
+                                                  <input  name="txt_password" value="${user.password}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>FULL NAME:</td>
+                                                <td>
+                                                   <input  name="txt_fullName" value="${user.fullname}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Number Of Lotus</td>
+                                                <td>
+                                                   <input  name="txt_numberOfLotus" value="${user.numberOfLotus}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>STATUS: </td>
+                                                <td>
+                                                    <input  name="txt_status" value="${user.status}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>ROLE ID:</td>
+                                                <td>
+                                                   <input  name="txt_roleID" value="${user.roleId}"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                     <button type="submit" name="btAction" value="Manage Account">BACK</button>
+                                                </td>
+                                                <td>
+                                                    <button type="submit" name="btAction" value="MANAGER_UPDATE_ACCOUNT">UPDATE</button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>      
+                            </div>   
+                        </form>
                     </c:if>
+
                     <script data-cfasync="false" src="js/email-decode.min.js"></script><script src="vendor/jquery/jquery.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
                     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
 

@@ -27,7 +27,27 @@ public class MainController extends HttpServlet {
 
     private final String CREATE = "CreateNewAccountController";
     private final String SHOW_ALL_PRODUCT ="ShowAllProductController";
-
+    
+    // Search accounts
+    private final String SEARCH = "SearchAccountController";
+    
+    // function admin
+    private final String ADMIN_ACCOUNT = "AdminController";
+    private final String ADMIN_UPDATE_ACCOUNT = "AdminUpdateController";
+    private final String ADMIN_DELETE_ACCOUNT = "AdminDeleteAccountController";
+    
+    // function manager 
+    private final String MANAGER_ACCOUNT = "ManagerAccountController";
+    private final String MANAGER_BLOG = "ManagerBlogController";
+    private final String MANAGER_PRODUCT = "ManagerProductController";
+    private final String MANAGER_CATEGORY = "ManagerCatogoryController";
+    private final String MANAGER_UPDATE_ACCOUNT = "UpdateAccountController";
+    private final String CREATE_PRODUCT = "CreateProductController";
+    private final String CREATE_CATEGOGY = "CreateCategogyController";
+    
+    private final String UPDATE_BLOG = "UpdateBlogController";
+    private final String UPDATE_PRODUCT = "UpdateProductController";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -44,6 +64,26 @@ public class MainController extends HttpServlet {
                 url = CREATE;
             } else if (button.equals("Show All Product")) {
                 url = SHOW_ALL_PRODUCT;
+            }else if (button.equals("ADMIN_ACCOUNT")) {
+                url = ADMIN_ACCOUNT;
+            }else if (button.equals("UPDATE_ACCOUNT")) {
+                url = ADMIN_UPDATE_ACCOUNT;
+            }else if (button.equals("MANAGER_UPDATE_ACCOUNT")) {
+                url = MANAGER_UPDATE_ACCOUNT;
+            }else if (button.equals("Manage Account")) {
+                url = MANAGER_ACCOUNT;
+            } else if (button.equals("Manage BLogs")) {
+                url = MANAGER_BLOG;
+            } else if (button.equals("Manage Product")) {
+                url = MANAGER_PRODUCT;
+            }else if (button.equals("MANAGER_UPDATE_PRODUCT")){
+                url = UPDATE_PRODUCT;
+            }else if (button.equals("Create Product")) {
+                url = CREATE_PRODUCT;
+            }else if (button.equals("Create Categogy")) {
+                url = CREATE_CATEGOGY;
+            }else if (button.equals("Manage Category")){
+                url = MANAGER_CATEGORY;
             }
 
         } catch (Exception e) {

@@ -40,6 +40,54 @@
         <servlet-name>ShowAllProductController</servlet-name>
         <servlet-class>controller.ShowAllProductController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminController</servlet-name>
+        <servlet-class>controller.AdminController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminUpdateController</servlet-name>
+        <servlet-class>controller.AdminUpdateController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDeleteAccountController</servlet-name>
+        <servlet-class>controller.AdminDeleteAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagerAccountController</servlet-name>
+        <servlet-class>controller.ManagerAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateAccountController</servlet-name>
+        <servlet-class>controller.UpdateAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagerProductController</servlet-name>
+        <servlet-class>controller.ManagerProductController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProductController</servlet-name>
+        <servlet-class>controller.UpdateProductController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagerCatogoryController</servlet-name>
+        <servlet-class>controller.ManagerCatogoryController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateProductController</servlet-name>
+        <servlet-class>controller.CreateProductController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateCategogyController</servlet-name>
+        <servlet-class>controller.CreateCategogyController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCategoryController</servlet-name>
+        <servlet-class>controller.UpdateCategoryController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaffController</servlet-name>
+        <servlet-class>controller.StaffController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -76,9 +124,57 @@
         <servlet-name>ShowAllProductController</servlet-name>
         <url-pattern>/ShowAllProductController</url-pattern>
     </servlet-mapping>
-      <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminController</servlet-name>
+        <url-pattern>/AdminController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminUpdateController</servlet-name>
+        <url-pattern>/AdminUpdateController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDeleteAccountController</servlet-name>
+        <url-pattern>/AdminDeleteAccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerAccountController</servlet-name>
+        <url-pattern>/ManagerAccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateAccountController</servlet-name>
+        <url-pattern>/UpdateAccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerProductController</servlet-name>
+        <url-pattern>/ManagerProductController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProductController</servlet-name>
+        <url-pattern>/UpdateProductController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerCatogoryController</servlet-name>
+        <url-pattern>/ManagerCatogoryController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateProductController</servlet-name>
+        <url-pattern>/CreateProductController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateCategogyController</servlet-name>
+        <url-pattern>/CreateCategogyController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCategoryController</servlet-name>
+        <url-pattern>/UpdateCategoryController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffController</servlet-name>
+        <url-pattern>/StaffController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

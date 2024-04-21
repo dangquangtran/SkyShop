@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" type="image/png" href="img/R.png">
-        <title>ADMIN</title>
+        <title>MANAGER</title>
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/osahan.css" rel="stylesheet">
         <link href="font/stylesheet.css" rel="stylesheet">
@@ -20,15 +20,25 @@
     <body id="page-top">
         <div id="wrapper">
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-                <a class="sidebar-brand d-flex align-items-center" href="AdminController">
+                <a class="sidebar-brand d-flex align-items-center" href="ManagerAccountController">
                     <div class="sidebar-brand-icon">
                         <img src="img/R.png" class="img-fluid">
                     </div>
                 </a>
 
                 <li class="nav-item">
-
+                    <a class="nav-link" href="Showproduct">
+                        <i class="mdi mdi-home-variant-outline"></i>
+                        <span>TRANG CHỦ</span></a>
                 </li>
+                <c:if test="${sessionScope.roleID == 2}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="ManagerDashboardController" >
+                            <i class="mdi mdi-book-open"></i>
+                            <span>DASHBOARD</span></a>
+                    </li>
+
+                </c:if>
 
                 <hr class="sidebar-divider d-none d-md-block">
                 <div class="text-center d-none d-md-inline">
@@ -63,16 +73,24 @@
                                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                                     </svg>  <b class="caret">${sessionScope.username} </b></a>
                                 <ul class="dropdown-menu">
+                                    <li><a href="AccountInfoController?ID=${sessionScope.username}"><i class="fa fa-user-o"></i><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+                                            </svg> Profile</a></li>
+                                    <li><a href="SettingController"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+                                            </svg> Settings</a></li>
                                     <li class="divider"></li>
                                     <li><a href="LogoutController"><i class="material-icons">&#xE8AC;</i> Logout</a></li>
                                 </ul>
                             </li>   
                         </c:if>
                         <ul class="navbar-nav">
+
                             <li class="nav-item dropdown no-arrow d-sm-none">
                                 <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-search fa-fw"></i>
                                 </a>
+
                                 <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
 
                                 </div>
@@ -191,83 +209,77 @@
                         }
                     </style>
 
-                    <c:if test="${sessionScope.roleID == 1}">
-                        
+                    <c:if test="${sessionScope.roleID == 2}">
                         <div class="container"> <br></br>
                             <div class="table-responsive">
                                 <div class="table-wrapper">
                                     <div class="table-title">
                                         <div class="row">
                                             <div class="col-xs-5">
-                                                <h2>List <b>Accounts</b></h2>
+                                                <h2>Category <b>Management</b></h2>
                                             </div>
+                                            <form action="MainController" method="post">
+                                                <div class="input-group-prepend ">
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Product" name="btAction" >
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage BLogs" name="btAction" >
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Category" name="btAction" >
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
-                                    <div>
-                                        <form action="MainController">
+                                     <form action="MainController">
                                             Search Keyword: <input type="text" name="txtSearchName" value="" />
                                             <input type="submit" value="Find" name="btAction" />
-                                        </form>
-                                    </div>
-                                    </br>
+                                              </br>                                            
+                                            </br>
+                                            <div>
+                                                <input type="submit" value="Create Categogy" name="btAction" /> 
+                                            </div>
+                                            </br>   
+                                    </form>
                                     <table class="table table-striped table-hover">
-                                        <thead> <ta
+                                        <thead>
                                             <tr>
-                                                <th>UsersID</th>
-                                                <th>Email</th>  
-                                                <th>Password</th>
-                                                <th>Fullname</th>
-                                                <th>NumberOfLotus</th>
-                                                <th>RoleID</th>
+                                                <th>Categogy ID</th>
+                                                <th>Category Name</th>  
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
-                                            </thead>
-                                            <tbody>
-                                                <c:forEach items="${list}" var="ac" varStatus="counter">
-                                                <form action="MainController" method="post">
-                                                    <tr>
-                                                        <td>${ac.userId}</td>
-                                                        <td>${ac.email}</td>
-                                                        <td>${ac.password}</td>
-                                                        <td>${ac.fullname}</td>
-                                                        <td>${ac.numberOfLotus}</td>
-                                                        <c:if test="${ac.roleId == 1}">
-                                                            <td>Admin</td>
-                                                        </c:if>
-                                                        <c:if test="${ac.roleId == 2}">
-                                                            <td>Manager</td>
-                                                        </c:if>  
-                                                        <c:if test="${ac.roleId == 3}">
-                                                            <td>Staff</td>
-                                                        </c:if>      
-                                                         <c:if test="${ac.roleId == 4}">
-                                                            <td>Customer</td>
-                                                        </c:if>      
-                                                         <c:if test="${ac.status == 1}">
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach items="${list}" var="ac" varStatus="counter">
+                                            <form action="MainController" method="post">
+                                               <tr>
+                                                        <td>${ac.categoryID}</td>
+                                                        <td>${ac.categoryName}</td>
+                                                        <c:if test="${ac.status == 1}">
                                                             <td>Avaiable</td>
                                                         </c:if>
                                                         <c:if test="${ac.status == 2}">
                                                             <td>Inavaiable</td>
-                                                        </c:if>  
-                                                        <td>
+                                                        </c:if>
+                                                           <td>
                                                             <button>
-                                                                <a href="AdminUpdateController?ID=${ac.userId}" > EDIT </a>
+                                                                <a href="UpdateCategoryController?ID=${ac.categoryID}" > EDIT </a>
                                                             </button>
                                                         </td>
-                                                        <td>
-                                                            <button>
-                                                                <a href="AdminDeleteAccountController?ID=${ac.userId}" > DELETE </a>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </form>
-                                            </c:forEach>
-                                            </tbody>
+                                               </tr>
+                                            </form>
+                                        </c:forEach>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>      
                         </div>   
+
+
+
                     </c:if>
                     <script data-cfasync="false" src="js/email-decode.min.js"></script><script src="vendor/jquery/jquery.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
                     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
