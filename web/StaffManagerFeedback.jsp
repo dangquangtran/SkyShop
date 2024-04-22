@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" type="image/png" href="img/R.png">
-        <title>MANAGER</title>
+        <title>STAFF</title>
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/osahan.css" rel="stylesheet">
         <link href="font/stylesheet.css" rel="stylesheet">
@@ -20,7 +20,7 @@
     <body id="page-top">
         <div id="wrapper">
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-                <a class="sidebar-brand d-flex align-items-center" href="ManagerAccountController">
+                <a class="sidebar-brand d-flex align-items-center" href="#">
                     <div class="sidebar-brand-icon">
                         <img src="img/R.png" class="img-fluid">
                     </div>
@@ -31,17 +31,12 @@
                         <i class="mdi mdi-home-variant-outline"></i>
                         <span>TRANG CHỦ</span></a>
                 </li>
-           
-
                 <hr class="sidebar-divider d-none d-md-block">
                 <div class="text-center d-none d-md-inline">
                     <button class="rounded-circle border-0" id="sidebarToggle"></button>
                 </div>
             </ul>
-
-
             <div id="content-wrapper" class="d-flex flex-column">
-
                 <div id="content">
                     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow-sm osahan-nav-top">
                         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -78,7 +73,6 @@
                             </li>   
                         </c:if>
                         <ul class="navbar-nav">
-
                             <li class="nav-item dropdown no-arrow d-sm-none">
                                 <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-search fa-fw"></i>
@@ -201,65 +195,51 @@
                             color:#c60021
                         }
                     </style>
-
-                    <c:if test="${sessionScope.roleID == 2}">
+                    <c:if test="${sessionScope.roleID == 3}">
                         <div class="container"> <br></br>
                             <div class="table-responsive">
                                 <div class="table-wrapper">
                                     <div class="table-title">
                                         <div class="row">
                                             <div class="col-xs-5">
-                                                <h2>Category <b>Management</b></h2>
+                                                <h2>Feedback <b>Management</b></h2>
                                             </div>
                                             <form action="MainController" method="post">
                                                 <div class="input-group-prepend ">
                                                     <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Manage Product" name="btAction" >
+                                                        <input class="btn btn-primary" type="submit" value="Staff Product" name="btAction" >
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Manage Account" name="btAction" >
+                                                        <input class="btn btn-primary" type="submit" value="Staff Orders" name="btAction" >
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
-                                     <form action="MainController">
+                                    <form action="MainController">
                                             Search Keyword: <input type="text" name="txtSearchName" value="" />
                                             <input type="submit" value="Find" name="btAction" />
-                                              </br>                                            
+                                            </br>                                            
                                             </br>
-                                            <div>
-                                                <input type="submit" value="Create Categogy" name="btAction" /> 
-                                            </div>
+                                         
                                             </br>   
                                     </form>
                                     <table class="table table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Categogy ID</th>
-                                                <th>Category Name</th>  
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>FeedBackId</th>
+                                                <th>Star</th>  
+                                                <th>Description</th>
+                                                <th>UserId</th>
+                                                <th>BookId</th>                                               
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <c:forEach items="${list}" var="ac" varStatus="counter">
                                             <form action="MainController" method="post">
-                                               <tr>
-                                                        <td>${ac.categoryID}</td>
-                                                        <td>${ac.categoryName}</td>
-                                                        <c:if test="${ac.status == 1}">
-                                                            <td>Avaiable</td>
-                                                        </c:if>
-                                                        <c:if test="${ac.status == 2}">
-                                                            <td>Inavaiable</td>
-                                                        </c:if>
-                                                           <td>
-                                                            <button>
-                                                                <a href="UpdateCategoryController?ID=${ac.categoryID}" > EDIT </a>
-                                                            </button>
-                                                        </td>
-                                               </tr>
+                                                <tr>
+                                             
+                                                </tr>
                                             </form>
                                         </c:forEach>
                                         </tbody>
@@ -267,15 +247,10 @@
                                 </div>
                             </div>      
                         </div>   
-
-
-
                     </c:if>
                     <script data-cfasync="false" src="js/email-decode.min.js"></script><script src="vendor/jquery/jquery.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
                     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
-
                     <script src="vendor/jquery-easing/jquery.easing.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
-
                     <script src="js/osahan.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
                     <script src="js/rocket-loader.min.js" data-cf-settings="4673c51028ea841130b80adc-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f9299e967d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
                     </body>
