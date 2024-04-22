@@ -1,28 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import cart.Cart;
-import dao.BookDAO;
+import dao.OrderDAO;
+import dao.OrderDetailDAO;
+import dto.Account;
 import dto.Book;
+import dto.Order;
+import dto.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author DELL
- */
-public class AddToCartController extends HttpServlet {
 
-    private static final String SUCCESS = "bookDetail.jsp";
+@WebServlet(name = "AddOrderController", urlPatterns = {"/AddOrderController"})
+public class AddOrderController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,35 +33,43 @@ public class AddToCartController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = SUCCESS;
+        HttpSession session = request.getSession();
+        Cart cart = (Cart) session.getAttribute("CART");
+        Account account = (Account) session.getAttribute("LOGIN_USER");
+
         try {
-            String bookId = request.getParameter("bookId"); //lay id product
-            int quantity = Integer.parseInt(request.getParameter("quantity")); //lay so luong product
-            HttpSession session = request.getSession();
-            Cart cart = (Cart) session.getAttribute("CART"); // lay cart
-            String username = (String) session.getAttribute("username");
-            if (username == null) {
-                request.getRequestDispatcher("signin.jsp").forward(request, response);
-                return; 
+            // Tạo đối tượng Order
+            Order order = new Order();
+//            order.setOrderDate(new Date(0)); // Ngày tạo đơn hàng hiện tại
+            order.setTotalPrice(cart.getTotalMoney()); // Tổng giá trị từ giỏ hàng
+            // Đặt các giá trị khác nếu cần thiết (ví dụ: userId, shipFee, v.v.)
+
+            OrderDAO orderDAO = new OrderDAO();
+            int orderId = orderDAO.createOrder(order,account.getUserId()); // Tạo Order và lấy ID
+
+            // Tạo các OrderDetail từ giỏ hàng
+            OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
+
+            for (Book book : cart.getCart().values()) {
+                OrderDetail orderDetail = new OrderDetail();
+                orderDetail.setOrderId(orderId);
+                orderDetail.setBookId(book.getBookId()); // Chuyển đổi ID thành int
+                orderDetail.setQuantity(book.getQuantity());
+                orderDetail.setUnitPrice(book.getUnitPrice());
+                orderDetail.setTotalPrice(book.getQuantity() * book.getUnitPrice());
+                // Đặt các giá trị khác nếu cần thiết
+
+                orderDetailDAO.createOrderDetail(orderDetail); // Tạo OrderDetail
             }
-            if (cart == null) { 
-                cart = new Cart();
-            }
-            Book book = new Book();
-            BookDAO dao = new BookDAO();
-            book = dao.getBookByID(Integer.parseInt(bookId));
-            book.setQuantity(quantity);
-            cart.add(book, cart);
-            System.out.println(cart.getTotalQuantity());
-            session.setAttribute("CART", cart);
-            book = dao.getBookByID(Integer.parseInt(bookId));
-            request.setAttribute("book", book);
-            request.setAttribute("MESSAGE", book.getBookName() + "-" + book.getQuantity() + " added successfully");
+
+            // Xóa giỏ hàng sau khi đặt hàng
+            session.setAttribute("CART", null);
+
+            // Chuyển hướng hoặc thông báo thành công
+            request.getRequestDispatcher("HomeController").forward(request, response);
 
         } catch (Exception e) {
-            log("Error at Create Controller: " + e.toString());
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+            e.printStackTrace();
         }
     }
 

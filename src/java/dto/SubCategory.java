@@ -9,21 +9,24 @@ public class SubCategory {
     private String subName;
     private String description;
     private int status;
+    private int categoryId;
 
     public SubCategory() {
     }
 
-    public SubCategory(int subcategoryID, String subName, String description, int status) {
+    public SubCategory(int subcategoryID, String subName, String description, int status, int categoryId) {
         this.subcategoryID = subcategoryID;
         this.subName = subName;
         this.description = description;
         this.status = status;
+        this.categoryId = categoryId;
     }
 
-    public SubCategory(String subName, String description, int status) {
+    public SubCategory(String subName, String description, int status, int categoryId) {
         this.subName = subName;
         this.description = description;
         this.status = status;
+        this.categoryId = categoryId;
     }
 
     public int getSubcategoryID() {
@@ -57,5 +60,14 @@ public class SubCategory {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
     
 }

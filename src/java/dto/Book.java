@@ -175,6 +175,11 @@ public class Book {
         this.totalFeedback = totalFeedback;
     }
 
+    @Override
+    public String toString() {
+        return "Book{" + "bookId=" + bookId + ", bookName=" + bookName + ", description=" + description + ", authorName=" + authorName + ", publishingCompany=" + publishingCompany + ", issusingCompany=" + issusingCompany + ", translatorName=" + translatorName + ", publishDate=" + publishDate + ", quantity=" + quantity + ", subCategoryId=" + subCategoryId + ", unitPrice=" + unitPrice + ", categoryId=" + categoryId + ", status=" + status + ", totalFeedback=" + totalFeedback + '}';
+    }
+
     
     
 }

@@ -12,33 +12,59 @@ import java.sql.Date;
  * @author DELL
  */
 public class Order {
-    String orderID;
-    Date orderDate;
-    boolean status;
-    int delivery;
-    Date deliveryDate;
-    float total;
-    int accountID;
-    public Order(){
-        
+    private int orderId;
+    private String description;
+    private Date orderDate;
+    private float shipFee;
+    private int usedLotusBub;
+    private float totalPrice;
+    private float finalPrice;
+    private int status;
+    private int userId;
+    private int recipientId;
+
+    public Order() {
     }
 
-    public Order(String orderID, Date orderDate, boolean status, int delivery, Date deliveryDate, float total, int accountID) {
-        this.orderID = orderID;
+    public Order(int orderId, String description, Date orderDate, float shipFee, int usedLotusBub, float totalPrice, float finalPrice, int status, int userId, int recipientId) {
+        this.orderId = orderId;
+        this.description = description;
         this.orderDate = orderDate;
+        this.shipFee = shipFee;
+        this.usedLotusBub = usedLotusBub;
+        this.totalPrice = totalPrice;
+        this.finalPrice = finalPrice;
         this.status = status;
-        this.delivery = delivery;
-        this.deliveryDate = deliveryDate;
-        this.total = total;
-        this.accountID = accountID;
+        this.userId = userId;
+        this.recipientId = recipientId;
     }
 
-    public String getOrderID() {
-        return orderID;
+    public Order(String description, Date orderDate, float shipFee, int usedLotusBub, float totalPrice, float finalPrice, int status, int userId, int recipientId) {
+        this.description = description;
+        this.orderDate = orderDate;
+        this.shipFee = shipFee;
+        this.usedLotusBub = usedLotusBub;
+        this.totalPrice = totalPrice;
+        this.finalPrice = finalPrice;
+        this.status = status;
+        this.userId = userId;
+        this.recipientId = recipientId;
     }
 
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getOrderDate() {
@@ -49,44 +75,60 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public boolean isStatus() {
+    public float getShipFee() {
+        return shipFee;
+    }
+
+    public void setShipFee(float shipFee) {
+        this.shipFee = shipFee;
+    }
+
+    public int getUsedLotusBub() {
+        return usedLotusBub;
+    }
+
+    public void setUsedLotusBub(int usedLotusBub) {
+        this.usedLotusBub = usedLotusBub;
+    }
+
+    public float getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(float totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public float getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice(float finalPrice) {
+        this.finalPrice = finalPrice;
+    }
+
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public int getDelivery() {
-        return delivery;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setDelivery(int delivery) {
-        this.delivery = delivery;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public Date getDeliveryDate() {
-        return deliveryDate;
+    public int getRecipientId() {
+        return recipientId;
     }
 
-    public void setDeliveryDate(Date deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
-
-    public float getTotal() {
-        return total;
-    }
-
-    public void setTotal(float total) {
-        this.total = total;
-    }
-
-    public int getAccountID() {
-        return accountID;
-    }
-
-    public void setAccountID(int accountID) {
-        this.accountID = accountID;
+    public void setRecipientId(int recipientId) {
+        this.recipientId = recipientId;
     }
     
 }
