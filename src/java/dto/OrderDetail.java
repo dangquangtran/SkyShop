@@ -10,45 +10,58 @@ package dto;
  * @author DELL
  */
 public class OrderDetail {
-    private Order order;
-    private Book product;
-    float price;
-    int quantity;
+    private int orderDetailId;
+    private int bookId;
+    private int orderId;
+    private int quantity;
+    private float unitPrice;
+    private float totalPrice;
+    private int status;
+
     public OrderDetail() {
-        this.order = new Order();
-        this.product = new Book();
-        this.price = 0;
-        this.quantity = 0;
-    }
-    public OrderDetail(Order order, Book product, float price, int quanity) {
-        this.order = order;
-        this.product = product;
-        this.price = price;
-        this.quantity = quanity;
     }
 
-    public float getPrice() {
-        return price;
+    public OrderDetail(int orderDetailId, int bookId, int orderId, int quantity, float unitPrice, float totalPrice, int status) {
+        this.orderDetailId = orderDetailId;
+        this.bookId = bookId;
+        this.orderId = orderId;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.totalPrice = totalPrice;
+        this.status = status;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public OrderDetail(int bookId, int orderId, int quantity, float unitPrice, float totalPrice, int status) {
+        this.bookId = bookId;
+        this.orderId = orderId;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.totalPrice = totalPrice;
+        this.status = status;
     }
 
-    public Order getOrder() {
-        return order;
+    public int getOrderDetailId() {
+        return orderDetailId;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderDetailId(int orderDetailId) {
+        this.orderDetailId = orderDetailId;
     }
 
-    public Book getProduct() {
-        return product;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setProduct(Book product) {
-        this.product = product;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public int getQuantity() {
@@ -57,6 +70,30 @@ public class OrderDetail {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public float getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(float unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public float getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(float totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
     
     

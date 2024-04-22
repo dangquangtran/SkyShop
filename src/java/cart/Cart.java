@@ -35,20 +35,26 @@ public class Cart {
     }
 
     //Thêm sản phẩm mới vào giỏ hàng
-//    public boolean add(Book product) {
-//        boolean check = false;
-//        if (this.cart == null) {
-//            this.cart = new HashMap<>();
-//
-//        }
-//        if (this.cart.containsKey(product.getProductID())) {
-//            int currentQuantity = this.cart.get(product.getProductID()).getQuantity();
-//            product.setQuantity(currentQuantity + product.getQuantity());
-//        }
-//        this.cart.put(Integer.toString(product.getProductID()), product);
-//        check = true;
-//        return check;
-//    }
+    public boolean add(Book book, Cart cart) {
+    boolean check = false;
+    if (cart.getCart() == null) {
+        cart.setCart(new HashMap<>());
+    }
+
+    String bookIdStr = Integer.toString(book.getBookId());
+    
+    if (cart.getCart().containsKey(bookIdStr)) {
+        // Nếu sách đã có trong giỏ, cộng thêm số lượng
+        Book existingBook = cart.getCart().get(bookIdStr);
+        int currentQuantity = existingBook.getQuantity();
+        book.setQuantity(currentQuantity + book.getQuantity());
+    }
+
+    // Đặt sách vào giỏ hàng
+    cart.getCart().put(bookIdStr, book);
+    check = true;
+    return check;
+}
 
     //Xóa sản phẩm khỏi giỏ hàng
     public boolean remove(int productID) {
@@ -75,13 +81,13 @@ public class Cart {
     }
 
     //Lấy tổng thành tiền của giỏ hàng
-//    public double getTotalMoney() {
-//        double total = 0;
-//        for (Book product : cart.values()) {
-//            total += product.getQuantity() * product.getPrice();
-//        }
-//        return total;
-//    }
+    public float getTotalMoney() {
+        float total = 0;
+        for (Book book : cart.values()) {
+            total += book.getQuantity() * book.getUnitPrice();
+        }
+        return total;
+    }
 
     //Xóa tất cả sản phẩm trong giỏ hàng
     public boolean removeAll() {
@@ -92,5 +98,16 @@ public class Cart {
         }
         return check;
     }
+    // Lấy tổng số lượng các đơn hàng trong giỏ hàng
+    public int getTotalQuantity() {
+        int totalQuantity = 0;
+        if (cart != null) {
+            for (Book book : cart.values()) {
+                totalQuantity += book.getQuantity();
+            }
+        }
+        return totalQuantity;
+    }
+    
 }
 //<<<<<<<<<<

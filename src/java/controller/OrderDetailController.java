@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package controller;
-import dto.Picture;
-import dao.PictureDao;
-import dto.Book;
-import dao.BookDAO;
+ package controller;
+
+import dao.OrderDetailDAO;
+import dto.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,14 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author DELL
- */
-@WebServlet(name = "ShowAllProductController", urlPatterns = {"/ShowAllProductController"})
-public class ShowAllProductController extends HttpServlet {
+@WebServlet(name = "OrderDetailController", urlPatterns = {"/OrderDetailController"})
+public class OrderDetailController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,33 +24,17 @@ public class ShowAllProductController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    private static final String ERROR = "";
-    private static final String SUCCESS = "listSPNB.jsp";
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
-//        try {
-//            HttpSession session = request.getSession();
-//            BookDAO dao = new BookDAO();
-//            List<Book> listProduct = dao.getListProduct();
-//            if(listProduct.size()>0){
-//                session.setAttribute("LIST_PRODUCT", listProduct);
-//                url = SUCCESS;
-//                PictureDao daoPic = new PictureDao();
-//                List<Picture> listPicture = daoPic.getListPicture();
-//                session.setAttribute("LIST_PICTURE", listPicture);
-//            }
-//            
-//                    
-//        } catch (Exception e) {
-//            log("Error at SearchController: " + e.toString());
-//        }finally{
-//            request.getRequestDispatcher(url).forward(request, response);
-//        }
+        String url = "orderDetail.jsp";
+        String orderId= request.getParameter("orderId");
+        OrderDetailDAO dao = new OrderDetailDAO();
+        List<OrderDetail> listOrderDetail = new ArrayList<>();
+        listOrderDetail = dao.getOrderDetailByOrderID(Integer.parseInt(orderId));
+        request.setAttribute("listOrderDetail", listOrderDetail);
+        request.getRequestDispatcher(url).forward(request, response);
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

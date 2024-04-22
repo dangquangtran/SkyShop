@@ -21,7 +21,7 @@ public class Test {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         dao.SubCategoryDAO daoo = new SubCategoryDAO();
         dao.BookDAO daooo= new BookDAO();
-        System.out.println(daooo.getBookByCateAndSubCate(2,1));
+        System.out.println(daoo.getListSubCategoryByCategoryId(2));
     }}
 
     

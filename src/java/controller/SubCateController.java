@@ -33,12 +33,11 @@ public class SubCateController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = "subcategory.jsp";
         String cateId = request.getParameter("cateId");
-        List<SubCategory> subList = new  ArrayList<>();
+        List<SubCategory> subList = new ArrayList<>();
         SubCategoryDAO dao = new SubCategoryDAO();
-        subList =dao.getSubByCategoryID(Integer.parseInt(cateId));
+        subList =dao.getListSubCategoryByCategoryId(Integer.parseInt(cateId));
         request.setAttribute("subList", subList);
-        request.setAttribute("cateId", cateId);
-        request.getRequestDispatcher(url).forward(request, response);    
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
