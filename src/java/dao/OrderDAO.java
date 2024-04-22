@@ -1,29 +1,18 @@
-<<<<<<< HEAD
-=======
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
->>>>>>> cd6278967639b54536700395bc1333859dee98d7
+
 package dao;
 
 import dto.Order;
 import java.sql.Connection;
-<<<<<<< HEAD
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-=======
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
->>>>>>> cd6278967639b54536700395bc1333859dee98d7
 import java.util.ArrayList;
 import java.util.List;
 import util.DBContext;
 
-<<<<<<< HEAD
 public class OrderDAO {
 
     Connection conn = null;
@@ -84,15 +73,5 @@ public class OrderDAO {
         } 
         return listOrder;
     }
-=======
-/**
- *
- * @author THUAN
- */
-public class OrderDAO {
-    Connection conn= null;
-    PreparedStatement ps =null;
-    ResultSet rs = null;
-    
->>>>>>> cd6278967639b54536700395bc1333859dee98d7
 }
+
