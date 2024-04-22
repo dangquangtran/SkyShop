@@ -47,7 +47,7 @@ private final String MANAGER_PAGE = "ManagerLAC.jsp";
             }
             HttpSession session = request.getSession();
             AccountDAO dao = new AccountDAO();
-            List<Account> listItem = dao.getAllAccount();
+            List<Account> listItem = dao.getAllAccountManager();
             request.setAttribute("list", listItem);
             
 //            List<Account> list = dao.searchAccountByName(txtSearch);

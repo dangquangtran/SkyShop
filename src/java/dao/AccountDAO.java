@@ -61,6 +61,28 @@ public class AccountDAO extends DBContext {
         }
         return listItems;
     }
+    public List<Account> getAllAccountManager() throws ClassNotFoundException, SQLException {
+        List<Account> listItems = new ArrayList<>();
+        try {
+            String sql = "select * from Users WHERE RoleID IN (2, 3, 4)";
+            PreparedStatement stm = getConnection().prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                int _userId = rs.getInt("UserId");
+                String _email = rs.getString("Email");
+                String _password = rs.getString("Password");
+                String _fullname = rs.getString("Fullname");
+                int _numberOfLotus = rs.getInt("Number_of_Lotus");
+                int _roleID = rs.getInt("RoleID");
+                int _status = rs.getInt("Status");
+                Account ac = new Account(_userId, _email, _password, _fullname, _numberOfLotus, _roleID, _status);
+                listItems.add(ac);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listItems;
+    }
 
     //detail account
     public Account detailAccount(String id) throws ClassNotFoundException, SQLException {

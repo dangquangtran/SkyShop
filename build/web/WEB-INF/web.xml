@@ -96,6 +96,10 @@
         <servlet-name>ManagerOrdersController</servlet-name>
         <servlet-class>controller.ManagerOrdersController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateOrdersController</servlet-name>
+        <servlet-class>controller.UpdateOrdersController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>ManagerOrdersController</servlet-name>
         <url-pattern>/ManagerOrdersController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateOrdersController</servlet-name>
+        <url-pattern>/UpdateOrdersController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
