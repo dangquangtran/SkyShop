@@ -48,6 +48,11 @@ public class MainController extends HttpServlet {
     private final String UPDATE_BLOG = "UpdateBlogController";
     private final String UPDATE_PRODUCT = "UpdateProductController";
     
+    // function staff
+    private final String STAFF_FEEDBACK = "ManagerFeedbackController";
+    private final String STAFF_ORDERS = "ManagerOrdersController";
+    private final String STAFF_PRODUCT = "StaffController";
+          
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -84,6 +89,12 @@ public class MainController extends HttpServlet {
                 url = CREATE_CATEGOGY;
             }else if (button.equals("Manage Category")){
                 url = MANAGER_CATEGORY;
+            }else if (button.equals("Staff FeedBack")){
+                url = STAFF_FEEDBACK;
+            }else if (button.equals("Staff Orders")){
+                url = STAFF_ORDERS;
+            }else if (button.equals("Staff Product")){
+                url = STAFF_PRODUCT;
             }
 
         } catch (Exception e) {

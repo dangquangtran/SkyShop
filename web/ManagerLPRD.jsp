@@ -27,13 +27,13 @@
                 </a>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="Showproduct">
+                    <a class="nav-link" href="homepage.jsp">
                         <i class="mdi mdi-home-variant-outline"></i>
                         <span>TRANG CHỦ</span></a>
                 </li>
                 <c:if test="${sessionScope.roleID == 2}">
                     <li class="nav-item">
-                        <a class="nav-link" href="ManagerDashboardController" >
+                        <a class="nav-link" href="#" >
                             <i class="mdi mdi-book-open"></i>
                             <span>DASHBOARD</span></a>
                     </li>
@@ -219,9 +219,7 @@
                                                     <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage Category" name="btAction" >
                                                     </div>
-                                                    <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Manage BLogs" name="btAction" >
-                                                    </div>
+                                                  
                                                 </div>
                                             </form>
                                         </div>
