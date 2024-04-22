@@ -5,44 +5,25 @@
  */
 package controller;
 
-import dao.OrderDAO;
+import dao.OrderDetailDAO;
 import dto.Order;
+import dto.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author THUAN
  */
-public class ManagerOrdersController extends HttpServlet {
-    private final String MANAGER_PAGE = "StaffManagerOrders.jsp";
-
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-              String url = MANAGER_PAGE;
-        try {
-            String txtSearch = request.getParameter("txtSearch");
-            if (txtSearch == null) {
-                txtSearch = "";
-            }
-            HttpSession session = request.getSession();
-            OrderDAO dao = new OrderDAO();
-            List<Order> listItem = dao.getALLOrder();
-            request.setAttribute("list", listItem);
-            url = MANAGER_PAGE;
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
-        }
-    }
+public class UpdateOrdersController extends HttpServlet {
+ 
+    private final String MANGER_PAGE = "StaffUpdateOrders.jsp";
+    private final String MANGER_P = "UpdateOrdersController";
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -56,7 +37,19 @@ public class ManagerOrdersController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+             String url = MANGER_PAGE;
+        try {
+            String id = request.getParameter("ID");
+            OrderDetailDAO dao = new OrderDetailDAO();
+            OrderDetail user = (OrderDetail) dao.getOrderDetailByOrderIDs(id);
+            request.setAttribute("user", user);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
+        }
     }
 
     /**
@@ -82,5 +75,9 @@ public class ManagerOrdersController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

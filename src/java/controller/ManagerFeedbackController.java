@@ -32,23 +32,17 @@ private final String MANAGER_PAGE = "StaffManagerFeedback.jsp";
         response.setContentType("text/html;charset=UTF-8");
        String url = MANAGER_PAGE;
 
-        try {
-            String txtSearch = request.getParameter("txtSearch");
-            if (txtSearch == null) {
-                txtSearch = "";
-            }
-            HttpSession session = request.getSession();
-            FeedbackDAO dao = new FeedbackDAO();
-            List<Feedback> listItem = dao.getAllFeedback();
-            request.setAttribute("list", listItem);
-
-            url = MANAGER_PAGE;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
-        }
+       String txtSearch = request.getParameter("txtSearch");
+       if (txtSearch == null) {
+           txtSearch = "";
+       }
+       HttpSession session = request.getSession();
+       FeedbackDAO dao = new FeedbackDAO();
+       List<Feedback> listItem = dao.getALLOFeedback();
+       request.setAttribute("list", listItem);
+       url = MANAGER_PAGE;
+       RequestDispatcher rd = request.getRequestDispatcher(url);
+       rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

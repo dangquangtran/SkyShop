@@ -210,7 +210,7 @@
                                                         <input class="btn btn-primary" type="submit" value="Staff Product" name="btAction" >
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Staff Orders" name="btAction" >
+                                                        <input class="btn btn-primary" type="submit" value="Staff FeedBack" name="btAction" >
                                                     </div>
                                                 </div>
                                             </form>
@@ -227,18 +227,57 @@
                                     <table class="table table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th>FeedBackId</th>
-                                                <th>Star</th>  
-                                                <th>Description</th>
-                                                <th>UserId</th>
-                                                <th>BookId</th>                                               
+                                                <th>OrderId</th>
+                                                <th>Description</th>  
+                                                <th>OrderDate</th>
+                                                <th>ShipFee</th>
+                                                <th>UsedLotusBub</th>    
+                                                <th>TotalPrice</th>  
+                                                <th>FinalPrice</th>  
+                                                <th>UserId</th>  
+                                                <th>RecipientId</th> 
+                                                <th>Status</th>  
+                                                <th>Action</th>  
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <c:forEach items="${list}" var="ac" varStatus="counter">
                                             <form action="MainController" method="post">
                                                 <tr>
-                                                   
+                                                    <td>${ac.orderId}</td>
+                                                    <td>${ac.description}</td>
+                                                    <td>${ac.orderDate}</td>
+                                                    <td>${ac.shipFee}</td>
+                                                    <td>${ac.usedLotusBub}</td>
+                                                    <td>${ac.totalPrice}</td>
+                                                    <td>${ac.finalPrice}</td>
+                                                    <td>${ac.userId}</td>
+                                                    <td>${ac.recipientId}</td>
+                                                    <c:if test="${ac.status == 1}">
+                                                        <td>Đang Chờ</td>
+                                                    </c:if>
+                                                    <c:if test="${ac.status == 2}">
+                                                        <td>Đang Lấy Hàng</td>
+                                                    </c:if> 
+                                                          <c:if test="${ac.status == 3}">
+                                                        <td>Đang Giao Hàng</td>
+                                                    </c:if> 
+                                                          <c:if test="${ac.status == 4}">
+                                                        <td>Giao Hàng Thành Công</td>
+                                                    </c:if> 
+                                                          <c:if test="${ac.status == 5}">
+                                                        <td>Hủy Đơn Hàng</td>
+                                                    </c:if> 
+                                                         <td>
+                                                            <button>
+                                                                <a href="DetailsOrdersController?ID=${ac.orderId}" > DETAIL </a>
+                                                            </button>
+                                                        </td>
+                                                         <td>
+                                                            <button>
+                                                                <a href="UpdateOrdersController?ID=${ac.orderId}" > EDIT </a>
+                                                            </button>
+                                                        </td>
                                                 </tr>
                                             </form>
                                         </c:forEach>
