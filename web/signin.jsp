@@ -56,11 +56,9 @@
                             </font> 
                         </c:if> <br></br>
 
-
-                        <div class="pt-1 mb-4">
-                            <button class="btn btn-dark btn-lg btn-block" type="submit" name="btAction" value="Login">ĐĂNG NHẬP</button>
-                        </div>
-
+                            <div class="pt-1 mb-4">
+                                <button class="btn btn-dark btn-lg btn-block" type="submit" name="btAction" value="Login">ĐĂNG NHẬP</button>
+                            </div>
 
                         <p class="text-center">
                             <a href="forgot.jsp" class="text-red">QUÊN MẬT KHẨU ?</a>
