@@ -27,17 +27,10 @@
                 </a>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="Showproduct">
+                    <a class="nav-link" href="homepage.jsp">
                         <i class="mdi mdi-home-variant-outline"></i>
                         <span>TRANG CHỦ</span></a>
                 </li>
-                <c:if test="${sessionScope.roleID == 3}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="ManagerDashboardController" >
-                            <i class="mdi mdi-book-open"></i>
-                            <span>DASHBOARD</span></a>
-                    </li>
-                </c:if>
                 <hr class="sidebar-divider d-none d-md-block">
                 <div class="text-center d-none d-md-inline">
                     <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -214,10 +207,10 @@
                                             <form action="MainController" method="post">
                                                 <div class="input-group-prepend ">
                                                     <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Manage FeedBack" name="btAction" >
+                                                        <input class="btn btn-primary" type="submit" value="Staff FeedBack" name="btAction" >
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Manage Orders" name="btAction" >
+                                                        <input class="btn btn-primary" type="submit" value="Staff Orders" name="btAction" >
                                                     </div>
                                                 </div>
                                             </form>

@@ -88,6 +88,14 @@
         <servlet-name>StaffController</servlet-name>
         <servlet-class>controller.StaffController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerFeedbackController</servlet-name>
+        <servlet-class>controller.ManagerFeedbackController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagerOrdersController</servlet-name>
+        <servlet-class>controller.ManagerOrdersController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -175,6 +183,14 @@
     <servlet-mapping>
         <servlet-name>StaffController</servlet-name>
         <url-pattern>/StaffController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerFeedbackController</servlet-name>
+        <url-pattern>/ManagerFeedbackController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerOrdersController</servlet-name>
+        <url-pattern>/ManagerOrdersController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
