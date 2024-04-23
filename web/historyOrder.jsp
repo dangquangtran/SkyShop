@@ -20,6 +20,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="path/to/materialize.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
+        <!-- Template CSS -->
+        <link rel="stylesheet" href="assets/css/main.css?v=3.4">
     </head>
     <body id="page-top">
         <div id="wrapper">
@@ -36,7 +40,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#HistoryOrderController?username=${sessionScope.username}">
+                    <a class="nav-link" href="HistoryOrderController">
                         <i class="mdi mdi-book-open"></i>
                         <span>Lịch Sử Đặt Hàng</span></a>
                 </li>
@@ -132,16 +136,7 @@
                                     </a>
                                 </li>
                             </c:if>
-                            <li class="nav-item dropdown no-arrow mx-2 osahan-t-bd">
-                                <a class="nav-link dropdown-toggle text-dark" href="listBestSale.jsp">
-                                    <i class="mdi mdi-sack-percent text-warning"></i><span class="ml-2">BEST SALE</span>
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown no-arrow mx-2 osahan-t-pu">
-                                <a class="nav-link dropdown-toggle text-dark" href="listBlog.jsp">
-                                    <i class="mdi mdi-shopping text-danger"></i><span class="ml-2">BLOG</span>
-                                </a>
-                            </li>
+
                             <li class="nav-item dropdown no-arrow mx-2 osahan-t-pu">
                                 <a class="nav-link dropdown-toggle text-dark" href="contact.jsp">
                                     <i class="mdi mdi-shopping text-danger"></i><span class="ml-2">Liên Hệ</span>
@@ -157,24 +152,19 @@
                                     </div>
                                 </div>
                             </form>
-                            <a href="viewCart.jsp" class="btn" >
-                                <form class="d-flex">
-                                    <button class="btn btn-outline-dark" type="submit">
-                                        <i class="bi-cart-fill me-1"></i>
-                                        Cart
-                                        <%
-                                            cart.Cart cart = (cart.Cart) session.getAttribute("CART"); // Lấy đối tượng Cart từ session
-                                            int totalQuantity = 0; // Khởi tạo tổng số lượng
+                            <a href="ViewCartController" class="btn btn-outline-dark">
+                                <i class="bi-cart-fill me-1"></i>
+                                Cart
+                                <%
+                                    cart.Cart cart = (cart.Cart) session.getAttribute("CART"); // Lấy đối tượng Cart từ session
+                                    int totalQuantity = 0; // Khởi tạo tổng số lượng
 
-                                            // Kiểm tra xem giỏ hàng có tồn tại không
-                                            if (cart != null) {
-                                                totalQuantity = cart.getTotalQuantity(); // Gọi phương thức getTotalQuantity để lấy tổng số lượng sản phẩm
-                                            }
-                                        %>
-
-                                        <span class="badge bg-dark text-white ms-1 rounded-pill"><%= totalQuantity%></span> <!-- Hiển thị tổng số lượng -->
-                                    </button>
-                                </form>
+                                    // Kiểm tra xem giỏ hàng có tồn tại không
+                                    if (cart != null) {
+                                        totalQuantity = cart.getTotalQuantity(); // Gọi phương thức getTotalQuantity để lấy tổng số lượng sản phẩm
+                                    }
+                                %>
+                                <span class="badge bg-dark text-white ms-1 rounded-pill"><%= totalQuantity%></span> <!-- Hiển thị tổng số lượng -->
                             </a>
                         </div>
                     </nav>
@@ -212,7 +202,7 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
-                    
+
 
 
 
@@ -245,7 +235,28 @@
 
 
 
-
+        <!-- Vendor JS-->
+        <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+        <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+        <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+        <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/plugins/slick.js"></script>
+        <script src="assets/js/plugins/jquery.syotimer.min.js"></script>
+        <script src="assets/js/plugins/wow.js"></script>
+        <script src="assets/js/plugins/jquery-ui.js"></script>
+        <script src="assets/js/plugins/perfect-scrollbar.js"></script>
+        <script src="assets/js/plugins/magnific-popup.js"></script>
+        <script src="assets/js/plugins/select2.min.js"></script>
+        <script src="assets/js/plugins/waypoints.js"></script>
+        <script src="assets/js/plugins/counterup.js"></script>
+        <script src="assets/js/plugins/jquery.countdown.min.js"></script>
+        <script src="assets/js/plugins/images-loaded.js"></script>
+        <script src="assets/js/plugins/isotope.js"></script>
+        <script src="assets/js/plugins/scrollup.js"></script>
+        <script src="assets/js/plugins/jquery.vticker-min.js"></script>
+        <!-- Template  JS -->
+        <script src="./assets/js/main.js?v=3.4"></script>
+        <script src="./assets/js/shop.js?v=3.4"></script>
         <script data-cfasync="false" src="js/email-decode.min.js"></script>
         <script src="vendor/jquery/jquery.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>

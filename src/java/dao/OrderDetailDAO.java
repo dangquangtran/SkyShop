@@ -9,6 +9,7 @@ import java.util.List;
 import util.DBContext;
 
 public class OrderDetailDAO {
+
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -30,31 +31,30 @@ public class OrderDetailDAO {
             e.printStackTrace();
         }
     }
-    
-    public List<OrderDetail> getOrderDetailByOrderID(int orderId){
+
+    public List<OrderDetail> getOrderDetailByOrderID(int orderId) {
         List<OrderDetail> listOrderDetail = new ArrayList<>();
         String query = "Select * from OrderDetail where OrderId = ?";
         try {
-                conn = new DBContext().getConnection();
-                ps = conn.prepareStatement(query);
-                ps.setInt(1, orderId);
-                rs = ps.executeQuery();
-                while (rs.next()) {
-                    OrderDetail orderDetail = new OrderDetail(
-                    rs.getInt("OrderDetailId"), 
-                rs.getInt("OrderId"), 
-                rs.getInt("BookId"), 
-                rs.getInt("Quantity"), 
-                rs.getFloat("UnitPrice"), 
-                rs.getFloat("TotalPrice"), 
-                rs.getInt("Status"),
-                rs.getString("BookName") 
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, orderId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                OrderDetail orderDetail = new OrderDetail(
+                        rs.getInt("OrderDetailId"),
+                        rs.getInt("BookId"),
+                        rs.getInt("OrderId"),
+                        rs.getInt("Quantity"),
+                        rs.getFloat("UnitPrice"),
+                        rs.getFloat("TotalPrice"),
+                        rs.getInt("Status")
                 );
                 listOrderDetail.add(orderDetail);
-                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
         return listOrderDetail;
     }
     

@@ -1,7 +1,11 @@
 package controller;
 
 import dao.BookDAO;
+import dao.CategoryDAO;
+import dao.SubCategoryDAO;
 import dto.Book;
+import dto.Category;
+import dto.SubCategory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -28,6 +32,15 @@ public class ListBookController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        dao.CategoryDAO cateDao = new CategoryDAO();
+        dao.SubCategoryDAO subDao = new  SubCategoryDAO();
+        List<Category> listCategory = new ArrayList<>();
+        listCategory = cateDao.getAllListCategory();
+        request.setAttribute("listCategory", listCategory);
+        List<SubCategory> listSubCate = new ArrayList<>();
+        listSubCate = subDao.getAllListSubCategory();
+        request.setAttribute("listSubCategory", listSubCate);
+        
         String url = "listBook.jsp";
         dao.BookDAO dao = new BookDAO();
         List<Book> bookList = new ArrayList<>();
