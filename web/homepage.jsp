@@ -20,6 +20,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="path/to/materialize.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
+        <!-- Template CSS -->
+        <link rel="stylesheet" href="assets/css/main.css?v=3.4">
     </head>
     <body id="page-top">
         <div id="wrapper">
@@ -132,16 +136,7 @@
                                     </a>
                                 </li>
                             </c:if>
-                            <li class="nav-item dropdown no-arrow mx-2 osahan-t-bd">
-                                <a class="nav-link dropdown-toggle text-dark" href="listBestSale.jsp">
-                                    <i class="mdi mdi-sack-percent text-warning"></i><span class="ml-2">BEST SALE</span>
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown no-arrow mx-2 osahan-t-pu">
-                                <a class="nav-link dropdown-toggle text-dark" href="listBlog.jsp">
-                                    <i class="mdi mdi-shopping text-danger"></i><span class="ml-2">BLOG</span>
-                                </a>
-                            </li>
+                            
                             <li class="nav-item dropdown no-arrow mx-2 osahan-t-pu">
                                 <a class="nav-link dropdown-toggle text-dark" href="contact.jsp">
                                     <i class="mdi mdi-shopping text-danger"></i><span class="ml-2">Liên Hệ</span>
@@ -157,7 +152,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <a href="viewCart.jsp" class="btn btn-outline-dark">
+                            <a href="ViewCartController" class="btn btn-outline-dark">
                                 <i class="bi-cart-fill me-1"></i>
                                 Cart
                                 <%
@@ -181,33 +176,30 @@
                                  //SHOW THONG TIN CAC LOAI SACH
                                  //SHOW CAC LOAI SACH + THONG TIN CHI TIET LOAI SACH + ...    
                     -->  
-                    <div class="container-fluid">
-                        <div class="row">
-                            <!-- Sidebar chiếm 25% chiều rộng -->
-                            <div class="col-md-3 bg-light p-3">
-                                <h2>Tất cả danh mục</h2>
-                                <ul class="list-unstyled">
-                                    <c:forEach var="category" items="${listCategory}">
-                                        <li class="mb-2">
-                                            <!-- Chỉ một liên kết đơn giản chuyển hướng đến controller -->
-                                            <a href="SubCateController?cateId=${category.categoryID}" 
-                                               class="text-dark text-decoration-none">
-                                                ${category.categoryName}
-                                            </a>
-                                        </li>
-                                    </c:forEach>
-                                </ul>
-                            </div>
-
-                            <!-- Phần chính chiếm 75% chiều rộng -->
-                            <div class="col-md-9 p-3">
-                                <h2>Welcome to the Bookstore</h2>
-                                <!-- Nội dung chính sẽ hiển thị ở đây -->
-                            </div>
-                        </div>
+                    <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
+                        <nav>
+                            <ul>
+                                <c:forEach var="category" items="${listCategory}">
+                                    <li>
+                                        <a href="SubCateController?cateId=${category.categoryID}">${category.categoryName} <i class="fi-rs-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <c:forEach var="subCategory" items="${listSubCategory}">
+                                                <c:if test="${subCategory.categoryId == category.categoryID}">
+                                                    <li>
+                                                        <a href="ListBookController?cateId=${category.categoryID}&subId=${subCategory.subcategoryID}">
+                                                            ${subCategory.subName}
+                                                        </a>
+                                                    </li>
+                                                </c:if>
+                                            </c:forEach>
+                                        </ul>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </nav>
                     </div>
 
-
+                    
 
 
                     <!--BANNER VIEW -->
@@ -215,19 +207,10 @@
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100" src="img/banner/banner3.png" alt="First slide" height="450px">
+                                    <img class="d-block w-100" src="img/banner/vn1.jpg" alt="First slide" height="450px">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/banner/banner3.jpg" alt="Second slide" height="450px">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/banner/banner8.jpg" alt="Third slide"height="450px">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/banner/banner5.jpg" alt="Second slide" height="450px">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/banner/banner6.jpg" alt="Second slide" height="450px">
+                                    <img class="d-block w-100" src="img/banner/vn2.jpg" alt="Second slide" height="450px">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -539,46 +522,8 @@
 
 
 
-                        <div class="container-fluid">
-                            <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
-                                <h5 class="mb-0">CÁC BLOG NỔI BẬT</h5>
-                                <a href="listBlog.jsp" class="small font-weight-bold text-dark">SEE ALL <i class="mdi mdi-chevron-right mr-2"></i></a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <a href="blogchimchaomao.jsp" class="text-decoration-none col-xl-3 col-md-3 mb-3">
-                                <div class="card" style="width: 18rem; color: black" >
-                                    <img class="card-img-top" src="img/bird/chimchaomao.jpg" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">We pride ourselves on providing only the highest quality vegetables, grown using sustainable farming.Taste the difference with our premium vegetable selection today!.</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="blogchimvet.jsp" class="text-decoration-none col-xl-3 col-md-3 mb-3">
-                                <div class="card" style="width: 18rem; color: black" >
-                                    <img class="card-img-top" src="img/bird/chimvet1.jpg" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">We pride ourselves on providing only the highest quality vegetables, grown using sustainable farming.Taste the difference with our premium vegetable selection today!.</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="blogchimchichchoe.jsp" class="text-decoration-none col-xl-3 col-md-3 mb-3">
-                                <div class="card" style="width: 18rem; color: black" >
-                                    <img class="card-img-top" src="img/bird/chimchitcheo1.jpg" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">We pride ourselves on providing only the highest quality vegetables, grown using sustainable farming.Taste the difference with our premium vegetable selection today!.</p>
-                                    </div>
-                                </div>
-                            </a>       
-                            <a href="blogchimhoami.jsp" class="text-decoration-none col-xl-3 col-md-3 mb-3">
-                                <div class="card" style="width: 18rem; color: black" >
-                                    <img class="card-img-top" src="img/bird/chimhoami.jpg" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">We pride ourselves on providing only the highest quality vegetables, grown using sustainable farming.Taste the difference with our premium vegetable selection today!.</p>
-                                    </div>
-                                </div>
-                            </a>   
-                        </div>
+                        
+                        
 
 
                         <!-- 
@@ -619,7 +564,28 @@
 
 
 
-
+        <!-- Vendor JS-->
+        <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+        <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+        <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+        <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/plugins/slick.js"></script>
+        <script src="assets/js/plugins/jquery.syotimer.min.js"></script>
+        <script src="assets/js/plugins/wow.js"></script>
+        <script src="assets/js/plugins/jquery-ui.js"></script>
+        <script src="assets/js/plugins/perfect-scrollbar.js"></script>
+        <script src="assets/js/plugins/magnific-popup.js"></script>
+        <script src="assets/js/plugins/select2.min.js"></script>
+        <script src="assets/js/plugins/waypoints.js"></script>
+        <script src="assets/js/plugins/counterup.js"></script>
+        <script src="assets/js/plugins/jquery.countdown.min.js"></script>
+        <script src="assets/js/plugins/images-loaded.js"></script>
+        <script src="assets/js/plugins/isotope.js"></script>
+        <script src="assets/js/plugins/scrollup.js"></script>
+        <script src="assets/js/plugins/jquery.vticker-min.js"></script>
+        <!-- Template  JS -->
+        <script src="./assets/js/main.js?v=3.4"></script>
+        <script src="./assets/js/shop.js?v=3.4"></script>                    
         <script data-cfasync="false" src="js/email-decode.min.js"></script><script src="vendor/jquery/jquery.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
         <script src="vendor/jquery-easing/jquery.easing.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>

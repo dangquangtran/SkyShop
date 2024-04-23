@@ -20,6 +20,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="path/to/materialize.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
+        <!-- Template CSS -->
+        <link rel="stylesheet" href="assets/css/main.css?v=3.4">
     </head>
     <body id="page-top">
         <div id="wrapper">
@@ -36,7 +40,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#HistoryOrderController?username=${sessionScope.username}">
+                    <a class="nav-link" href="HistoryOrderController">
                         <i class="mdi mdi-book-open"></i>
                         <span>Lịch Sử Đặt Hàng</span></a>
                 </li>
@@ -132,16 +136,7 @@
                                     </a>
                                 </li>
                             </c:if>
-                            <li class="nav-item dropdown no-arrow mx-2 osahan-t-bd">
-                                <a class="nav-link dropdown-toggle text-dark" href="listBestSale.jsp">
-                                    <i class="mdi mdi-sack-percent text-warning"></i><span class="ml-2">BEST SALE</span>
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown no-arrow mx-2 osahan-t-pu">
-                                <a class="nav-link dropdown-toggle text-dark" href="listBlog.jsp">
-                                    <i class="mdi mdi-shopping text-danger"></i><span class="ml-2">BLOG</span>
-                                </a>
-                            </li>
+                            
                             <li class="nav-item dropdown no-arrow mx-2 osahan-t-pu">
                                 <a class="nav-link dropdown-toggle text-dark" href="contact.jsp">
                                     <i class="mdi mdi-shopping text-danger"></i><span class="ml-2">Liên Hệ</span>
@@ -157,24 +152,19 @@
                                     </div>
                                 </div>
                             </form>
-                            <a href="viewCart.jsp" class="btn" >
-                                <form class="d-flex">
-                                    <button class="btn btn-outline-dark" type="submit">
-                                        <i class="bi-cart-fill me-1"></i>
-                                        Cart
-                                        <%
-                                            cart.Cart cart = (cart.Cart) session.getAttribute("CART"); // Lấy đối tượng Cart từ session
-                                            int totalQuantity = 0; // Khởi tạo tổng số lượng
+                            <a href="ViewCartController" class="btn btn-outline-dark">
+                                <i class="bi-cart-fill me-1"></i>
+                                Cart
+                                <%
+                                    cart.Cart cart = (cart.Cart) session.getAttribute("CART"); // Lấy đối tượng Cart từ session
+                                    int totalQuantity = 0; // Khởi tạo tổng số lượng
 
-                                            // Kiểm tra xem giỏ hàng có tồn tại không
-                                            if (cart != null) {
-                                                totalQuantity = cart.getTotalQuantity(); // Gọi phương thức getTotalQuantity để lấy tổng số lượng sản phẩm
-                                            }
-                                        %>
-
-                                        <span class="badge bg-dark text-white ms-1 rounded-pill"><%= totalQuantity%></span> <!-- Hiển thị tổng số lượng -->
-                                    </button>
-                                </form>
+                                    // Kiểm tra xem giỏ hàng có tồn tại không
+                                    if (cart != null) {
+                                        totalQuantity = cart.getTotalQuantity(); // Gọi phương thức getTotalQuantity để lấy tổng số lượng sản phẩm
+                                    }
+                                %>
+                                <span class="badge bg-dark text-white ms-1 rounded-pill"><%= totalQuantity%></span> <!-- Hiển thị tổng số lượng -->
                             </a>
                         </div>
                     </nav>
@@ -185,80 +175,182 @@
                     <!-- 
                                  //SHOW THONG TIN Cart
                     -->  
-                    <c:set var="cart" value="${sessionScope.CART}" />
-                    <c:choose>
-                        <c:when test="${cart != null && not empty cart.getCart().values()}">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Book Name</th>
-                                        <th>Quantity</th>
-                                        <th>Unit Price</th>
-                                        <th>Total Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach var="book" items="${cart.getCart().values()}">
-                                        <tr>
-                                            <td>${book.bookName}</td>
-                                            <td>${book.quantity}</td>
-                                            <td>${book.unitPrice}</td>
-                                            <td>${book.quantity * book.unitPrice}</td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
-                            <h3>Total: ${cart.getTotalMoney()}</h3>
-                            <form action="AddOrderController" method="post">
-                                <button type="submit" class="btn btn-primary">Đặt hàng</button>
-                            </form>
-                        </c:when>
-                        <c:otherwise>
-                            <p>Your cart is empty</p>
-                        </c:otherwise>
-                    </c:choose>
-
-
-
-
-
-                </div>                       
-
-
-
-
-
-
-
-
-
-                <!-- 
-                 //FOOTER                
-                -->   
-                <footer class="sticky-footer bg-light" >
-                    <div class="container my-auto ">
-                        <div class="copyright text-center my-auto " style="color: #093b29" >
-                            <span >EMAIL: BMOS@gmail.com&copy;</span></br></br>
-                            <span>ADDRES:  Q9, HCM, VIET NAM&copy;</span></br></br>
-                            <span>HOTLINE: 0931 8888 991&copy;</span>
-                        </div>
+                    <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
+                        <nav>
+                            <ul>
+                                <c:forEach var="category" items="${listCategory}">
+                                    <li>
+                                        <a href="SubCateController?cateId=${category.categoryID}">${category.categoryName} <i class="fi-rs-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <c:forEach var="subCategory" items="${listSubCategory}">
+                                                <c:if test="${subCategory.categoryId == category.categoryID}">
+                                                    <li>
+                                                        <a href="ListBookController?cateId=${category.categoryID}&subId=${subCategory.subcategoryID}">
+                                                            ${subCategory.subName}
+                                                        </a>
+                                                    </li>
+                                                </c:if>
+                                            </c:forEach>
+                                        </ul>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </nav>
                     </div>
-                </footer>
+                    
+                    
+                    
+                    <section class="mt-50 mb-50">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <table class="table shopping-summery text-center clean">
+                                            <thead>
+                                                <tr class="main-heading">
+                                                    <th scope="col">Image</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Quantity</th>
+                                                    <th scope="col">Remove</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach var="bookEntry" items="${cart.cart}">
+                                                <tr>
+                                                    <td class="image product-thumbnail"><img src="assets/imgs/shop/product-1-2.jpg" alt="#"></td>
+                                                    <td class="product-des product-name">
+                                                        <h5 class="product-name"><a href="shop-product-right.html">${bookEntry.value.bookName}</a></h5>
+                                                        <p class="font-xs">${bookEntry.value.authorName}<br> ${bookEntry.value.publishingCompany}
+                                                        </p>
+                                                    </td>
+                                                    <td class="price" data-title="Price"><span>${bookEntry.value.unitPrice}đ </span></td>
+                                                    <td class="text-center" data-title="Stock">
+                                                            <a href="QuantityBookCartController?bookId=${bookEntry.value.bookId}&quantity=-1" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                                            <span class="qty-val">${bookEntry.value.quantity}</span>
+                                                            <a href="QuantityBookCartController?bookId=${bookEntry.value.bookId}&quantity=1" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                                    </td>
+                                                    <td class="action" data-title="Remove"><a href="DeleteBookCartController?bookId=${bookEntry.value.bookId}" class="text-muted"><i class="fi-rs-trash"></i></a></td>
+                                                </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
+                                    <div class="row mb-50">
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="heading_s1 mb-3">
+                                                <h4>Calculate Shipping</h4>
+                                            </div>
+                                            <p class="mt-15 mb-30">Flat rate: <span class="font-xl text-brand fw-900">50000đ</span></p>
+                                            <div class="mb-30 mt-50">
+                                                <div class="heading_s1 mb-3">
+                                                    <h4>Apply Coupon</h4>
+                                                </div>
+                                                <div class="total-amount">
+                                                    <div class="left">
+                                                        <div class="coupon">
+                                                            <form action="#" target="_blank">
+                                                                <div class="form-row row justify-content-center">
+                                                                    <div class="form-group col-lg-6">
+                                                                        <input class="font-medium" name="Coupon" placeholder="Enter Your Coupon">
+                                                                    </div>
+                                                                    <div class="form-group col-lg-6">
+                                                                        <button class="btn  btn-sm"><i class="fi-rs-label mr-10"></i>Apply</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="border p-md-4 p-30 border-radius cart-totals">
+                                                <div class="heading_s1 mb-3">
+                                                    <h4>Cart Totals</h4>
+                                                </div>
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="cart_total_label">Total Price</td>
+                                                                <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">${cart.getTotalMoney()}đ</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="cart_total_label">Shipping</td>
+                                                                <td class="cart_total_amount"> <i class="ti-gift mr-5"></i>50000đ</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="cart_total_label">Final Price</td>
+                                                                <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">${cart.getTotalMoney() + 50000}đ</span></strong></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <a href="AddOrderController" class="btn "> <i class="fi-rs-box-alt mr-10"></i> CheckOut</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+
+
+
+                    <!-- 
+                     //FOOTER                
+                    -->   
+                    <footer class="sticky-footer bg-light" >
+                        <div class="container my-auto ">
+                            <div class="copyright text-center my-auto " style="color: #093b29" >
+                                <span >EMAIL: BMOS@gmail.com&copy;</span></br></br>
+                                <span>ADDRES:  Q9, HCM, VIET NAM&copy;</span></br></br>
+                                <span>HOTLINE: 0931 8888 991&copy;</span>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
             </div>
-        </div>
 
 
 
 
 
-
-        <script data-cfasync="false" src="js/email-decode.min.js"></script>
-        <script src="vendor/jquery/jquery.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
-        <script src="vendor/jquery-easing/jquery.easing.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
-        <script src="js/osahan.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
-        <script src="js/rocket-loader.min.js" data-cf-settings="e83057937dd4e85910db8985-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f93a1e227d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
-        <script src="path/to/your/bundle.js"></script>
+            <!-- Vendor JS-->
+            <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+            <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+            <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+            <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+            <script src="assets/js/plugins/slick.js"></script>
+            <script src="assets/js/plugins/jquery.syotimer.min.js"></script>
+            <script src="assets/js/plugins/wow.js"></script>
+            <script src="assets/js/plugins/jquery-ui.js"></script>
+            <script src="assets/js/plugins/perfect-scrollbar.js"></script>
+            <script src="assets/js/plugins/magnific-popup.js"></script>
+            <script src="assets/js/plugins/select2.min.js"></script>
+            <script src="assets/js/plugins/waypoints.js"></script>
+            <script src="assets/js/plugins/counterup.js"></script>
+            <script src="assets/js/plugins/jquery.countdown.min.js"></script>
+            <script src="assets/js/plugins/images-loaded.js"></script>
+            <script src="assets/js/plugins/isotope.js"></script>
+            <script src="assets/js/plugins/scrollup.js"></script>
+            <script src="assets/js/plugins/jquery.vticker-min.js"></script>
+            <!-- Template  JS -->
+            <script src="./assets/js/main.js?v=3.4"></script>
+            <script src="./assets/js/shop.js?v=3.4"></script>
+            <script data-cfasync="false" src="js/email-decode.min.js"></script>
+            <script src="vendor/jquery/jquery.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
+            <script src="vendor/jquery-easing/jquery.easing.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
+            <script src="js/osahan.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
+            <script src="js/rocket-loader.min.js" data-cf-settings="e83057937dd4e85910db8985-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f93a1e227d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
+            <script src="path/to/your/bundle.js"></script>
 
     </body>
 
