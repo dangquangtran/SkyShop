@@ -3,6 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/D:/Dev/BE/SkyShop/src/java/controller/UpdateProductController.java</file>
+            <file>file:/D:/Dev/BE/SkyShop/src/java/dto/Book.java</file>
+            <file>file:/D:/Dev/BE/SkyShop/src/java/controller/MainController.java</file>
+            <file>file:/D:/Dev/BE/SkyShop/web/ManagerUpdateProduct.jsp</file>
+            <file>file:/D:/Dev/BE/SkyShop/src/java/dao/BookDAO.java</file>
+=======
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dao/SubCategoryDAO.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/SubCateController.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/AddOrderController.java</file>
@@ -16,6 +23,7 @@
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/bookDetail.jsp</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/historyOrder.jsp</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/orderDetail.jsp</file>
+>>>>>>> 872f571c629ef69151b5e246189a33d7cf7414d3
         </group>
     </open-files>
 </project-private>
