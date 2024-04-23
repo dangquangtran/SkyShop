@@ -136,7 +136,7 @@
                                     </a>
                                 </li>
                             </c:if>
-                            
+
                             <li class="nav-item dropdown no-arrow mx-2 osahan-t-pu">
                                 <a class="nav-link dropdown-toggle text-dark" href="contact.jsp">
                                     <i class="mdi mdi-shopping text-danger"></i><span class="ml-2">Liên Hệ</span>
@@ -197,9 +197,9 @@
                             </ul>
                         </nav>
                     </div>
-                    
-                    
-                    
+
+
+
                     <section class="mt-50 mb-50">
                         <div class="container">
                             <div class="row">
@@ -217,26 +217,26 @@
                                             </thead>
                                             <tbody>
                                                 <c:forEach var="bookEntry" items="${cart.cart}">
-                                                <tr>
-                                                    <td class="image product-thumbnail"><img src="assets/imgs/shop/product-1-2.jpg" alt="#"></td>
-                                                    <td class="product-des product-name">
-                                                        <h5 class="product-name"><a href="shop-product-right.html">${bookEntry.value.bookName}</a></h5>
-                                                        <p class="font-xs">${bookEntry.value.authorName}<br> ${bookEntry.value.publishingCompany}
-                                                        </p>
-                                                    </td>
-                                                    <td class="price" data-title="Price"><span>${bookEntry.value.unitPrice}đ </span></td>
-                                                    <td class="text-center" data-title="Stock">
+                                                    <tr>
+                                                        <td class="image product-thumbnail"><img src="assets/imgs/shop/product-1-2.jpg" alt="#"></td>
+                                                        <td class="product-des product-name">
+                                                            <h5 class="product-name"><a href="shop-product-right.html">${bookEntry.value.bookName}</a></h5>
+                                                            <p class="font-xs">${bookEntry.value.authorName}<br> ${bookEntry.value.publishingCompany}
+                                                            </p>
+                                                        </td>
+                                                        <td class="price" data-title="Price"><span>${bookEntry.value.unitPrice}đ </span></td>
+                                                        <td class="text-center" data-title="Stock">
                                                             <a href="QuantityBookCartController?bookId=${bookEntry.value.bookId}&quantity=-1" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
                                                             <span class="qty-val">${bookEntry.value.quantity}</span>
                                                             <a href="QuantityBookCartController?bookId=${bookEntry.value.bookId}&quantity=1" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                                    </td>
-                                                    <td class="action" data-title="Remove"><a href="DeleteBookCartController?bookId=${bookEntry.value.bookId}" class="text-muted"><i class="fi-rs-trash"></i></a></td>
-                                                </tr>
+                                                        </td>
+                                                        <td class="action" data-title="Remove"><a href="DeleteBookCartController?bookId=${bookEntry.value.bookId}" class="text-muted"><i class="fi-rs-trash"></i></a></td>
+                                                    </tr>
                                                 </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
-                                    
+
                                     <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
                                     <div class="row mb-50">
                                         <div class="col-lg-6 col-md-12">
@@ -244,6 +244,29 @@
                                                 <h4>Calculate Shipping</h4>
                                             </div>
                                             <p class="mt-15 mb-30">Flat rate: <span class="font-xl text-brand fw-900">50000đ</span></p>
+                                            <form class="field_form shipping_calculator">
+                                                <div class="form-row">
+                                                    <div class="form-group col-lg-12">
+                                                        <div class="custom_select">
+                                                            <select class="form-control">
+                                                                <c:forEach var="recipient" items="${listRecipient}">
+                                                                    <option value="${recipient.recipientID}">
+                                                                        Địa chỉ giao hàng: ${recipient.destAddress}, 
+                                                                        Tên người nhận: ${recipient.recipientName},
+                                                                        Số điện thoại: ${recipient.phoneNumber}
+                                                                    </option>
+                                                                    </c:forEach>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-row">
+                                                    <div class="form-group col-lg-12">
+                                                        <a href="" class="btn  btn-sm"><i class="fi-rs-shuffle mr-10"></i>Thêm địa chỉ giao hàng</a>
+                                                    </div>
+                                                </div>
+                                            </form>
                                             <div class="mb-30 mt-50">
                                                 <div class="heading_s1 mb-3">
                                                     <h4>Apply Coupon</h4>
