@@ -242,9 +242,9 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Publish Date</td>
+                                                <td>PublishDate </td>
                                                 <td>
-                                                    <input type="date"  name="PublishDate"  />
+                                                    <input type="number"  name="PublishDate"   />
                                                 </td>
                                             </tr>
                                             <tr>

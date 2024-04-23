@@ -99,7 +99,7 @@ private final String MANGER_P = "ManagerProductController";
             byte[] txt_translatorName = _translatorName.getBytes("ISO-8859-1");
             _translatorName = new String(txt_translatorName, "UTF-8");
             
-            Date _publishDate = Date.valueOf(request.getParameter("txt_publishDate"));
+            int _publishDate = Integer.parseInt(request.getParameter("txt_publishDate"));
             int _quantity = Integer.parseInt(request.getParameter("txt_quantity"));
             int _subCategoryId = Integer.parseInt(request.getParameter("txt_subCategoryId"));
             float _unitPrice = Float.parseFloat(request.getParameter("txt_unitPrice"));

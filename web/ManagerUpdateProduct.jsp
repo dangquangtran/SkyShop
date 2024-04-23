@@ -250,7 +250,7 @@
                                             <tr>
                                                 <td>Publish Date</td>
                                                 <td>
-                                                    <input type="date"  name="PublishDate" value="${book.publishDate}"  />
+                                                    <input type="number"  name="PublishDate" value="${book.publishDate}"  />
                                                 </td>
                                             </tr>
                                             <tr>

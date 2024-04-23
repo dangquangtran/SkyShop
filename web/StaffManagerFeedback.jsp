@@ -238,11 +238,14 @@
                                             <c:forEach items="${list}" var="ac" varStatus="counter">
                                             <form action="MainController" method="post">
                                                 <tr>
-                                                     
-                                                   
+                                                   <td>${ac.FeedBackId}</td>
+                                                   <td>${ac.Star}</td>
+                                                   <td>${ac.Description}</td>
+                                                   <td>${ac.UserId}</td>
+                                                   <td>${ac.BookId}</td>
                                                 </tr>
                                             </form>
-                                        </c:forEach>
+                                            </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>

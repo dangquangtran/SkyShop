@@ -99,12 +99,30 @@ private final String MANGER_P = "ManagerProductController";
 //            int _totalFeedback = Integer.parseInt(request.getParameter("txt_totalFeedback"));
             int BookId = Integer.parseInt(request.getParameter("BookId"));
             String BookName = request.getParameter("BookName");
+            byte[] xBookName = BookName.getBytes("ISO-8859-1");
+            BookName = new String(xBookName, "UTF-8");
+            
             String Description = request.getParameter("Description");
+            byte[] xDescription = Description.getBytes("ISO-8859-1");
+            Description = new String(xDescription, "UTF-8");
+            
             String AuthorName = request.getParameter("AuthorName");
+            byte[] xAuthorName = AuthorName.getBytes("ISO-8859-1");
+            AuthorName = new String(xAuthorName, "UTF-8");
+            
             String PublishingCompany = request.getParameter("PublishingCompany");
+            byte[] xPublishingCompany = PublishingCompany.getBytes("ISO-8859-1");
+            PublishingCompany = new String(xPublishingCompany, "UTF-8");
+            
             String IssusingCompany = request.getParameter("IssusingCompany");
+            byte[] xIssusingCompany = IssusingCompany.getBytes("ISO-8859-1");
+            IssusingCompany = new String(xIssusingCompany, "UTF-8");
+            
             String TranslatorName = request.getParameter("TranslatorName");
-            Date PublishDate = Date.valueOf(request.getParameter("PublishDate"));
+            byte[] xTranslatorName= TranslatorName.getBytes("ISO-8859-1");
+            TranslatorName = new String(xTranslatorName, "UTF-8");
+            
+            int PublishDate = Integer.parseInt(request.getParameter("PublishDate"));
             int Quantity = Integer.parseInt(request.getParameter("Quantity"));
             int SubCategoryId = Integer.parseInt(request.getParameter("SubCategoryId"));
             float UnitPrice = Float.parseFloat(request.getParameter("UnitPrice"));
@@ -114,7 +132,7 @@ private final String MANGER_P = "ManagerProductController";
             
             BookDAO Adao = new BookDAO();
             Book item = new Book(BookId, BookName, Description, AuthorName, PublishingCompany, IssusingCompany, 
-                    TranslatorName, PublishDate, SubCategoryId, SubCategoryId, UnitPrice, CategoryID, Status, TotalFeedback);
+                    TranslatorName, PublishDate, Quantity, SubCategoryId, UnitPrice, CategoryID, Status, TotalFeedback);
             Adao.updateBook(item);
             RequestDispatcher rd = request.getRequestDispatcher(ul);
             rd.forward(request, response);
