@@ -272,6 +272,11 @@
                                                                 <a href="UpdateProductController?ID=${bo.bookId}" > EDIT </a>
                                                             </button>
                                                         </td>
+                                                        <td>
+                                                            <button>
+                                                                <a href="DeleteProductController?ID=${bo.bookId}" > DELETE </a>
+                                                            </button>
+                                                        </td>
                                                     </tr>
                                             </form>
                                         </c:forEach>
