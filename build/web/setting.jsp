@@ -23,21 +23,21 @@
     <body id="page-top">
         <div id="wrapper">
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-                <a class="sidebar-brand d-flex align-items-center" href="index.jsp">
+                <a class="sidebar-brand d-flex align-items-center" href="HomeController">
                     <div class="sidebar-brand-icon">
                         <img src="img/logo1.png" class="img-fluid">
                     </div>
                 </a>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.jsp">
+                    <a class="nav-link" href="HomeController">
                         <i class="mdi mdi-home-variant-outline"></i>
                         <span>Trang Chủ</span></a>
                 </li>
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#HistoryOrderController?username=${sessionScope.username}">
+                    <a class="nav-link" href="HistoryOrderController">
                         <i class="mdi mdi-book-open"></i>
                         <span>Lịch Sử</span></a>
                 </li>

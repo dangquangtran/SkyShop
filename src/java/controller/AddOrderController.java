@@ -10,13 +10,13 @@ import dto.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 @WebServlet(name = "AddOrderController", urlPatterns = {"/AddOrderController"})
 public class AddOrderController extends HttpServlet {
@@ -43,9 +43,16 @@ public class AddOrderController extends HttpServlet {
 //            order.setOrderDate(new Date(0)); // Ngày tạo đơn hàng hiện tại
             order.setTotalPrice(cart.getTotalMoney()); // Tổng giá trị từ giỏ hàng
             // Đặt các giá trị khác nếu cần thiết (ví dụ: userId, shipFee, v.v.)
+            order.setShipFee(50000);
+            order.setStatus(1);
+            LocalDate today = LocalDate.now();
 
+            Date sqlDate = Date.valueOf(today);
+
+            order.setOrderDate(sqlDate);
+            order.setFinalPrice(cart.getTotalMoney() + order.getShipFee());
             OrderDAO orderDAO = new OrderDAO();
-            int orderId = orderDAO.createOrder(order,account.getUserId()); // Tạo Order và lấy ID
+            int orderId = orderDAO.createOrder(order, account.getUserId()); // Tạo Order và lấy ID
 
             // Tạo các OrderDetail từ giỏ hàng
             OrderDetailDAO orderDetailDAO = new OrderDetailDAO();

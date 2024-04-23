@@ -1,8 +1,14 @@
 package controller;
 
 import cart.Cart;
+import dao.CategoryDAO;
+import dao.SubCategoryDAO;
+import dto.Category;
+import dto.SubCategory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,9 +35,27 @@ public class ViewCartController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String url = "viewCart.jsp";
+        dao.CategoryDAO cateDao = new CategoryDAO();
+        dao.SubCategoryDAO subDao = new SubCategoryDAO();
+        List<Category> listCategory = new ArrayList<>();
+        listCategory = cateDao.getAllListCategory();
+        request.setAttribute("listCategory", listCategory);
+        List<SubCategory> listSubCate = new ArrayList<>();
+        listSubCate = subDao.getAllListSubCategory();
+        request.setAttribute("listSubCategory", listSubCate);
+
         HttpSession session = request.getSession();
-        Cart cart = (Cart)session.getAttribute("CART");
-        
+        Cart cart = (Cart) session.getAttribute("CART");
+        if (cart == null) {
+            cart = new Cart(); // Nếu giỏ hàng chưa được khởi tạo, tạo mới
+            session.setAttribute("CART", cart); // Đặt giỏ hàng vào session
+        }
+
+// Chuyển đối tượng Cart vào JSP
+        request.setAttribute("cart", cart);
+        request.getRequestDispatcher(url).forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
