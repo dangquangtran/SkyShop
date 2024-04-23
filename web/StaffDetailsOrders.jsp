@@ -210,41 +210,46 @@
                                                         <input class="btn btn-primary" type="submit" value="Staff Product" name="btAction" >
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Staff Orders" name="btAction" >
+                                                        <input class="btn btn-primary" type="submit" value="Staff FeedBack" name="btAction" >
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
-                                    <form action="MainController">
-                                            Search Keyword: <input type="text" name="txtSearchName" value="" />
-                                            <input type="submit" value="Find" name="btAction" />
-                                            </br>                                            
-                                            </br>
-                                         
-                                            </br>   
-                                    </form>
+                            
                                     <table class="table table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th>FeedBackId</th>
-                                                <th>Star</th>  
-                                                <th>Description</th>
-                                                <th>UserId</th>
-                                                <th>BookId</th>                                               
+                                                <th>OrderDetails ID</th>
+                                                <th>Book ID</th>  
+                                                <th>Order ID</th>
+                                                <th>Quantity</th>
+                                                <th>Unit Price</th>    
+                                                <th>Total Price</th>                                       
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach items="${list}" var="ac" varStatus="counter">
+                                            <c:forEach items="${book}" var="ac" varStatus="counter">
                                             <form action="MainController" method="post">
                                                 <tr>
-                                                     
-                                                   
+                                                    <td>${ac.orderDetailId}</td>
+                                                    <td>${ac.bookName}</td>
+                                                    <td>${ac.orderId}</td>
+                                                    <td>${ac.quantity}</td>
+                                                    <td>${ac.unitPrice}</td>
+                                                    <td>${ac.orderDetailId}</td>
                                                 </tr>
                                             </form>
                                         </c:forEach>
                                         </tbody>
+                                        
                                     </table>
+                                    <form action="MainController" method="post">
+                                          <td>
+                                                     <button type="submit" name="btAction" value="Staff Orders">BACK</button>
+                                                </td>
+                                    </form>
+                                        
                                 </div>
                             </div>      
                         </div>   

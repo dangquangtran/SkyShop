@@ -47,7 +47,8 @@ public class OrderDetailDAO {
                 rs.getInt("Quantity"), 
                 rs.getFloat("UnitPrice"), 
                 rs.getFloat("TotalPrice"), 
-                rs.getInt("Status")
+                rs.getInt("Status"),
+                rs.getString("BookName") 
                 );
                 listOrderDetail.add(orderDetail);
                 }
@@ -59,7 +60,7 @@ public class OrderDetailDAO {
     
     public List<OrderDetail> getOrderDetailByOrderIDs(String orderId){
         List<OrderDetail> listOrderDetail = new ArrayList<>();
-        String query = "Select * from OrderDetail where OrderId = ?";
+        String query = "SELECT od.*, b.BookName FROM OrderDetail od JOIN Books b ON od.BookId = b.BookId WHERE od.OrderId = ?";
         try {
                 conn = new DBContext().getConnection();
                 ps = conn.prepareStatement(query);
@@ -73,7 +74,8 @@ public class OrderDetailDAO {
                 rs.getInt("Quantity"), 
                 rs.getFloat("UnitPrice"), 
                 rs.getFloat("TotalPrice"), 
-                rs.getInt("Status")
+                rs.getInt("Status"),
+                rs.getString("BookName")          
                 );
                 listOrderDetail.add(orderDetail);
                 }
@@ -82,4 +84,5 @@ public class OrderDetailDAO {
         } 
         return listOrderDetail;
     }
+    
 }

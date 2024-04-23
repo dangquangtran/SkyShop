@@ -100,6 +100,10 @@
         <servlet-name>UpdateOrdersController</servlet-name>
         <servlet-class>controller.UpdateOrdersController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailsOrdersController</servlet-name>
+        <servlet-class>controller.DetailsOrdersController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -199,6 +203,10 @@
     <servlet-mapping>
         <servlet-name>UpdateOrdersController</servlet-name>
         <url-pattern>/UpdateOrdersController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailsOrdersController</servlet-name>
+        <url-pattern>/DetailsOrdersController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

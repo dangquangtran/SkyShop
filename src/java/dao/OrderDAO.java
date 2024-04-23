@@ -9,9 +9,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import util.DBContext;
+import static util.DBContext.getConnection;
 
 public class OrderDAO {
 
@@ -89,6 +91,53 @@ public class OrderDAO {
             e.printStackTrace();
         } 
         return listOrder;
+    }
+     
+     public Order updateOrders(Order edittedItem) {
+        try {
+            String sql = "update Orders set Description=?, OrderDate=?, ShipFee=?, UsedLotusBub=?, TotalPrice=?, FinalPrice=?,"
+                    +  "UserId=?, RecipientId=?, Status=?  where OrderId=? ";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.setString(1, edittedItem.getDescription());
+            stmt.setDate(2, edittedItem.getOrderDate());
+            stmt.setFloat(3, edittedItem.getShipFee());
+            stmt.setInt(4, edittedItem.getUsedLotusBub());
+            stmt.setFloat(5, edittedItem.getTotalPrice());
+            stmt.setFloat(6, edittedItem.getFinalPrice());
+            stmt.setInt(7, edittedItem.getUserId());
+            stmt.setInt(8, edittedItem.getRecipientId());
+            stmt.setInt(9, edittedItem.getStatus());
+              stmt.setInt(10, edittedItem.getOrderId());
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+     public Order detailOrders(String id) throws ClassNotFoundException, SQLException {
+        Order ac = null;
+        try {
+            String sql = "select * from Orders where OrderId=? ";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.setString(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int OrderId = rs.getInt("OrderId");
+                String Description = rs.getString("Description");
+                Date OrderDate = rs.getDate("OrderDate");
+                float ShipFee = rs.getFloat("ShipFee");
+                int UsedLotusBub = rs.getInt("UsedLotusBub");
+                float TotalPrice = rs.getFloat("TotalPrice");
+                float FinalPrice = rs.getFloat("FinalPrice");
+                int UserId = rs.getInt("UserId");
+                int RecipientId = rs.getInt("RecipientId");
+                int Status = rs.getInt("Status");
+                ac = new Order(OrderId, Description, OrderDate, ShipFee, UsedLotusBub, TotalPrice, FinalPrice, Status, UserId, RecipientId);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ac;
     }
 }
 
