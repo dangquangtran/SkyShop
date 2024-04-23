@@ -205,97 +205,125 @@
                                         </div>
                                         <table class="table table-striped table-hover">
                                             <tr>
-                                                <td>Book ID</td>
+                                                <td>Order ID</td>
                                                 <td>
-                                                    ${book.bookId}
-                                                    <input  hidden name="txt_bookId" value="${book.bookId}"  />
+                                                    ${book.orderId}
+                                                    <input  hidden name="orderId" value="${book.orderId}"  />
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Book Name</td>
+                                                <td>Description</td>
                                                 <td>
-                                                    <input  name="txt_bookName" value="${book.bookName}"  />
+                                                    ${book.description}
+                                                    <input hidden readonly  name="description" value="${book.description}"  />
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Book Description</td>
+                                                <td>Order Date</td>
                                                 <td>
-                                                    <input  name="txt_description" value="${book.description}"  />
+                                                    ${book.orderDate}
+                                                    <input  hidden="" readonly="" name="orderDate" value="${book.orderDate}"  />
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Author Name</td>
+                                                <td>ShipFee</td>
                                                 <td>
-                                                    <input  name="txt_authorName" value="${book.authorName}"  />
+                                                    ${book.shipFee}
+                                                    <input hidden="" readonly="" readonly name="shipFee" value="${book.shipFee}"  />
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Publishing Company</td>
+                                                <td>UsedLotusBub</td>
                                                 <td>
-                                                    <input  name="txt_publishingCompany" value="${book.publishingCompany}"  />
+                                                    ${book.usedLotusBub}
+                                                    <input hidden="" readonly name="usedLotusBub" value="${book.usedLotusBub}"  />
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Issusing Company</td>
+                                                <td>TotalPrice</td>
                                                 <td>
-                                                    <input  name="txt_issusingCompany" value="${book.issusingCompany}"  />
+                                                    ${book.totalPrice}
+                                                    <input hidden="" readonly name="totalPrice" value="${book.totalPrice}"  />
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Translator Name</td>
+                                                <td>FinalPrice</td>
                                                 <td>
-                                                    <input  name="txt_translatorName" value="${book.translatorName}"  />
+                                                    ${book.finalPrice}
+                                                    <input readonly hidden name="finalPrice" value="${book.finalPrice}"  />
+                                                </td>
+                                            </tr>
+                                      
+                                            <tr>
+                                                <td>UserId </td>
+                                                <td>
+                                                    ${book.userId}
+                                                    <input readonly hidden type="number"  name="userId" value="${book.userId}"  />
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Publish Date</td>
+                                                <td>RecipientId</td>
                                                 <td>
-                                                    <input type="date"  name="txt_publishDate" value="${book.publishDate}"  />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Quantity </td>
-                                                <td>
-                                                    <input type="number"  name="txt_quantity" value="${book.quantity}"  />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Sub Category Id</td>
-                                                <td>
-                                                    <input type="number"  name="txt_subCategoryId" value="${book.subCategoryId}"  />
+                                                    ${book.recipientId}
+                                                    <input readonly="" hidden  type="number"  name="recipientId" value="${book.recipientId}"  />
                                                 </td>
                                             </tr>  
-                                            <tr>
-                                                <td>Unit Price</td>
-                                                <td>
-                                                    <input type="number"  name="txt_unitPrice" value="${book.unitPrice}"  />
-                                                </td>
-                                            </tr>
-                                              <tr>
-                                                <td>Category Id</td>
-                                                <td>
-                                                    <input type="number"  name="txt_categoryId" value="${book.categoryId}"  />
-                                                </td>
-                                            </tr>  
+                                            
                                             <tr>
                                                 <td>Status</td>
                                                 <td>
-                                                    <input type="number"  name="txt_status" value="${book.status}"  />
-                                                </td>
+                                                <select name="status">
+                                                    <c:choose>
+                                                        <c:when test="${book.status eq 1}">
+                                                            <option value="1" selected>Đang Chờ</option>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option value="1">Đang Chờ</option>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <c:choose>
+                                                        <c:when test="${book.status eq 2}">
+                                                            <option value="2" selected>Đang Lấy Hàng</option>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option value="2">Đang Lấy Hàng</option>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <c:choose>
+                                                        <c:when test="${book.status eq 3}">
+                                                            <option value="3" selected>Đang Giao Hàng</option>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option value="3">Đang Giao Hàng</option>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <c:choose>
+                                                        <c:when test="${book.status eq 4}">
+                                                            <option value="4" selected>Giao Hàng Thành Công</option>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option value="4">Giao Hàng Thành Công</option>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <c:choose>
+                                                        <c:when test="${book.status eq 5}">
+                                                            <option value="5" selected>Hủy Đơn Hàng</option>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option value="5">Hủy Đơn Hàng</option>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </select>
+                                            </td>   
+
+                                                
                                             </tr>
                                             <tr>
-                                                <td>Total Feedback</td>
                                                 <td>
-                                                    <input type="number"  name="txt_totalFeedback" value="${book.totalFeedback}"  />
-                                                </td>
-                                            </tr>
-                                            
-                                            <tr>
-                                                <td>
-                                                     <button type="submit" name="btAction" value="Manage Product">BACK</button>
+                                                     <button type="submit" name="btAction" value="Staff Orders">BACK</button>
                                                 </td>
                                                 <td>
-                                                    <button type="submit" name="btAction" value="MANAGER_UPDATE_PRODUCT">UPDATE</button>
+                                                    <button type="submit" name="btAction" value="STAFF_UPDATE_ORDERS">UPDATE</button>
                                                 </td>
                                             </tr>
                                         </table>

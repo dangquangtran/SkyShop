@@ -52,6 +52,7 @@ public class MainController extends HttpServlet {
     private final String STAFF_FEEDBACK = "ManagerFeedbackController";
     private final String STAFF_ORDERS = "ManagerOrdersController";
     private final String STAFF_PRODUCT = "StaffController";
+    private final String STAFF_UPDATE_ORDERS = "UpdateOrdersController";
           
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -95,6 +96,8 @@ public class MainController extends HttpServlet {
                 url = STAFF_ORDERS;
             }else if (button.equals("Staff Product")){
                 url = STAFF_PRODUCT;
+            }else if (button.equals("STAFF_UPDATE_ORDERS")){
+                url = STAFF_UPDATE_ORDERS;
             }
 
         } catch (Exception e) {

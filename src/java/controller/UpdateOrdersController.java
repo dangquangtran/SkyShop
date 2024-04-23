@@ -5,11 +5,14 @@
  */
 package controller;
 
+import dao.OrderDAO;
 import dao.OrderDetailDAO;
 import dto.Order;
 import dto.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.time.LocalDate;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UpdateOrdersController extends HttpServlet {
  
     private final String MANGER_PAGE = "StaffUpdateOrders.jsp";
-    private final String MANGER_P = "UpdateOrdersController";
+    private final String MANGER_P = "ManagerOrdersController";
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -40,9 +43,9 @@ public class UpdateOrdersController extends HttpServlet {
              String url = MANGER_PAGE;
         try {
             String id = request.getParameter("ID");
-            OrderDetailDAO dao = new OrderDetailDAO();
-            OrderDetail user = (OrderDetail) dao.getOrderDetailByOrderIDs(id);
-            request.setAttribute("user", user);
+            OrderDAO dao = new OrderDAO();
+            Order user = dao.detailOrders(id);
+            request.setAttribute("book", user);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -63,7 +66,27 @@ public class UpdateOrdersController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String ul = MANGER_P;
+        try (PrintWriter out = response.getWriter()) {
+            int orderId = Integer.parseInt(request.getParameter("orderId"));
+            String description = request.getParameter("description");
+            Date orderDate = Date.valueOf(request.getParameter("orderDate"));
+            float shipFee = Float.parseFloat(request.getParameter("shipFee"));
+            int usedLotusBub = Integer.parseInt(request.getParameter("usedLotusBub"));
+            float totalPrice = Float.parseFloat(request.getParameter("totalPrice"));
+            float finalPrice = Float.parseFloat(request.getParameter("finalPrice"));
+            int userId = Integer.parseInt(request.getParameter("userId"));
+            int recipientId = Integer.parseInt(request.getParameter("recipientId"));
+            int status = Integer.parseInt(request.getParameter("status"));
+       
+            OrderDAO Adao = new OrderDAO();
+            Order item = new Order(orderId, description, orderDate, shipFee, usedLotusBub, totalPrice, finalPrice, status, userId, recipientId);
+            Adao.updateOrders(item);
+            RequestDispatcher rd = request.getRequestDispatcher(ul);
+            rd.forward(request, response);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } 
     }
 
     /**
