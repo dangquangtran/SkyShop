@@ -5,15 +5,19 @@
  */
 package controller;
 
+import dao.CategoryDAO;
 import dao.SubCategoryDAO;
+import dto.Category;
 import dto.SubCategory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,6 +42,10 @@ public class CreateSubCategogyController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = MANGER_PAGE;
+        HttpSession session = request.getSession();
+        CategoryDAO dao = new CategoryDAO();
+        List<Category> listItem = dao.getAllListCategory();
+            request.setAttribute("categories", listItem);
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
     }

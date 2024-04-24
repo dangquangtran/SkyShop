@@ -220,7 +220,7 @@
                                                         <input class="btn btn-primary" type="submit" value="Manage Account" name="btAction" >
                                                     </div>
                                                      <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Manage SubCategory" name="btAction" >
+                                                        <input class="btn btn-primary" type="submit" value="Manage Category" name="btAction" >
                                                     </div>
                                                 </div>
                                             </form>

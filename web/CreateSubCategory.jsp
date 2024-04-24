@@ -243,7 +243,11 @@
                                             <tr>
                                                 <td>CategoryId</td>
                                                 <td>
-                                                    <input type="number"  name="CategoryId"  />
+                                                    <select name="CategoryId">
+                                                        <c:forEach items="${categories}" var="category">
+                                                            <option value="${category.categoryID}">${category.categoryName}</option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </td>
                                             </tr>
                                             <tr>
