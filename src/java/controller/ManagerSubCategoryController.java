@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author THUAN
+ * @author VU
  */
 public class ManagerSubCategoryController extends HttpServlet {
 private final String MANAGER_PAGE = "ManagerSubCategory.jsp";

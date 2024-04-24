@@ -17,7 +17,7 @@ import static util.DBContext.getConnection;
 
 /**
  *
- * @author THUAN
+ * @author VU
  */
 public class FeedbackDAO {
     Connection conn = null;

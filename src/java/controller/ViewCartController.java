@@ -2,8 +2,11 @@ package controller;
 
 import cart.Cart;
 import dao.CategoryDAO;
+import dao.RecipientDAO;
 import dao.SubCategoryDAO;
+import dto.Account;
 import dto.Category;
+import dto.Recipient;
 import dto.SubCategory;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -51,6 +54,11 @@ public class ViewCartController extends HttpServlet {
             cart = new Cart(); // Nếu giỏ hàng chưa được khởi tạo, tạo mới
             session.setAttribute("CART", cart); // Đặt giỏ hàng vào session
         }
+        Account user = (Account)session.getAttribute("LOGIN_USER");
+        List<Recipient> listRecipient = new ArrayList<>();
+        RecipientDAO reDao = new RecipientDAO();
+        listRecipient = reDao.getRecipientByUserID(user.getUserId());
+        request.setAttribute("listRecipient", listRecipient);
 
 // Chuyển đối tượng Cart vào JSP
         request.setAttribute("cart", cart);

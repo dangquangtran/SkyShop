@@ -1,28 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
-import dao.CategoryDAO;
+import dao.RecipientDAO;
 import dto.Account;
-import dto.Category;
+import dto.Recipient;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author VU
- */
-public class CreateCategogyController extends HttpServlet {
-    private final String MANGER_PAGE = "CreateCategory.jsp";
-     private final String MANGER_P = "ManagerCatogoryController";
+@WebServlet(name = "CreateRecipientController", urlPatterns = {"/CreateRecipientController"})
+public class CreateRecipientController extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,6 +24,26 @@ public class CreateCategogyController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        String url = "ViewCartController";
+        String address = request.getParameter("txtAddress");
+        String name = request.getParameter("txtName");
+        String phone = request.getParameter("txtPhone");
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("LOGIN_USER");
+        Recipient newRecipient = new Recipient();
+        newRecipient.setDestAddress(address);
+        newRecipient.setRecipientName(name);
+        newRecipient.setPhoneNumber(phone);
+        newRecipient.setStatus(1);
+        newRecipient.setUserID(account.getUserId());
+        RecipientDAO dao = new RecipientDAO();
+        dao.createRecipient(newRecipient);
+        request.getRequestDispatcher(url).forward(request, response);
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -45,9 +57,7 @@ public class CreateCategogyController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = MANGER_PAGE;
-        RequestDispatcher rd = request.getRequestDispatcher(url);
-        rd.forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -61,21 +71,7 @@ public class CreateCategogyController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String ul = MANGER_P;
-        try (PrintWriter out = response.getWriter()) {
-            String CategoryName = request.getParameter("CategoryName");
-            byte[] xCategoryName = CategoryName.getBytes("ISO-8859-1");
-            CategoryName = new String(xCategoryName, "UTF-8");
-            
-            int Status = Integer.parseInt(request.getParameter("Status"));
-            CategoryDAO Adao = new CategoryDAO();
-            Category item = new Category(CategoryName, Status);
-            Adao.createCategory(item);
-            RequestDispatcher rd = request.getRequestDispatcher(ul);
-            rd.forward(request, response);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } 
+        processRequest(request, response);
     }
 
     /**

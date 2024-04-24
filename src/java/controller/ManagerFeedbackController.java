@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author THUAN
+ * @author VU
  */
 public class ManagerFeedbackController extends HttpServlet {
 private final String MANAGER_PAGE = "StaffManagerFeedback.jsp";

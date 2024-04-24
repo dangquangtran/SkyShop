@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author THUAN
+ * @author VU
  */
 public class DetailsOrdersController extends HttpServlet {
 
