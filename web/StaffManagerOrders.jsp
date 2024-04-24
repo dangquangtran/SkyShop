@@ -202,7 +202,7 @@
                                     <div class="table-title">
                                         <div class="row">
                                             <div class="col-xs-5">
-                                                <h2>Feedback <b>Management</b></h2>
+                                                <h2>Orders <b>Management</b></h2>
                                             </div>
                                             <form action="MainController" method="post">
                                                 <div class="input-group-prepend ">

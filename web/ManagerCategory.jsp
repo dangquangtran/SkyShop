@@ -219,6 +219,9 @@
                                                     <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage Account" name="btAction" >
                                                     </div>
+                                                     <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage SubCategory" name="btAction" >
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
@@ -239,7 +242,6 @@
                                                 <th>Categogy ID</th>
                                                 <th>Category Name</th>  
                                                 <th>Status</th>
-                                      
                                                 <th>Action</th>
                                             </tr>
                                         </thead>

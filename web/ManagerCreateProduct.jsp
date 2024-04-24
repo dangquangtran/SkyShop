@@ -199,7 +199,7 @@
                                         <div class="table-title">
                                             <div class="row">
                                                 <div class="col-xs-5">
-                                                    <h2>Update Book</h2>
+                                                    <h2>Create Book</h2>
                                                 </div>
                                             </div>
                                         </div>
