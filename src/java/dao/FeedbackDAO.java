@@ -60,4 +60,26 @@ public class FeedbackDAO {
         } 
         return listO;
     }
+     
+    public List<Feedback> getAllFeedbacks() throws SQLException, ClassNotFoundException {
+    List<Feedback> listItems = new ArrayList<>();
+    String sql = "SELECT * FROM Feedback";
+    try (PreparedStatement stm = getConnection().prepareStatement(sql);
+         ResultSet rs = stm.executeQuery()) {
+        while (rs.next()) {
+            int feedbackId = rs.getInt("FeedBackId");
+            int star = rs.getInt("Star");
+            String description = rs.getString("Description");
+            int userId = rs.getInt("UserId");
+            int bookId = rs.getInt("BookId");
+            Feedback feedback = new Feedback(feedbackId, star, description, userId, bookId);
+            listItems.add(feedback);
+        }
+    } catch (SQLException e) {
+        // Log the exception or handle it in an appropriate way
+        throw e;
+    }
+    return listItems;
+}
+
 }

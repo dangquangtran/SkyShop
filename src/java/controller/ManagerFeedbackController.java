@@ -37,20 +37,14 @@ private final String MANAGER_PAGE = "StaffManagerFeedback.jsp";
                 txtSearch = "";
             }
             HttpSession session = request.getSession();
-            FeedbackDAO dao = new FeedbackDAO();
-            List<Feedback> listItem = dao.getAllFeedback();
+            FeedbackDAO sdao = new FeedbackDAO();
+            List<Feedback> listItem = sdao.getAllFeedbacks();
             request.setAttribute("list", listItem);
           
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
-       
-       
-       
-       
-       
-       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
