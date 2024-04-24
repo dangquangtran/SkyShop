@@ -6,14 +6,20 @@
 package controller;
 
 import dao.BookDAO;
+import dao.CategoryDAO;
+import dao.SubCategoryDAO;
 import dto.Book;
+import dto.Category;
+import dto.SubCategory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,6 +43,15 @@ public class StaffCreateProductController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = CREATE_NEW_PRODUCT;
+        HttpSession session = request.getSession();
+        CategoryDAO adao = new CategoryDAO();
+        List<Category> listItem = adao.getAllListCategory();
+         request.setAttribute("categories", listItem);
+         
+         SubCategoryDAO dao = new SubCategoryDAO();
+         List<SubCategory> listItems = dao.getAllListSubCategory();
+         request.setAttribute("subcategories", listItems);
+         
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
     }

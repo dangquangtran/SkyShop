@@ -6,15 +6,21 @@
 package controller;
 
 import dao.BookDAO;
+import dao.CategoryDAO;
+import dao.SubCategoryDAO;
 import dto.Book;
+import dto.Category;
+import dto.SubCategory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -53,6 +59,15 @@ private final String MANGER_P = "StaffController";
             Book book = dao.getBookID(id);
             request.setAttribute("book", book);
 
+            HttpSession session = request.getSession();
+        CategoryDAO adao = new CategoryDAO();
+        List<Category> listItem = adao.getAllListCategory();
+         request.setAttribute("categories", listItem);
+         
+         SubCategoryDAO ddao = new SubCategoryDAO();
+         List<SubCategory> listItems = ddao.getAllListSubCategory();
+         request.setAttribute("subcategories", listItems);
+         
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {

@@ -256,7 +256,11 @@
                                             <tr>
                                                 <td>Sub Category Id</td>
                                                 <td>
-                                                    <input type="number"  name="SubCategoryId"   />
+                                                     <select name="SubCategoryId">
+                                                        <c:forEach items="${subcategories}" var="subcategory">
+                                                            <option value="${subcategory.subcategoryID}">${subcategory.subName}</option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </td>
                                             </tr>  
                                             <tr>
@@ -268,7 +272,11 @@
                                               <tr>
                                                 <td>Category Id</td>
                                                 <td>
-                                                    <input type="number"  name="CategoryID"   />
+                                                    <select name="CategoryID">
+                                                        <c:forEach items="${categories}" var="category">
+                                                            <option value="${category.categoryID}">${category.categoryName}</option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </td>
                                             </tr>  
                                             <tr>
