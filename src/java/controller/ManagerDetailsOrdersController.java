@@ -6,11 +6,9 @@
 package controller;
 
 import dao.AccountDAO;
-import dao.OrderDAO;
 import dao.OrderDetailDAO;
 import dao.RecipientDAO;
 import dto.Account;
-import dto.Order;
 import dto.OrderDetail;
 import dto.Recipient;
 import java.io.IOException;
@@ -24,17 +22,16 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author VU
+ * @author THUAN
  */
-public class DetailsOrdersController extends HttpServlet {
+public class ManagerDetailsOrdersController extends HttpServlet {
 
-    private final String MANGER_PAGE = "StaffDetailsOrders.jsp";
-
-
+    private final String MANGER_PAGE = "ManagerDetailsOrders.jsp";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = MANGER_PAGE;
+           String url = MANGER_PAGE;
         try {
             String id = request.getParameter("ID");
             OrderDetailDAO dao = new OrderDetailDAO();

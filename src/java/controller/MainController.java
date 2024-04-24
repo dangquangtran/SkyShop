@@ -43,6 +43,9 @@ public class MainController extends HttpServlet {
     private final String MANAGER_CATEGORY = "ManagerCatogoryController";
     private final String MANAGER_SUBCATEGORY = "ManagerSubCategoryController";
     
+    private final String MANAGER_FEEDBACK = "ManagerFeedbacksController";
+    private final String MANAGER_ORDERS = "ManagerOrderController";
+    
     private final String MANAGER_UPDATE_ACCOUNT = "UpdateAccountController";
  
     private final String CREATE_PRODUCT = "CreateProductController";
@@ -51,6 +54,7 @@ public class MainController extends HttpServlet {
     
     private final String MANAGER_UPDATE_CATEGORY = "UpdateCategoryController";
     private final String MANAGER_UPDATE_SUBCATEGORY = "UpdateSubCategoryController";
+    private final String MANAGER_UPDATE_ORDERS = "ManagerUpdateOrdersController";
     private final String UPDATE_BLOG = "UpdateBlogController";
     private final String UPDATE_PRODUCT = "UpdateProductController";
     
@@ -102,7 +106,13 @@ public class MainController extends HttpServlet {
                 url = MANAGER_CATEGORY;
             }else if (button.equals("Manage SubCategory")){
                 url = MANAGER_SUBCATEGORY;
-            } else if (button.equals("Staff FeedBack")){
+            } 
+            else if (button.equals("Manage Orders")){
+                url = MANAGER_ORDERS;
+            } else if (button.equals("Manage FeedBack")){
+                url = MANAGER_FEEDBACK;
+            } 
+            else if (button.equals("Staff FeedBack")){
                 url = STAFF_FEEDBACK;
             }else if (button.equals("Staff Orders")){
                 url = STAFF_ORDERS;
@@ -110,6 +120,8 @@ public class MainController extends HttpServlet {
                 url = STAFF_PRODUCT;
             }else if (button.equals("STAFF_UPDATE_ORDERS")){
                 url = STAFF_UPDATE_ORDERS;
+            }else if (button.equals("MANAGER_UPDATE_ORDERS")){
+                url = MANAGER_UPDATE_ORDERS;
             }else if (button.equals("STAFF_UPDATE_PRODUCTS")){
                 url = STAFF_UPDATE_PRODUCT;
             }else if (button.equals("Manage_Update_Cate")){
