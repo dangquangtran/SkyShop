@@ -216,13 +216,6 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <form action="MainController">
-                                         
-                                            </br>                                            
-                                            </br>
-                                         
-                                            </br>   
-                                    </form>
                                     <table class="table table-striped table-hover">
                                         <thead>
                                             <tr>
@@ -234,14 +227,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach items="${list}" var="ac" varStatus="counter">
+                                            <c:forEach items="${list}" var="la" varStatus="counter">
                                             <form action="MainController" method="post">
                                                 <tr>
-                                                   <td>${ac.FeedBackId}</td>
-                                                   <td>${ac.Star}</td>
-                                                   <td>${ac.Description}</td>
-                                                   <td>${ac.UserId}</td>
-                                                   <td>${ac.BookId}</td>
+                                                   <td>${la}</td>
+                                                   <td>${la}</td>
+                                                   <td>${la}</td>
+                                                   <td>${la}</td>
+                                                   <td>${la}</td>
                                                 </tr>
                                             </form>
                                             </c:forEach>
