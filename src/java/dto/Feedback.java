@@ -7,7 +7,7 @@ package dto;
 
 /**
  *
- * @author THUAN
+ * @author VU
  */
 public class Feedback {
     private int FeedBackId;

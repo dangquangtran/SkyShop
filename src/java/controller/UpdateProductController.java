@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author THUAN
+ * @author VU
  */
 public class UpdateProductController extends HttpServlet {
 private final String MANGER_PAGE = "ManagerUpdateProduct.jsp";

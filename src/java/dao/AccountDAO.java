@@ -18,7 +18,7 @@ import util.DBContext;
 
 /**
  *
- * @author THUAN
+ * @author VU
  */
 public class AccountDAO extends DBContext {
 
