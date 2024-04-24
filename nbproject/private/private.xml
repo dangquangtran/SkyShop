@@ -19,6 +19,7 @@
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dao/CategoryDAO.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/AdminUpdateController.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dto/Book.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dto/Recipient.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/util/DBContext.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dao/SubCategoryDAO.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/SubCateController.java</file>
@@ -49,6 +50,7 @@
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/StaffUpdateOrders.jsp</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/historyOrder.jsp</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/DeleteSubCategoryController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/ManagerUpdateOrdersController.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/UpdateOrdersController.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/listBook.jsp</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/contact.jsp</file>
@@ -64,6 +66,7 @@
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/OrderDetailController.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/CreateProductController.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/HomeController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/nbproject/build-impl.xml</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/AdminController.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dao/OrderDAO.java</file>
         </group>

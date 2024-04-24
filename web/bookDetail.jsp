@@ -245,7 +245,7 @@
                                                 <div class="user justify-content-between d-flex">
                                                     <div class="thumb text-center">
                                                         <img src="assets/imgs/page/avatar-6.jpg" alt="">
-                                                        <h6><a href="#">${feedback.Description}</a></h6>
+                                                        <h6><a href="#">${feedback}</a></h6>
                                                         <p class="font-xxs">Since 2012</p>
                                                     </div>
                                                     <div class="desc">

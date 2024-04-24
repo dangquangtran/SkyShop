@@ -263,8 +263,8 @@
                                                    </td>
                                                     <td>
                                                         <c:forEach items="${rlist}" var="rec">
-                                                            <c:if test="${rec.userId eq ac.userId}">
-                                                                ${rec.getDest_address()}
+                                                            <c:if test="${rec.userID eq ac.userId}">
+                                                                ${rec.destAddress}
                                                             </c:if>
                                                         </c:forEach>
                                                    </td>
