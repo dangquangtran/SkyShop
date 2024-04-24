@@ -1,16 +1,10 @@
 package controller;
 
-import cart.Cart;
-import dao.OrderDAO;
-import dao.OrderDetailDAO;
+import dao.RecipientDAO;
 import dto.Account;
-import dto.Book;
-import dto.Order;
-import dto.OrderDetail;
+import dto.Recipient;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
-import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "AddOrderController", urlPatterns = {"/AddOrderController"})
-public class AddOrderController extends HttpServlet {
+@WebServlet(name = "CreateRecipientController", urlPatterns = {"/CreateRecipientController"})
+public class CreateRecipientController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,49 +26,23 @@ public class AddOrderController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
+        String url = "ViewCartController";
+        String address = request.getParameter("txtAddress");
+        String name = request.getParameter("txtName");
+        String phone = request.getParameter("txtPhone");
         HttpSession session = request.getSession();
-        Cart cart = (Cart) session.getAttribute("CART");
         Account account = (Account) session.getAttribute("LOGIN_USER");
-        String recipientID = request.getParameter("recipientID");
-        try {
-            // Tạo đối tượng Order
-            Order order = new Order();
-            LocalDate today = LocalDate.now();
-            Date sqlDate = Date.valueOf(today);
-            order.setOrderDate(sqlDate);
-            order.setShipFee(50000);
-            order.setTotalPrice(cart.getTotalMoney()); // Tổng giá trị từ giỏ hàng
-            order.setFinalPrice(cart.getTotalMoney() + order.getShipFee());
-            order.setStatus(1);
-            order.setRecipientId(Integer.parseInt(recipientID));
-            OrderDAO orderDAO = new OrderDAO();
-            int orderId = orderDAO.createOrder(order, account.getUserId()); // Tạo Order và lấy ID
-
-            // Tạo các OrderDetail từ giỏ hàng
-            OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
-
-            for (Book book : cart.getCart().values()) {
-                OrderDetail orderDetail = new OrderDetail();
-                orderDetail.setOrderId(orderId);
-                orderDetail.setBookId(book.getBookId()); // Chuyển đổi ID thành int
-                orderDetail.setQuantity(book.getQuantity());
-                orderDetail.setUnitPrice(book.getUnitPrice());
-                orderDetail.setTotalPrice(book.getQuantity() * book.getUnitPrice());
-                // Đặt các giá trị khác nếu cần thiết
-
-                orderDetailDAO.createOrderDetail(orderDetail); // Tạo OrderDetail
-            }
-
-            // Xóa giỏ hàng sau khi đặt hàng
-            session.setAttribute("CART", null);
-
-            // Chuyển hướng hoặc thông báo thành công
-            request.getRequestDispatcher("HomeController").forward(request, response);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Recipient newRecipient = new Recipient();
+        newRecipient.setDestAddress(address);
+        newRecipient.setRecipientName(name);
+        newRecipient.setPhoneNumber(phone);
+        newRecipient.setStatus(1);
+        newRecipient.setUserID(account.getUserId());
+        RecipientDAO dao = new RecipientDAO();
+        dao.createRecipient(newRecipient);
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

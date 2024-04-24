@@ -199,7 +199,7 @@
                     </div>
 
 
-
+                    <form class="field_form shipping_calculator" action="AddOrderController" method="GET">
                     <section class="mt-50 mb-50">
                         <div class="container">
                             <div class="row">
@@ -248,22 +248,22 @@
                                                 <div class="form-row">
                                                     <div class="form-group col-lg-12">
                                                         <div class="custom_select">
-                                                            <select class="form-control">
+                                                            <select class="form-control" name = "recipientID">
                                                                 <c:forEach var="recipient" items="${listRecipient}">
                                                                     <option value="${recipient.recipientID}">
                                                                         Địa chỉ giao hàng: ${recipient.destAddress}, 
                                                                         Tên người nhận: ${recipient.recipientName},
                                                                         Số điện thoại: ${recipient.phoneNumber}
                                                                     </option>
-                                                                    </c:forEach>
+                                                                </c:forEach>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="form-row">
                                                     <div class="form-group col-lg-12">
-                                                        <a href="" class="btn  btn-sm"><i class="fi-rs-shuffle mr-10"></i>Thêm địa chỉ giao hàng</a>
+                                                        <a href="createRecipient.jsp" class="btn  btn-sm"><i class="fi-rs-shuffle mr-10"></i>Thêm địa chỉ giao hàng</a>
                                                     </div>
                                                 </div>
                                             </form>
@@ -312,7 +312,9 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <a href="AddOrderController" class="btn "> <i class="fi-rs-box-alt mr-10"></i> CheckOut</a>
+                                                <button type="submit" class="btn"> 
+                                                    <i class="fi-rs-box-alt mr-10"></i> CheckOut
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -320,7 +322,7 @@
                             </div>
                         </div>
                     </section>
-
+                    </form>
 
 
 
