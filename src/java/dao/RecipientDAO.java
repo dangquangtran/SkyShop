@@ -1,11 +1,14 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+=======
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 =======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 =======
@@ -25,6 +28,7 @@ import util.DBContext;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  *
  * @author THUAN
@@ -35,10 +39,13 @@ import util.DBContext;
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 =======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
+=======
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 public class RecipientDAO {
     Connection conn= null;
     PreparedStatement ps =null;
     ResultSet rs = null;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -60,6 +67,8 @@ public class RecipientDAO {
         }
         return listSub;
 =======
+=======
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 =======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 =======
@@ -124,6 +133,9 @@ public class RecipientDAO {
         return null;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
+=======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 =======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00

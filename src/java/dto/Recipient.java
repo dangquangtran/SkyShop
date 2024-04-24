@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,6 +24,8 @@ public class Recipient {
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 =======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
+=======
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 package dto;
 
 public class Recipient {
@@ -34,6 +37,9 @@ public class Recipient {
     private int userID;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
+=======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 =======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
@@ -43,6 +49,7 @@ public class Recipient {
     public Recipient() {
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -94,6 +101,8 @@ public class Recipient {
         this.UserId = UserId;
     }
 =======
+=======
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 =======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 =======
@@ -167,6 +176,9 @@ public class Recipient {
     
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
+=======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 =======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
