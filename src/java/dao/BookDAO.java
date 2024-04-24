@@ -58,7 +58,7 @@ public class BookDAO{
 //    }
     public List<Book> getAllListBook() {
         List<Book> listBook = new ArrayList<>();
-        String query = "Select * from Books";
+        String query = "Select * from Books ORDER BY PublishYear DESC";
         try {
                 conn = new DBContext().getConnection();
                 ps = conn.prepareStatement(query);
@@ -165,7 +165,7 @@ public class BookDAO{
     //Create  
   public Book createBook(Book newItem) throws ClassNotFoundException {
     try {
-        String sql = "INSERT INTO Books (BookName, Description, AuthorName, PublishingCompany, IssusingCompany, TranslatorName, PublishDate, Quantity, SubCategoryId, UnitPrice, CategoryID, Status, TotalFeedback) "
+        String sql = "INSERT INTO Books (BookName, Description, AuthorName, PublishingCompany, IssusingCompany, TranslatorName, PublishYear, Quantity, SubCategoryId, UnitPrice, CategoryID, Status, TotalFeedback) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt = getConnection().prepareStatement(sql);
         stmt.setString(1, newItem.getBookName());
