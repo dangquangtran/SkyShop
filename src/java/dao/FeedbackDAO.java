@@ -81,5 +81,23 @@ public class FeedbackDAO {
     }
     return listItems;
 }
+    
+    public List<Feedback> getALLFeedbackByBookID(int bookID){
+        List<Feedback> listFeedback = new ArrayList<>();
+        String query = "Select * from FeedBack where bookID = ?";
+        try {
+                conn = new DBContext().getConnection();
+                ps = conn.prepareStatement(query);
+                ps.setInt(1, bookID);
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    listFeedback.add(new Feedback(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5)));
+                }
+                
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+        return listFeedback;
+    }
 
 }

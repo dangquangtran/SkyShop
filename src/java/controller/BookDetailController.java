@@ -1,9 +1,13 @@
 package controller;
 
 import dao.BookDAO;
+import dao.FeedbackDAO;
 import dto.Book;
+import dto.Feedback;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +33,11 @@ public class BookDetailController extends HttpServlet {
         int bookId = Integer.parseInt(request.getParameter("bookId"));
         dao.BookDAO dao = new BookDAO();
         Book book = dao.getBookByID(bookId);
+        FeedbackDAO feedbackDao = new FeedbackDAO();
+        List<Feedback> listFeedback = new ArrayList<>();
+        listFeedback = feedbackDao.getALLFeedbackByBookID(bookId);
         request.setAttribute("book", book);
+        request.setAttribute("listFeedback", listFeedback);
         request.getRequestDispatcher(url).forward(request, response);
     }
 

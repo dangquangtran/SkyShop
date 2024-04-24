@@ -176,7 +176,18 @@
                                  //SHOW THONG TIN historyOrder
                     -->  
                     <div class="container mt-5">
-                        <h2>Order History</h2>
+                        <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
+                            <nav>
+                                <ul>
+                                    <li><a href="HistoryOrderController?status=1">Đang chờ </a></li>
+                                    <li><a href="HistoryOrderController?status=2">Đang lấy hàng </a></li>
+                                    <li><a href="HistoryOrderController?status=3">Đang giao </a></li>
+                                    <li><a href="HistoryOrderController?status=4">Giao hàng thành công </a></li>
+                                    <li><a href="HistoryOrderController?status=5">Đơn đã hủy </a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        
                         <c:choose>
                             <c:when test="${not empty listHistoryOrder}">
                                 <div class="row">
@@ -186,9 +197,10 @@
                                                 <div class="card-body">
                                                     <h5 class="card-title">Order</h5>
                                                     <p class="card-text">
-                                                        Description: ${order.description} <br>
-                                                        Order Date: ${order.orderDate} <br>
-                                                        Total Price: ${order.totalPrice} <br>
+                                                        Mô tả: ${order.description} <br>
+                                                        Ngày đặt hàng: ${order.orderDate} <br>
+                                                        Phí ship: ${order.totalPrice} <br>
+                                                        Đơn giá: ${order.finalPrice} <br>
                                                     </p>
                                                     <a href="OrderDetailController?orderId=${order.orderId}" class="btn btn-primary">View Details</a>
                                                 </div>
