@@ -138,7 +138,7 @@
                                     </a>
                                 </li>
                             </c:if>
-                            
+
                             <li class="nav-item dropdown no-arrow mx-2 osahan-t-pu">
                                 <a class="nav-link dropdown-toggle text-dark" href="contact.jsp">
                                     <i class="mdi mdi-shopping text-danger"></i><span class="ml-2">Liên Hệ</span>
@@ -232,8 +232,44 @@
 
                                 </div>
                             </div>
+
+                            <h3 class="section-title style-1 mb-30 mt-30">Reviews (3)</h3>
+                            <!--Comments-->
+                            <div class="comments-area style-2">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <h4 class="mb-30">Customer questions & answers</h4>
+                                        <div class="comment-list">
+                                            <c:forEach var="feedback" items="${listFeedback}">
+                                            <div class="single-comment justify-content-between d-flex">
+                                                <div class="user justify-content-between d-flex">
+                                                    <div class="thumb text-center">
+                                                        <img src="assets/imgs/page/avatar-6.jpg" alt="">
+                                                        <h6><a href="#">${feedback.Description}</a></h6>
+                                                        <p class="font-xxs">Since 2012</p>
+                                                    </div>
+                                                    <div class="desc">
+                                                        <div class="product-rate d-inline-block">
+                                                            <div class="product-rating" style="width:50%">
+                                                            </div>
+                                                        </div>
+                                                        <p>${feedback}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </c:forEach>
+                                            <!--single-comment -->
+                                          
+                                            
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
                         </div>
                     </section>
+
+
 
 
 
@@ -525,49 +561,6 @@
                     </section>
 
 
-
-
-
-                    <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
-                            <h5 class="mb-0">CÁC BLOG NỔI BẬT</h5>
-                            <a href="listBlog.jsp" class="small font-weight-bold text-dark">SEE ALL <i class="mdi mdi-chevron-right mr-2"></i></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <a href="blogchimchaomao.jsp" class="text-decoration-none col-xl-3 col-md-3 mb-3">
-                            <div class="card" style="width: 18rem; color: black" >
-                                <img class="card-img-top" src="img/bird/chimchaomao.jpg" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">We pride ourselves on providing only the highest quality vegetables, grown using sustainable farming.Taste the difference with our premium vegetable selection today!.</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="blogchimvet.jsp" class="text-decoration-none col-xl-3 col-md-3 mb-3">
-                            <div class="card" style="width: 18rem; color: black" >
-                                <img class="card-img-top" src="img/bird/chimvet1.jpg" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">We pride ourselves on providing only the highest quality vegetables, grown using sustainable farming.Taste the difference with our premium vegetable selection today!.</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="blogchimchichchoe.jsp" class="text-decoration-none col-xl-3 col-md-3 mb-3">
-                            <div class="card" style="width: 18rem; color: black" >
-                                <img class="card-img-top" src="img/bird/chimchitcheo1.jpg" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">We pride ourselves on providing only the highest quality vegetables, grown using sustainable farming.Taste the difference with our premium vegetable selection today!.</p>
-                                </div>
-                            </div>
-                        </a>       
-                        <a href="blogchimhoami.jsp" class="text-decoration-none col-xl-3 col-md-3 mb-3">
-                            <div class="card" style="width: 18rem; color: black" >
-                                <img class="card-img-top" src="img/bird/chimhoami.jpg" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">We pride ourselves on providing only the highest quality vegetables, grown using sustainable farming.Taste the difference with our premium vegetable selection today!.</p>
-                                </div>
-                            </div>
-                        </a>   
-                    </div>
 
 
                     <!-- 

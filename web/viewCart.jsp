@@ -229,6 +229,11 @@
                                                             <a href="QuantityBookCartController?bookId=${bookEntry.value.bookId}&quantity=-1" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
                                                             <span class="qty-val">${bookEntry.value.quantity}</span>
                                                             <a href="QuantityBookCartController?bookId=${bookEntry.value.bookId}&quantity=1" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                                            <c:if test="${not empty errorMessage}">
+                                                                <div class="alert alert-danger">
+                                                                    <strong>Error:</strong> ${errorMessage}
+                                                                </div>
+                                                            </c:if>
                                                         </td>
                                                         <td class="action" data-title="Remove"><a href="DeleteBookCartController?bookId=${bookEntry.value.bookId}" class="text-muted"><i class="fi-rs-trash"></i></a></td>
                                                     </tr>
@@ -253,7 +258,7 @@
                                                                     <option value="${recipient.recipientID}">
                                                                         Địa chỉ giao hàng: ${recipient.destAddress}, 
                                                                         Tên người nhận: ${recipient.recipientName},
-                                                                        Số điện thoại: ${recipient.phoneNumber}
+                                                                        Số điện thoại: 0${recipient.phoneNumber}
                                                                     </option>
                                                                 </c:forEach>
                                                             </select>

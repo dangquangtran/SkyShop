@@ -37,9 +37,15 @@ public class HistoryOrderController extends HttpServlet {
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute("LOGIN_USER");
         int userId = account.getUserId();
-        OrderDAO dao = new OrderDAO();
-        List<Order> listOrder = new ArrayList<>();
-        listOrder = dao.getOrderByUserID(userId);
+        String status = request.getParameter("status");
+         List<Order> listOrder = new ArrayList<>();
+         OrderDAO dao = new OrderDAO();
+        if(status == null){
+            listOrder = dao.getOrderByUserIDAndStatus(userId, 1);
+            request.setAttribute("listHistoryOrder", listOrder);
+            request.getRequestDispatcher(url).forward(request, response);
+        }
+        listOrder = dao.getOrderByUserIDAndStatus(userId, Integer.parseInt(status));
         request.setAttribute("listHistoryOrder", listOrder);
         request.getRequestDispatcher(url).forward(request, response);
     }

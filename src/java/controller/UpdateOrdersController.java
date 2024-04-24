@@ -11,7 +11,7 @@ import dto.Order;
 import dto.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -70,11 +70,11 @@ public class UpdateOrdersController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             int orderId = Integer.parseInt(request.getParameter("orderId"));
             String description = request.getParameter("description");
-            Date orderDate = Date.valueOf(request.getParameter("orderDate"));
-            float shipFee = Float.parseFloat(request.getParameter("shipFee"));
+            Timestamp orderDate = Timestamp.valueOf(request.getParameter("orderDate"));
+            int shipFee = Integer.parseInt(request.getParameter("shipFee"));
             int usedLotusBub = Integer.parseInt(request.getParameter("usedLotusBub"));
-            float totalPrice = Float.parseFloat(request.getParameter("totalPrice"));
-            float finalPrice = Float.parseFloat(request.getParameter("finalPrice"));
+            int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
+            int finalPrice = Integer.parseInt(request.getParameter("finalPrice"));
             int userId = Integer.parseInt(request.getParameter("userId"));
             int recipientId = Integer.parseInt(request.getParameter("recipientId"));
             int status = Integer.parseInt(request.getParameter("status"));

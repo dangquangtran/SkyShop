@@ -27,6 +27,13 @@ public class Feedback {
         this.BookId = BookId;
     }
 
+    public Feedback(int Star, String Description, int UserId, int BookId) {
+        this.Star = Star;
+        this.Description = Description;
+        this.UserId = UserId;
+        this.BookId = BookId;
+    }
+
     public int getFeedBackId() {
         return FeedBackId;
     }

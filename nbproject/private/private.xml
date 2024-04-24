@@ -3,11 +3,69 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/utils/DBContext.java</file>
-            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/OrderDetailController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dto/Category.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/AddOrderController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/viewCart.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dao/OrderDetailDAO.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/UpdateCategoryController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/ManagerFeedback.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/listBlog.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/StaffUpdateProductController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dao/PictureDao.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/BookDetailController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/forgot.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/catoryHat.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/ViewCartController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dao/CategoryDAO.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/AdminUpdateController.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dto/Book.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/util/DBContext.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dao/SubCategoryDAO.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/SubCateController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/StaffCreateProductController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/QuantityBookCartController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/LogoutController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/AddToCartController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/accountInfo.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/CreateCategogyController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/MainController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/DetailsOrdersController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/ManagerLPRD.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/ManagerSubCategoryController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/UpdateProductController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/bookDetail.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dao/FeedbackDAO.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/DeleteCategoryController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/cart/Cart.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/HistoryOrderController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dto/Picture.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/signup.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dto/Feedback.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/StaffUpdateProduct.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/listBestSale.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/CreateNewAccountController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/ListBookController.java</file>
             <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dao/BookDAO.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/StaffUpdateOrders.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/historyOrder.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/DeleteSubCategoryController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/UpdateOrdersController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/listBook.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/contact.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/AdminDeleteAccountController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/chimchaomao.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/adminUpdateAccount.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dto/Order.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/StaffController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/LoginController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/homepage.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dao/RecipientDAO.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/web/detailsProducts.jsp</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/OrderDetailController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/CreateProductController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/HomeController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/controller/AdminController.java</file>
+            <file>file:/D:/hoc_tap/kiemtien/New/SkyShop/src/java/dao/OrderDAO.java</file>
         </group>
     </open-files>
 </project-private>
