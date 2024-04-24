@@ -248,8 +248,16 @@
                                             </tr>
                                             <tr>
                                                 <td>CategoryId</td>
-                                                <td>
-                                                    <input  name="CategoryId" value="${user.categoryId}"  />
+                                            
+                                                    <td>
+                                                    <select name="CategoryId">
+                                                        <c:forEach items="${categories}" var="category">
+                                                            <option value="${category.categoryID}"> 
+                                                                <c:if test="${category.categoryID eq user.categoryId}">Select
+                                                                            </c:if>${category.categoryName}
+                                                            </option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </td>
                                              </tr>
                                             
