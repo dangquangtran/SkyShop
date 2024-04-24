@@ -1,9 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+=======
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 =======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 package dao;
@@ -17,16 +20,20 @@ import java.util.List;
 import util.DBContext;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  *
  * @author THUAN
  */
 =======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
+=======
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 public class RecipientDAO {
     Connection conn= null;
     PreparedStatement ps =null;
     ResultSet rs = null;
+<<<<<<< HEAD
 <<<<<<< HEAD
     
      public List<Recipient> getAllListRecipient() {
@@ -46,6 +53,8 @@ public class RecipientDAO {
         }
         return listSub;
 =======
+=======
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
     public List<dto.Recipient> getRecipientByUserID(int userID){
         List<Recipient> listRecipient = new ArrayList<>();
         String query = "Select * from Recipient where UserId = ?";
@@ -104,6 +113,9 @@ public class RecipientDAO {
             e.printStackTrace();
         } 
         return null;
+<<<<<<< HEAD
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
+=======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
     }
 }

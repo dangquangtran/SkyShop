@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,6 +18,8 @@ public class Recipient {
     private int PhoneNumber;
     private int UserId;
 =======
+=======
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 package dto;
 
 public class Recipient {
@@ -26,11 +29,15 @@ public class Recipient {
     private String phoneNumber;
     private int status;
     private int userID;
+<<<<<<< HEAD
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
+=======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
 
     public Recipient() {
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     public Recipient(int RecipientId, String Dest_address, String RecipientName, int PhoneNumber, int UserId) {
         this.RecipientId = RecipientId;
@@ -80,6 +87,8 @@ public class Recipient {
         this.UserId = UserId;
     }
 =======
+=======
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
     public Recipient(int recipientID, String destAddress, String recipientName, String phoneNumber, int status, int userID) {
         this.recipientID = recipientID;
         this.destAddress = destAddress;
@@ -147,6 +156,9 @@ public class Recipient {
 
     
     
+<<<<<<< HEAD
+>>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
+=======
 >>>>>>> 6770ea82b5f81063b4428d2e813f6349066e2f00
     
 }
