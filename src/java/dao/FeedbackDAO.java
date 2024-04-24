@@ -81,5 +81,17 @@ public class FeedbackDAO {
     }
     return listItems;
 }
+    public Feedback deleteFeedback(String id) {
+        try {
+            String sql = "delete from Feedback where FeedBackId =? ";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.setString(1, id);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

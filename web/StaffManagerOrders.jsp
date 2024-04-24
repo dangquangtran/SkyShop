@@ -223,12 +223,10 @@
                                                 <th>OrderId</th>
                                                 <th>Description</th>  
                                                 <th>OrderDate</th>
-                                                <th>ShipFee</th>
                                                 <th>UsedLotusBub</th>    
                                                 <th>TotalPrice</th>  
-                                                <th>FinalPrice</th>  
-                                                <th>UserId</th>  
-                                                <th>RecipientId</th> 
+                                                <th>Email</th>  
+                                                <th>Recipient</th>  
                                                 <th>Status</th>  
                                                 <th>Action</th>  
                                             </tr>
@@ -240,12 +238,26 @@
                                                     <td>${ac.orderId}</td>
                                                     <td>${ac.description}</td>
                                                     <td>${ac.orderDate}</td>
-                                                    <td>${ac.shipFee}</td>
+                                                
                                                     <td>${ac.usedLotusBub}</td>
                                                     <td>${ac.totalPrice}</td>
-                                                    <td>${ac.finalPrice}</td>
-                                                    <td>${ac.userId}</td>
-                                                    <td>${ac.recipientId}</td>
+                                              
+                                                    <td>
+                                                        <c:forEach items="${aclist}" var="name">
+                                                            <c:if test="${name.userId eq ac.userId}">
+                                                                ${name.getEmail()}
+                                                            </c:if>
+                                                        </c:forEach>
+                                                   </td>
+                                                    <td>
+                                                        <c:forEach items="${rlist}" var="rec">
+                                                            <c:if test="${rec.userId eq ac.userId}">
+                                                                ${rec.getDest_address()}
+                                                            </c:if>
+                                                        </c:forEach>
+                                                   </td>
+                                                   
+                                                   
                                                     <c:if test="${ac.status == 1}">
                                                         <td>Đang Chờ</td>
                                                     </c:if>

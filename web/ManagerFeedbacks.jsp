@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" type="image/png" href="img/R.png">
-        <title>STAFF</title>
+        <title>MANAGER</title>
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/osahan.css" rel="stylesheet">
         <link href="font/stylesheet.css" rel="stylesheet">
@@ -195,7 +195,7 @@
                             color:#c60021
                         }
                     </style>
-                    <c:if test="${sessionScope.roleID == 3}">
+                    <c:if test="${sessionScope.roleID == 2}">
                         <div class="container"> <br></br>
                             <div class="table-responsive">
                                 <div class="table-wrapper">
@@ -207,10 +207,22 @@
                                             <form action="MainController" method="post">
                                                 <div class="input-group-prepend ">
                                                     <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Staff Product" name="btAction" >
+                                                        <input class="btn btn-primary" type="submit" value="Manage Account" name="btAction" >
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Staff Orders" name="btAction" >
+                                                        <input class="btn btn-primary" type="submit" value="Manage Category" name="btAction" >
+                                                    </div>
+                                                  <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage SubCategory" name="btAction" >
+                                                    </div>  
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Orders" name="btAction" >
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Product" name="btAction" >
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Buget" name="btAction" >
                                                     </div>
                                                 </div>
                                             </form>
@@ -223,7 +235,8 @@
                                                 <th>Star</th>  
                                                 <th>Description</th>
                                                 <th>Email</th>
-                                                <th>Book Name</th>                                               
+                                                <th>Book Name</th>  
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -248,6 +261,11 @@
                                                             </c:if>
                                                         </c:forEach>
                                                    </td>
+                                                   <td>
+                                                            <button>
+                                                                <a href="DeleteFeedbackController?ID=${la.getFeedBackId()}" > DELETE </a>
+                                                            </button>
+                                                    </td>
                                                 </tr>
                                             </form>
                                             </c:forEach>

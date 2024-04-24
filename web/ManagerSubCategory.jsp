@@ -222,6 +222,15 @@
                                                      <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage Category" name="btAction" >
                                                     </div>
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Orders" name="btAction" >
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage FeedBack" name="btAction" >
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Buget" name="btAction" >
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>

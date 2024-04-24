@@ -5,18 +5,10 @@
  */
 package controller;
 
-import dao.AccountDAO;
-import dao.OrderDAO;
-import dao.OrderDetailDAO;
-import dao.RecipientDAO;
-import dto.Account;
-import dto.Order;
-import dto.OrderDetail;
-import dto.Recipient;
+import dao.FeedbackDAO;
+import dto.Feedback;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,35 +18,25 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author THUAN
  */
-public class DetailsOrdersController extends HttpServlet {
-
-    private final String MANGER_PAGE = "StaffDetailsOrders.jsp";
-
-
+public class DeleteFeedbackController extends HttpServlet {
+private final String ADMIN_PAGE = "ManagerFeedbacksController";
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = MANGER_PAGE;
-        try {
-            String id = request.getParameter("ID");
-            OrderDetailDAO dao = new OrderDetailDAO();
-            List<OrderDetail> user = dao.getOrderDetailByOrderIDs(id);
-            request.setAttribute("book", user);
-            
-            RecipientDAO Rdao = new RecipientDAO();
-            List<Recipient> listItemr = Rdao.getAllListRecipient();
-            request.setAttribute("rlist", listItemr);
-
-            AccountDAO adao = new AccountDAO();
-            List<Account> listItemss = adao.getAllAccount();
-            request.setAttribute("aclist", listItemss);
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
-        }
+       String url = ADMIN_PAGE;
+        String id = request.getParameter("ID");
+        FeedbackDAO dao = new FeedbackDAO();
+        Feedback user = dao.deleteFeedback(id);
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
