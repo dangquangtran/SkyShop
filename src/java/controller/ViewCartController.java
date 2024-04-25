@@ -62,6 +62,7 @@ public class ViewCartController extends HttpServlet {
 
 // Chuyển đối tượng Cart vào JSP
         request.setAttribute("cart", cart);
+        request.setAttribute("bupsen", user.getNumberOfLotus());
         request.getRequestDispatcher(url).forward(request, response);
 
     }

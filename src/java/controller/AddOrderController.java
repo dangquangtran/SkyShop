@@ -1,6 +1,7 @@
 package controller;
 
 import cart.Cart;
+import dao.AccountDAO;
 import dao.BookDAO;
 import dao.OrderDAO;
 import dao.OrderDetailDAO;
@@ -37,6 +38,7 @@ public class AddOrderController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("CART");
+        Account user = (Account)session.getAttribute("LOGIN_USER");
         BookDAO bookdao = new BookDAO();
         Book bookOriginal = new Book();
         boolean notEnough = false;
@@ -46,31 +48,43 @@ public class AddOrderController extends HttpServlet {
             int remainingQuantity = bookOriginal.getQuantity() - book.getQuantity(); // Số lượng còn lại sau khi trừ đi số lượng đặt hàng
 
             if (remainingQuantity < 0) { // Nếu số lượng còn lại nhỏ hơn 0, nghĩa là không đủ
-                request.setAttribute("errorMessage", "Sản phẩm này chỉ còn:"+ bookOriginal.getQuantity());
+                request.setAttribute("errorMessage", "Sản phẩm này chỉ còn:" + bookOriginal.getQuantity());
                 notEnough = true; // Đánh dấu rằng không đủ số lượng
                 break; // Dừng vòng lặp vì đã tìm thấy ít nhất một sản phẩm không đủ
             }
         }
 
         if (notEnough) { // Nếu có ít nhất một sản phẩm không đủ số lượng
-            request.getRequestDispatcher("ViewCartController").forward(request, response); 
+            request.getRequestDispatcher("ViewCartController").forward(request, response);
             return;
         }
         Account account = (Account) session.getAttribute("LOGIN_USER");
         String recipientID = request.getParameter("recipientID");
+        String useBupSen = request.getParameter("useBupSen");
         try {
             // Tạo đối tượng Order
             Order order = new Order();
             LocalDateTime today = LocalDateTime.now();
-            Timestamp sqlDate =Timestamp.valueOf(today);
+            Timestamp sqlDate = Timestamp.valueOf(today);
             order.setOrderDate(sqlDate);
             order.setShipFee(50000);
-            order.setTotalPrice(cart.getTotalMoney()); 
-            order.setFinalPrice(cart.getTotalMoney() + order.getShipFee());
+            order.setTotalPrice(cart.getTotalMoney());
+            if ("yes".equals(useBupSen)) {
+                int discount = user.getNumberOfLotus()*100;
+                order.setUsedLotusBub(user.getNumberOfLotus());
+                user.setNumberOfLotus(0);
+                AccountDAO accountDao = new AccountDAO();
+                accountDao.updateAccount(user);
+                session.setAttribute("LOGIN_USER", user);
+                order.setFinalPrice(cart.getTotalMoney() + order.getShipFee() - discount);
+            } else {
+                order.setFinalPrice(cart.getTotalMoney() + order.getShipFee());
+            }
+            
             order.setStatus(1);
             order.setRecipientId(Integer.parseInt(recipientID));
             OrderDAO orderDAO = new OrderDAO();
-            int orderId = orderDAO.createOrder(order, account.getUserId()); 
+            int orderId = orderDAO.createOrder(order, account.getUserId());
 
             // Tạo các OrderDetail từ giỏ hàng
             OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
