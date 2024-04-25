@@ -5,26 +5,19 @@
  */
 package controller;
 
-import dao.CategoryDAO;
-import dao.SubCategoryDAO;
-import dto.Category;
-import dto.SubCategory;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author VU
+ * @author THUAN
  */
-public class ManagerSubCategoryController extends HttpServlet {
-private final String MANAGER_PAGE = "ManagerSubCategory.jsp";
+public class ManagerRevenueController extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,26 +30,17 @@ private final String MANAGER_PAGE = "ManagerSubCategory.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        String url = MANAGER_PAGE;
-        try {
-            String txtSearch = request.getParameter("txtSearch");
-            if (txtSearch == null) {
-                txtSearch = "";
-            }
-            HttpSession session = request.getSession();
-            SubCategoryDAO dao = new SubCategoryDAO();
-            List<SubCategory> listItem = dao.getAllListSubCategory();
-            request.setAttribute("list", listItem);
-            
-            CategoryDAO sdao = new CategoryDAO();
-            List<Category> listItems = sdao.getAllListCategory();
-            request.setAttribute("slist", listItems);
-            url = MANAGER_PAGE;
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ManagerRevenueController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ManagerRevenueController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

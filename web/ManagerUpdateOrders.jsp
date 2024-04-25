@@ -214,8 +214,7 @@
                                             <tr>
                                                 <td>Description</td>
                                                 <td>
-                                                    ${book.description}
-                                                    <input hidden readonly  name="description" value="${book.description}"  />
+                                                    <input  name="description" value="${book.description}"  />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -228,29 +227,25 @@
                                             <tr>
                                                 <td>ShipFee</td>
                                                 <td>
-                                                    ${book.shipFee}
-                                                    <input hidden="" readonly="" readonly name="shipFee" value="${book.shipFee}"  />
+                                                    <input  readonly name="shipFee" value="${book.shipFee}"  />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>UsedLotusBub</td>
                                                 <td>
-                                                    ${book.usedLotusBub}
-                                                    <input hidden="" readonly name="usedLotusBub" value="${book.usedLotusBub}"  />
+                                                    <input  name="usedLotusBub" value="${book.usedLotusBub}"  />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>TotalPrice</td>
                                                 <td>
-                                                    ${book.totalPrice}
-                                                    <input hidden="" readonly name="totalPrice" value="${book.totalPrice}"  />
+                                                    <input  name="totalPrice" value="${book.totalPrice}"  />
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>FinalPrice</td>
                                                 <td>
-                                                    ${book.finalPrice}
-                                                    <input readonly hidden name="finalPrice" value="${book.finalPrice}"  />
+                                                    <input  name="finalPrice" value="${book.finalPrice}"  />
                                                 </td>
                                             </tr>
                                       

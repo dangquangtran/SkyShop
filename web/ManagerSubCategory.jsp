@@ -212,6 +212,7 @@
                                                 <h2>SubCategory <b>Management</b></h2>
                                             </div>
                                             <form action="MainController" method="post">
+                                                  
                                                 <div class="input-group-prepend ">
                                                     <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage Product" name="btAction" >
@@ -229,7 +230,7 @@
                                                         <input class="btn btn-primary" type="submit" value="Manage FeedBack" name="btAction" >
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Manage Buget" name="btAction" >
+                                                        <input class="btn btn-primary" type="submit" value="Manage Revenue" name="btAction" >
                                                     </div>
                                                 </div>
                                             </form>
@@ -248,7 +249,7 @@
                                                 <th>SubCategogy ID</th>
                                                 <th>SubCategory Name</th>  
                                                 <th>Description</th> 
-                                                <th>Categogy ID</th> 
+                                                <th>Categogy Name</th> 
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -260,7 +261,14 @@
                                                         <td>${ac.subcategoryID}</td>
                                                         <td>${ac.subName}</td>
                                                         <td>${ac.description}</td>
-                                                        <td>${ac.categoryId}</td>
+                                                        <td>
+                                                        <c:forEach items="${slist}" var="s">
+                                                            <c:if test="${s.categoryID eq ac.categoryId}">
+                                                                ${s.categoryName}
+                                                            </c:if>
+                                                        </c:forEach>
+                                                        </td>
+                                                        
                                                         <c:if test="${ac.status == 1}">
                                                             <td>Đang Hoạt Động</td>
                                                         </c:if>

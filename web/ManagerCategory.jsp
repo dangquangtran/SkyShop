@@ -213,6 +213,7 @@
                                             </div>
                                             <form action="MainController" method="post">
                                                 <div class="input-group-prepend ">
+                                                  
                                                     <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage Product" name="btAction" >
                                                     </div>
@@ -228,8 +229,8 @@
                                                     <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage FeedBack" name="btAction" >
                                                     </div>
-                                                    <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Manage Buget" name="btAction" >
+                                                  <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Revenue" name="btAction" >
                                                     </div>
                                                 </div>
                                             </form>
