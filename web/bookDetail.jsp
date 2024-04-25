@@ -233,32 +233,29 @@
                                 </div>
                             </div>
 
-                            <h3 class="section-title style-1 mb-30 mt-30">Reviews (3)</h3>
+                            <h3 class="section-title style-1 mb-30 mt-30">Reviews</h3>
                             <!--Comments-->
                             <div class="comments-area style-2">
                                 <div class="row">
                                     <div class="col-lg-8">
-                                        <h4 class="mb-30">Customer questions & answers</h4>
                                         <div class="comment-list">
                                             <c:forEach var="feedback" items="${listFeedback}">
                                             <div class="single-comment justify-content-between d-flex">
                                                 <div class="user justify-content-between d-flex">
                                                     <div class="thumb text-center">
                                                         <img src="assets/imgs/page/avatar-6.jpg" alt="">
-                                                        <h6><a href="#">${feedback}</a></h6>
-                                                        <p class="font-xxs">Since 2012</p>
+                                                        <h6><a href="#">${fullName}</a></h6>
                                                     </div>
                                                     <div class="desc">
                                                         <div class="product-rate d-inline-block">
-                                                            <div class="product-rating" style="width:50%">
+                                                            <div class="product-rating" style="width:${feedback.getStar()*20}%">
                                                             </div>
                                                         </div>
-                                                        <p>${feedback}</p>
+                                                        <p>${feedback.getDescription()}</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             </c:forEach>
-                                            <!--single-comment -->
                                           
                                             
                                         </div>

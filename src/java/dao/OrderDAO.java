@@ -96,7 +96,7 @@ public class OrderDAO {
         return listOrder;
     }
      
-     public Order updateOrders(Order edittedItem) {
+    public Order updateOrders(Order edittedItem) {
         try {
             String sql = "update Orders set Description=?, OrderDate=?, ShipFee=?, UsedLotusBub=?, TotalPrice=?, FinalPrice=?,"
                     +  "UserId=?, RecipientId=?, Status=?  where OrderId=? ";
@@ -144,7 +144,16 @@ public class OrderDAO {
     }
      
     
-
+     public void cancelOrders(int orderID) {
+        try {
+            String sql = "update Orders set Status=5  where OrderId=? ";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.setInt(1, orderID);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
    
 }
