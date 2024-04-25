@@ -24,7 +24,6 @@ public class MainController extends HttpServlet {
     private final String LOGIN_PAGE = "signin.jsp";
     private final String LOGIN = "LoginController";
     private final String SIGN_UP = "SignupController";
-
     private final String CREATE = "CreateNewAccountController";
     private final String SHOW_ALL_PRODUCT ="ShowAllProductController";
     
@@ -42,14 +41,10 @@ public class MainController extends HttpServlet {
     private final String MANAGER_PRODUCT = "ManagerProductController";
     private final String MANAGER_CATEGORY = "ManagerCatogoryController";
     private final String MANAGER_SUBCATEGORY = "ManagerSubCategoryController";
-    
     private final String MANAGER_REVENUE = "ManagerRevenueController";
-    
     private final String MANAGER_FEEDBACK = "ManagerFeedbacksController";
     private final String MANAGER_ORDERS = "ManagerOrderController";
     
-    private final String MANAGER_UPDATE_ACCOUNT = "UpdateAccountController";
- 
     private final String CREATE_PRODUCT = "CreateProductController";
     private final String CREATE_CATEGOGY = "CreateCategogyController";
     private final String CREATE_SUBCATEGOGY = "CreateSubCategogyController";
@@ -59,6 +54,7 @@ public class MainController extends HttpServlet {
     private final String MANAGER_UPDATE_ORDERS = "ManagerUpdateOrdersController";
     private final String UPDATE_BLOG = "UpdateBlogController";
     private final String UPDATE_PRODUCT = "UpdateProductController";
+    private final String MANAGER_UPDATE_ACCOUNT = "UpdateAccountController";
     
     // function staff
     private final String STAFF_FEEDBACK = "ManagerFeedbackController";

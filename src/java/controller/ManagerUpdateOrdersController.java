@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dao.AccountDAO;
 import dao.OrderDAO;
 import dto.Order;
 import java.io.IOException;
@@ -79,6 +80,12 @@ public class ManagerUpdateOrdersController extends HttpServlet {
             int recipientId = Integer.parseInt(request.getParameter("recipientId"));
             int status = Integer.parseInt(request.getParameter("status"));
        
+            if (status == 4) {
+               // Nếu trạng thái là 4, cập nhật Number_of_Lotus
+               AccountDAO userDao = new AccountDAO();
+               userDao.updateUserLotus();
+            }
+
             OrderDAO Adao = new OrderDAO();
             Order item = new Order(orderId, description, orderDate, shipFee, usedLotusBub, totalPrice, finalPrice, status, userId, recipientId);
             Adao.updateOrders(item);
