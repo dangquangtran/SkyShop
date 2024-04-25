@@ -49,8 +49,10 @@ public class MainController extends HttpServlet {
     private final String CREATE_PRODUCT = "CreateProductController";
     private final String CREATE_CATEGOGY = "CreateCategogyController";
     private final String CREATE_SUBCATEGOGY = "CreateSubCategogyController";
-    
     private final String MANAGER_CREATE_ACCOUNT = "ManagerCreateAccountController";
+    
+    private final String MANAGER_CREATE_IMG_PRODUCT = "ManagerImageController";
+    
     
     private final String MANAGER_UPDATE_ACCOUNT = "UpdateAccountController";
     private final String MANAGER_UPDATE_CATEGORY = "UpdateCategoryController";
@@ -136,6 +138,8 @@ public class MainController extends HttpServlet {
                 url = MANAGER_UPDATE_SUBCATEGORY;
             }else if (button.equals("Staff Create Product")){
                 url = STAFF_CREATE_PRODUCT;
+            }else if (button.equals("Manage Image")){
+                url = MANAGER_CREATE_IMG_PRODUCT;
             }
 
 
