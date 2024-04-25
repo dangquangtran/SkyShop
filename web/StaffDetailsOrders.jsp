@@ -218,17 +218,7 @@
                                     </div>
                                      
                                     
-                                     <table class="table table-striped table-hover">
-                                            <tr>
-                                                <td>Email: asdas</td>
-                                                <td>Phone:asdas</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Full Name: </td>
-                                                <td>Ship:</td>
-                                            </tr>
-                                             
-                                    </table>
+                                   
                                     
                                     
                                     

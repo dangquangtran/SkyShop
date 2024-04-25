@@ -208,7 +208,7 @@
                                             </br>
                                             </br>
                                             <form action="MainController" method="post">
-                                                   
+
                                                 <div class="input-group-prepend ">
                                                     <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage Account" name="btAction" >
@@ -216,7 +216,7 @@
                                                     <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage Category" name="btAction" >
                                                     </div>
-                                                  <div class="input-group-append">
+                                                    <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage SubCategory" name="btAction" >
                                                     </div>  
                                                     <div class="input-group-append">
@@ -225,8 +225,14 @@
                                                     <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage FeedBack" name="btAction" >
                                                     </div>
-                                               <div class="input-group-append">
+                                                    <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage Revenue" name="btAction" >
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="input-group-prepend ">
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Image" name="btAction" >
                                                     </div>
                                                 </div>
                                             </form>
@@ -239,6 +245,7 @@
                                                 <th>OrderId</th>
                                                 <th>Description</th>  
                                                 <th>OrderDate</th>
+                                                <th>Pay</th> 
                                                 <th>UsedLotusBub</th>    
                                                 <th>TotalPrice</th>  
                                                 <th>Email</th>  
@@ -254,51 +261,66 @@
                                                     <td>${ac.orderId}</td>
                                                     <td>${ac.description}</td>
                                                     <td>${ac.orderDate}</td>
-                                                
+                                                    <c:if test="${ac.status == 1}">
+                                                        <td>Đang Chờ</td>
+                                                    </c:if>
+                                                    <c:if test="${ac.status == 2}">
+                                                        <td>Chưa Thanh Toán</td>
+                                                    </c:if> 
+                                                    <c:if test="${ac.status == 3}">
+                                                        <td style="color: buttontext;">Chờ Thanh Toán</td>
+                                                    </c:if> 
+                                                    <c:if test="${ac.status == 4}">
+                                                        <td style="color: #0056b3;"><strong>Đã Thanh Toán</strong></td>
+                                                    </c:if> 
+                                                    <c:if test="${ac.status == 5}">
+                                                        <td style="color: red;">Thanh Thất Bại</td>
+                                                    </c:if> 
                                                     <td>${ac.usedLotusBub}</td>
                                                     <td>${ac.totalPrice}</td>
-                                              
+
                                                     <td>
                                                         <c:forEach items="${aclist}" var="name">
                                                             <c:if test="${name.userId eq ac.userId}">
                                                                 ${name.getEmail()}
                                                             </c:if>
                                                         </c:forEach>
-                                                   </td>
+                                                    </td>
                                                     <td>
                                                         <c:forEach items="${rlist}" var="rec">
                                                             <c:if test="${rec.userID eq ac.userId}">
                                                                 ${rec.destAddress}
                                                             </c:if>
                                                         </c:forEach>
-                                                   </td>
-                                                   
-                                                   
+                                                    </td>
+
+
+
                                                     <c:if test="${ac.status == 1}">
                                                         <td>Đang Chờ</td>
                                                     </c:if>
                                                     <c:if test="${ac.status == 2}">
                                                         <td style="color: #0dcaf0;">Đang Lấy Hàng</td>
                                                     </c:if> 
-                                                          <c:if test="${ac.status == 3}">
+                                                    <c:if test="${ac.status == 3}">
                                                         <td style="color: buttontext;">Đang Giao Hàng</td>
                                                     </c:if> 
-                                                          <c:if test="${ac.status == 4}">
-                                                              <td style="color: #0056b3;"><strong>Giao Hàng Thành Công</strong></td>
+                                                    <c:if test="${ac.status == 4}">
+                                                        <td style="color: #0056b3;"><strong>Giao Hàng Thành Công</strong></td>
                                                     </c:if> 
-                                                          <c:if test="${ac.status == 5}">
+                                                    <c:if test="${ac.status == 5}">
                                                         <td style="color: red;">Hủy Đơn Hàng</td>
                                                     </c:if> 
-                                                         <td>
-                                                            <button>
-                                                                <a href="ManagerDetailsOrdersController?ID=${ac.orderId}" > DETAIL </a>
-                                                            </button>
-                                                        </td>
-                                                         <td>
-                                                            <button>
-                                                                <a href="ManagerUpdateOrdersController?ID=${ac.orderId}" > EDIT </a>
-                                                            </button>
-                                                        </td>
+                                                    <td>
+                                                        <button>
+                                                            <a href="ManagerDetailsOrdersController?ID=${ac.orderId}" > DETAIL </a>
+                                                        </button>
+                                                    </td>
+                                                    <td>
+                                                        <button>
+                                                            <a href="ManagerUpdateOrdersController?ID=${ac.orderId}" > EDIT </a>
+                                                        </button>
+                                                    </td>
                                                 </tr>
                                             </form>
                                         </c:forEach>

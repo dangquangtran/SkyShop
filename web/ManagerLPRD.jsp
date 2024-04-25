@@ -236,6 +236,13 @@
                                                         <input class="btn btn-primary" type="submit" value="Manage Revenue" name="btAction" >
                                                     </div>
                                                 </div>
+                                                                                                </br>
+
+                                                <div class="input-group-prepend ">
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Image" name="btAction" >
+                                                    </div>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
@@ -246,6 +253,7 @@
                                             </div>
                                             </br>   
                                     </form>
+                                    
                                     <table class="table table-striped table-hover">
                                         <thead>
                                             <tr>

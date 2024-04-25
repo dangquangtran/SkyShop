@@ -24,6 +24,12 @@ public class BookImages {
         this.Status = Status;
         this.BookId = BookId;
     }
+     public BookImages( String Url, int Status, int BookId) {
+        
+        this.Url = Url;
+        this.Status = Status;
+        this.BookId = BookId;
+    }
 
     public int getImageId() {
         return ImageId;

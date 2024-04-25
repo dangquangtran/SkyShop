@@ -212,6 +212,9 @@
                                                     <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Staff Orders" name="btAction" >
                                                     </div>
+                                                     <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Staff Image" name="btAction" >
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>

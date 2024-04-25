@@ -45,15 +45,13 @@ public class MainController extends HttpServlet {
     private final String MANAGER_REVENUE = "ManagerRevenueController";
     private final String MANAGER_FEEDBACK = "ManagerFeedbacksController";
     private final String MANAGER_ORDERS = "ManagerOrderController";
-    
+    private final String MANAGER_IMG_PRODUCT = "ManagerImageController";
     private final String CREATE_PRODUCT = "CreateProductController";
     private final String CREATE_CATEGOGY = "CreateCategogyController";
     private final String CREATE_SUBCATEGOGY = "CreateSubCategogyController";
     private final String MANAGER_CREATE_ACCOUNT = "ManagerCreateAccountController";
-    
-    private final String MANAGER_CREATE_IMG_PRODUCT = "ManagerImageController";
-    
-    
+    private final String MANAGER_CREATE_IMG_PRODUCT = "ManagerCreateImageController";
+    private final String MANAGER_UPDATE_IMG_PRODUCT = "ManagerUpdateImageController";
     private final String MANAGER_UPDATE_ACCOUNT = "UpdateAccountController";
     private final String MANAGER_UPDATE_CATEGORY = "UpdateCategoryController";
     private final String MANAGER_UPDATE_SUBCATEGORY = "UpdateSubCategoryController";
@@ -71,6 +69,11 @@ public class MainController extends HttpServlet {
     private final String STAFF_UPDATE_ORDERS = "UpdateOrdersController";
     private final String STAFF_UPDATE_PRODUCT = "StaffUpdateProductController";
     private final String STAFF_CREATE_PRODUCT = "StaffCreateProductController";
+    private final String STAFF_UPDATE_IMG_PRODUCT = "StaffUpdateImageController";
+  
+    private final String STAFF_IMAGE = "StaffImageController";
+    
+    
           
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -90,7 +93,10 @@ public class MainController extends HttpServlet {
                 url = ADMIN_ACCOUNT;
             }else if (button.equals("UPDATE_ACCOUNT")) {
                 url = ADMIN_UPDATE_ACCOUNT;
-            }else if (button.equals("MANAGER_UPDATE_ACCOUNT")) {
+            } else if (button.equals("Create Account Manager")) {
+                url = ADMIN_CREATE_ACCOUNT;
+            }
+            else if (button.equals("MANAGER_UPDATE_ACCOUNT")) {
                 url = MANAGER_UPDATE_ACCOUNT;
             }else if (button.equals("Manage Account")) {
                 url = MANAGER_ACCOUNT;
@@ -108,8 +114,18 @@ public class MainController extends HttpServlet {
                 url = CREATE_SUBCATEGOGY;
             }else if (button.equals("Create Account Staff")) {
                 url = MANAGER_CREATE_ACCOUNT;
-            }else if (button.equals("Create Account Manager")) {
-                url = ADMIN_CREATE_ACCOUNT;
+            }else if (button.equals("MANAGER_UPDATE_ORDERS")){
+                url = MANAGER_UPDATE_ORDERS;
+            }else if (button.equals("Manage_Update_Cate")){
+                url = MANAGER_UPDATE_CATEGORY;
+            }else if (button.equals("Manage_Update_SubCate")){
+                url = MANAGER_UPDATE_SUBCATEGORY;
+            }else if (button.equals("Manage Image")){
+                url = MANAGER_IMG_PRODUCT;
+            }else if (button.equals("ManageUpdateImage")){
+                url = MANAGER_UPDATE_IMG_PRODUCT;
+            }else if (button.equals("Create Image")){
+                url = MANAGER_CREATE_IMG_PRODUCT;
             }else if (button.equals("Manage Category")){
                 url = MANAGER_CATEGORY;
             }else if (button.equals("Manage SubCategory")){
@@ -120,7 +136,8 @@ public class MainController extends HttpServlet {
                 url = MANAGER_FEEDBACK;
             }else if (button.equals("Manage Revenue")){
                 url = MANAGER_REVENUE;
-            }else if (button.equals("Staff FeedBack")){
+            }
+            else if (button.equals("Staff FeedBack")){
                 url = STAFF_FEEDBACK;
             }else if (button.equals("Staff Orders")){
                 url = STAFF_ORDERS;
@@ -128,19 +145,21 @@ public class MainController extends HttpServlet {
                 url = STAFF_PRODUCT;
             }else if (button.equals("STAFF_UPDATE_ORDERS")){
                 url = STAFF_UPDATE_ORDERS;
-            }else if (button.equals("MANAGER_UPDATE_ORDERS")){
-                url = MANAGER_UPDATE_ORDERS;
-            }else if (button.equals("STAFF_UPDATE_PRODUCTS")){
+            } else if (button.equals("STAFF_UPDATE_PRODUCTS")){
                 url = STAFF_UPDATE_PRODUCT;
-            }else if (button.equals("Manage_Update_Cate")){
-                url = MANAGER_UPDATE_CATEGORY;
-            }else if (button.equals("Manage_Update_SubCate")){
-                url = MANAGER_UPDATE_SUBCATEGORY;
-            }else if (button.equals("Staff Create Product")){
+            } else if (button.equals("Staff Create Product")){
                 url = STAFF_CREATE_PRODUCT;
-            }else if (button.equals("Manage Image")){
-                url = MANAGER_CREATE_IMG_PRODUCT;
+            }else if (button.equals("Staff Image")){
+                url = STAFF_IMAGE;
+            }else if (button.equals("StaffUpdateImage")){
+                url = STAFF_UPDATE_IMG_PRODUCT;
             }
+            
+            
+            
+           
+            
+           
 
 
         } catch (Exception e) {

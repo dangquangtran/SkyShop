@@ -43,12 +43,12 @@ public class ManagerRevenueController extends HttpServlet {
         try {
             String startDate = request.getParameter("startDate");
             String endDate = request.getParameter("endDate");
-            
+
             if (startDate == null || endDate == null || startDate.isEmpty() || endDate.isEmpty()) {
                 startDate = "2023-01-01 00:00:00";
                 endDate = "2029-01-01 23:59:59";
             }
-            
+
             String txtSearch = request.getParameter("txtSearch");
             if (txtSearch == null) {
                 txtSearch = "";
@@ -57,20 +57,31 @@ public class ManagerRevenueController extends HttpServlet {
             OrderDAO dao = new OrderDAO();
             List<Order> listItem = dao.getALLOrder();
             request.setAttribute("list", listItem);
-            
-            
+
             AccountDAO adao = new AccountDAO();
             List<Account> listItemss = adao.getAllAccount();
             request.setAttribute("aclist", listItemss);
-            
+
             RecipientDAO Rdao = new RecipientDAO();
             List<Recipient> listItemr = Rdao.getAllListRecipient();
             request.setAttribute("rlist", listItemr);
-            
+
             OrderRevenueDAO rdao = new OrderRevenueDAO();
             List<OrderRevenue> revlist = rdao.getTotalRevenueByDateRange(startDate, endDate);
             request.setAttribute("revlist", revlist);
-            
+
+            OrderRevenueDAO total = new OrderRevenueDAO();
+            int totalOrderPrice = total.getTotalOrderPriceByStatus4();
+            request.setAttribute("totalOrderPrice", totalOrderPrice);
+
+            OrderRevenueDAO orderDAO = new OrderRevenueDAO();
+            int totalOrderCount = orderDAO.getTotalOrderCountByStatus4();
+            request.setAttribute("totalOrderCount", totalOrderCount);
+
+            OrderRevenueDAO pDAO = new OrderRevenueDAO();
+            int totalProductCount = pDAO.getTotalProductCount();
+            request.setAttribute("totalProductCount", totalProductCount);
+
             url = MANAGER_PAGE;
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

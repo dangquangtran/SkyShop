@@ -172,6 +172,30 @@
         <servlet-name>ManagerImageController</servlet-name>
         <servlet-class>controller.ManagerImageController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerUpdateImageController</servlet-name>
+        <servlet-class>controller.ManagerUpdateImageController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagerCreateImageController</servlet-name>
+        <servlet-class>controller.ManagerCreateImageController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaffImageController</servlet-name>
+        <servlet-class>controller.StaffImageController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaffUpdateImageController</servlet-name>
+        <servlet-class>controller.StaffUpdateImageController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaffCreateImageController</servlet-name>
+        <servlet-class>controller.StaffCreateImageController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagerDeleteImageController</servlet-name>
+        <servlet-class>controller.ManagerDeleteImageController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -343,6 +367,30 @@
     <servlet-mapping>
         <servlet-name>ManagerImageController</servlet-name>
         <url-pattern>/ManagerImageController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerUpdateImageController</servlet-name>
+        <url-pattern>/ManagerUpdateImageController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerCreateImageController</servlet-name>
+        <url-pattern>/ManagerCreateImageController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffImageController</servlet-name>
+        <url-pattern>/StaffImageController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffUpdateImageController</servlet-name>
+        <url-pattern>/StaffUpdateImageController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffCreateImageController</servlet-name>
+        <url-pattern>/StaffCreateImageController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerDeleteImageController</servlet-name>
+        <url-pattern>/ManagerDeleteImageController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

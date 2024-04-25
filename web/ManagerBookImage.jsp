@@ -248,7 +248,7 @@
                                     </div>
                                     <form action="MainController">
                                         <div>
-                                            <input type="submit" value="Create Account Staff" name="btAction" /> 
+                                            <input type="submit" value="Create Image" name="btAction" /> 
                                         </div>
                                         </br>   
                                     </form>
@@ -285,7 +285,12 @@
                                                     </c:if>  
                                                     <td>
                                                         <button>
-                                                            <a href="UpdateAccountController?ID=${ac.getImageId()}" > EDIT </a>
+                                                            <a href="ManagerUpdateImageController?ID=${ac.getImageId()}" > EDIT </a>
+                                                        </button>
+                                                    </td>
+                                                    <td>
+                                                        <button>
+                                                            <a href="ManagerDeleteImageController?ID=${ac.getImageId()}" > DELETE </a>
                                                         </button>
                                                     </td>
                                                 </tr>

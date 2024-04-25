@@ -202,7 +202,7 @@
                                     <div class="table-title">
                                         <div class="row">
                                             <div class="col-xs-5">
-                                                <h2>Orders <b>Management</b></h2>
+                                                <h2>Revenue <b>Management</b></h2>
                                             </div>
 
                                             </br>
@@ -231,16 +231,33 @@
                                                         <input class="btn btn-primary" type="submit" value="Manage Orders" name="btAction" >
                                                     </div>
                                                 </div>
+                                                </br>
+                                                <div class="input-group-prepend ">
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Image" name="btAction" >
+                                                    </div>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
                                     </br>
+                                    <div>
+                                        <h4>Tổng Sản Phẩm: ${totalProductCount}</h4>
+                                        <h4>Tổng Đơn Hàng Bán Thành Công: ${totalOrderCount}</h4>
+                                    </div>
+                                    </br>
+                                    <div>
+                                        <h2 style="color: red;">Tổng Doanh Thu Bán Thành Công: ${totalOrderPrice}</h2>
+                                    </div>
+                                    </br>
+
                                     <div>
                                         <form action="ManagerRevenueController" method="POST">
                                             Từ ngày: <input type="date" name="startDate" value="${param.startDate}"/>- Đến ngày: <input type="date" name="endDate" value="${param.endDate}" />
                                             <button type="submit">Xem Doanh Thu</button>
                                         </form>
                                     </div>
+
                                     </br>
 
                                     <table class="table table-striped table-hover">

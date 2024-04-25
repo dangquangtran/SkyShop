@@ -85,9 +85,9 @@ public class CreateProductController extends HttpServlet {
             int UnitPrice = Integer.parseInt(request.getParameter("UnitPrice"));
             int CategoryID = Integer.parseInt(request.getParameter("CategoryID"));
             int Status = Integer.parseInt(request.getParameter("Status"));
-            int TotalFeedback = Integer.parseInt(request.getParameter("TotalFeedback"));
+            //int TotalFeedback = Integer.parseInt(request.getParameter("TotalFeedback"));
             BookDAO Adao = new BookDAO();
-            Book item = new Book(BookName, Description, AuthorName, PublishingCompany, IssusingCompany, TranslatorName, PublishDate, Quantity, SubCategoryId, UnitPrice, CategoryID, Status, TotalFeedback);
+            Book item = new Book(BookName, Description, AuthorName, PublishingCompany, IssusingCompany, TranslatorName, PublishDate, Quantity, SubCategoryId, UnitPrice, CategoryID, Status, 0);
             Adao.createBook(item);
             RequestDispatcher rd = request.getRequestDispatcher(ul);
             rd.forward(request, response);

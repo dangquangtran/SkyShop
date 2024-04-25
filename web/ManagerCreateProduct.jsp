@@ -304,12 +304,7 @@
                                          
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Total Feedback</td>
-                                                <td>
-                                                    <input type="number"  name="TotalFeedback"  />
-                                                </td>
-                                            </tr>
+                                          
                                             
                                             <tr>
                                                 <td>
