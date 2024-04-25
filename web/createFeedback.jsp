@@ -20,21 +20,18 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="path/to/materialize.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
         <!-- Template CSS -->
         <link rel="stylesheet" href="assets/css/main.css?v=3.4">
         <style>
-            .badge {
-                /* Kiểm tra các thuộc tính này */
-                color: black; /* Màu chữ */
-                background-color: white; /* Màu nền */
-                opacity: 1; /* Độ trong suốt */
-                font-weight: bold; /* Độ đậm của chữ */
-            }
-            /* Đặt trong tập tin CSS của bạn */
-            .badge-large {
-                font-size: 1.25em; /* Tăng cỡ chữ lên 125% so với mặc định */
-            }
-
+        footer {
+            position: fixed; /* Đảm bảo footer luôn ở cuối */
+            bottom: 50px;
+            width: 100%; /* Chiếm toàn bộ chiều rộng */
+            height: 60px; /* Chiều cao cố định của footer */
+            background-color: #f8f9fa; /* Màu nền của footer */
+        }
         </style>
     </head>
     <body id="page-top">
@@ -185,153 +182,111 @@
 
 
                     <!-- 
-                                 //SHOW THONG TIN historyOrder
+                                 //SHOW THONG TIN Cart
                     -->  
-                    <div class="container mt-5">
-                        <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
-                            <nav>
-                                <ul>
-                                    <li><a href="HistoryOrderController?status=1">Đang chờ </a></li>
-                                    <li><a href="HistoryOrderController?status=2">Đang lấy hàng </a></li>
-                                    <li><a href="HistoryOrderController?status=3">Đang giao </a></li>
-                                    <li><a href="HistoryOrderController?status=4">Giao hàng thành công </a></li>
-                                    <li><a href="HistoryOrderController?status=5">Đơn đã hủy </a></li>
-                                </ul>
-                            </nav>
-                        </div>
+                    <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
+                        <nav>
+                            <ul>
+                                <c:forEach var="category" items="${listCategory}">
+                                    <li>
+                                        <a href="SubCateController?cateId=${category.categoryID}">${category.categoryName} <i class="fi-rs-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <c:forEach var="subCategory" items="${listSubCategory}">
+                                                <c:if test="${subCategory.categoryId == category.categoryID}">
+                                                    <li>
+                                                        <a href="ListBookController?cateId=${category.categoryID}&subId=${subCategory.subcategoryID}">
+                                                            ${subCategory.subName}
+                                                        </a>
+                                                    </li>
+                                                </c:if>
+                                            </c:forEach>
+                                        </ul>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </nav>
+                    </div>
 
-                        <div class="container mt-5">
-                            <c:choose>
-                                <c:when test="${not empty listHistoryOrder}">
-                                    <div class="row">
-                                        <c:forEach var="order" items="${listHistoryOrder}">
-                                            <div class="col-md-6 col-lg-4 mb-3 d-flex align-items-stretch">
-                                                <div class="card shadow-sm border-0 w-100">
-                                                    <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
-                                                        <strong>Đơn hàng #${order.orderId}</strong>
-                                                        <span class="badge badge-large">
-                                                            <c:choose>
-                                                                <c:when test="${order.status == 1}">
-                                                                    <span class="badge bg-warning">Đang chờ</span>
-                                                                </c:when>
-                                                                <c:when test="${order.status == 2}">
-                                                                    <span class="badge bg-info">Đang lấy hàng</span>
-                                                                </c:when>
-                                                                <c:when test="${order.status == 3}">
-                                                                    <span class="badge bg-primary">Đang giao</span>
-                                                                </c:when>
-                                                                <c:when test="${order.status == 4}">
-                                                                    <span class="badge bg-success">Giao hàng thành công</span>
-                                                                </c:when>
-                                                                <c:when test="${order.status == 5}">
-                                                                    <span class="badge bg-danger">Đơn đã hủy</span>
-                                                                </c:when>
-                                                            </c:choose>
-                                                        </span>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <c:forEach var="detail" items="${orderDetailMap[order.orderId]}">
-                                                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                                                <span>${detail.bookName}</span>
-                                                                <span>Số lượng: ${detail.quantity}</span>
-                                                                <span>Giá: ${detail.unitPrice}đ</span>
-                                                            </div>
-                                                        </c:forEach>
-                                                        <div class="mt-2">
-                                                            <p>
-                                                                Ngày đặt hàng: ${order.orderDate} <br>
-                                                                Phí ship: ${order.shipFee}đ <br>
-                                                                Tổng tiền: ${order.finalPrice}đ <br>
-                                                            </p>
-                                                        </div>
-                                                        <br/>
-                                                        <a href="OrderDetailController?orderId=${order.orderId}" class="btn btn-outline-primary">Xem chi tiết</a>
-                                                        <!-- Thêm nút Hủy nếu đơn hàng đang chờ -->
-                                                        <c:if test="${order.status == 1}">
-                                                            <a href="CancelOrderController?orderId=${order.orderId}" class="btn btn-outline-danger">Hủy</a>
-                                                        </c:if>
-                                                        <c:if test="${order.status == 4}">
-                                                            <a href="CreateFeedbackController?orderId=${order.orderId}" class="btn btn-outline-danger">Đánh giá</a>
-                                                        </c:if>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </c:forEach>
+
+                    <a href="ViewCartController" class="btn btn-primary">Back</a>
+                    <div class="container">
+                        <div class="row justify-content-center"> <!-- Căn giữa theo chiều ngang -->
+                            <div class="col-md-6">
+                                <!-- Nội dung -->
+                                <div class="mb-25">
+                                    <h4>Tạo mới địa chỉ giao hàng</h4>
+                                </div>
+                                <form action="CreateRecipientController" method="post">
+                                    <div class="form-group">
+                                        <input type="text" required name="txtAddress" placeholder="Địa chỉ giao hàng" class="form-control">
                                     </div>
-                                </c:when>
-                                <c:otherwise>
-                                    <p>Không tìm thấy đơn hàng nào.</p>
-                                </c:otherwise>
-                            </c:choose>
-                        </div>
-
-
-
-
-                    </div>
-
-
-
-
-                </div>                       
-
-
-
-
-
-
-
-
-
-                <!-- 
-                 //FOOTER                
-                -->   
-                <footer class="sticky-footer bg-light" >
-                    <div class="container my-auto ">
-                        <div class="copyright text-center my-auto " style="color: #093b29" >
-                            <span >EMAIL: Onlinebookstore@gmail.com&copy;</span></br></br>
-                            <span>ADDRES:  Q9, HCM, VIET NAM&copy;</span></br></br>
-                            <span>HOTLINE: 0931 8888 991&copy;</span>
+                                    <div class="form-group">
+                                        <input type="text" required name="txtName" placeholder="Tên người nhận" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input required type="text" name="txtPhone" placeholder="Số điện thoại người nhận" class="form-control">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Tạo mới</button> <!-- Tạo nút submit -->
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </footer>
+
+
+
+
+
+
+
+                    <!-- 
+                     //FOOTER                
+                    -->   
+                    <footer class="sticky-footer bg-light" >
+                        <div class="container my-auto ">
+                            <div class="copyright text-center my-auto " style="color: #093b29" >
+                                <span >EMAIL: Onlinebookstore@gmail.com&copy;</span></br></br>
+                                <span>ADDRES:  Q9, HCM, VIET NAM&copy;</span></br></br>
+                                <span>HOTLINE: 0931 8888 991&copy;</span>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
             </div>
-        </div>
 
 
 
 
 
-        <!-- Vendor JS-->
-        <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
-        <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
-        <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
-        <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/plugins/slick.js"></script>
-        <script src="assets/js/plugins/jquery.syotimer.min.js"></script>
-        <script src="assets/js/plugins/wow.js"></script>
-        <script src="assets/js/plugins/jquery-ui.js"></script>
-        <script src="assets/js/plugins/perfect-scrollbar.js"></script>
-        <script src="assets/js/plugins/magnific-popup.js"></script>
-        <script src="assets/js/plugins/select2.min.js"></script>
-        <script src="assets/js/plugins/waypoints.js"></script>
-        <script src="assets/js/plugins/counterup.js"></script>
-        <script src="assets/js/plugins/jquery.countdown.min.js"></script>
-        <script src="assets/js/plugins/images-loaded.js"></script>
-        <script src="assets/js/plugins/isotope.js"></script>
-        <script src="assets/js/plugins/scrollup.js"></script>
-        <script src="assets/js/plugins/jquery.vticker-min.js"></script>
-        <!-- Template  JS -->
-        <script src="./assets/js/main.js?v=3.4"></script>
-        <script src="./assets/js/shop.js?v=3.4"></script>
-        <script data-cfasync="false" src="js/email-decode.min.js"></script>
-        <script src="vendor/jquery/jquery.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
-        <script src="vendor/jquery-easing/jquery.easing.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
-        <script src="js/osahan.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
-        <script src="js/rocket-loader.min.js" data-cf-settings="e83057937dd4e85910db8985-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f93a1e227d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
-        <script src="path/to/your/bundle.js"></script>
-
+            <!-- Vendor JS-->
+            <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+            <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+            <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+            <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+            <script src="assets/js/plugins/slick.js"></script>
+            <script src="assets/js/plugins/jquery.syotimer.min.js"></script>
+            <script src="assets/js/plugins/wow.js"></script>
+            <script src="assets/js/plugins/jquery-ui.js"></script>
+            <script src="assets/js/plugins/perfect-scrollbar.js"></script>
+            <script src="assets/js/plugins/magnific-popup.js"></script>
+            <script src="assets/js/plugins/select2.min.js"></script>
+            <script src="assets/js/plugins/waypoints.js"></script>
+            <script src="assets/js/plugins/counterup.js"></script>
+            <script src="assets/js/plugins/jquery.countdown.min.js"></script>
+            <script src="assets/js/plugins/images-loaded.js"></script>
+            <script src="assets/js/plugins/isotope.js"></script>
+            <script src="assets/js/plugins/scrollup.js"></script>
+            <script src="assets/js/plugins/jquery.vticker-min.js"></script>
+            <!-- Template  JS -->
+            <script src="./assets/js/main.js?v=3.4"></script>
+            <script src="./assets/js/shop.js?v=3.4"></script>
+            <script data-cfasync="false" src="js/email-decode.min.js"></script>
+            <script src="vendor/jquery/jquery.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
+            <script src="vendor/jquery-easing/jquery.easing.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
+            <script src="js/osahan.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
+            <script src="js/rocket-loader.min.js" data-cf-settings="e83057937dd4e85910db8985-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f93a1e227d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
+            <script src="path/to/your/bundle.js"></script>
+            
     </body>
 
     <!-- Mirrored from askbootstrap.com/preview/osahan-eat/theme-sidebar/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:04:56 GMT -->
