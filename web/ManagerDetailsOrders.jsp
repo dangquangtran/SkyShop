@@ -229,7 +229,8 @@
                                         </div>
                                     </div>
                                      
-                                    
+                                    </br>
+                                    </br>
                                      <table class="table table-striped table-hover">
                                             <tr>
                                                 <td>Email: asdas</td>
@@ -243,14 +244,16 @@
                                     </table>
                                     
                                     
-                                    
+                                    </br>                                    
+                                    </br>  
+
                                     
                                     <table class="table table-striped table-hover">
                                         <thead>
                                             <tr>
                                                 <th>OrderDetails ID</th>
-                                                <th>Book Name</th>  
                                                 <th>Order ID</th>
+                                                <th>Book Name</th>  
                                                 <th>Quantity</th>
                                                 <th>Unit Price</th>    
                                                 <th>Total Price</th>                                       
@@ -261,8 +264,8 @@
                                             <form action="MainController" method="post">
                                                 <tr>
                                                     <td>${ac.orderDetailId}</td>
+                                                    <td>${ac.bookId}</td>
                                                     <td>${ac.bookName}</td>
-                                                    <td>${ac.orderId}</td>
                                                     <td>${ac.quantity}</td>
                                                     <td>${ac.unitPrice}</td>
                                                     <td>${ac.totalPrice}</td>

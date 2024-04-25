@@ -61,6 +61,7 @@ public class OrderDetailDAO {
     public List<OrderDetail> getOrderDetailByOrderIDs(String orderId){
         List<OrderDetail> listOrderDetail = new ArrayList<>();
         String query = "SELECT od.*, b.BookName FROM OrderDetail od JOIN Books b ON od.BookId = b.BookId WHERE od.OrderId = ?";
+        //String query = "SELECT od.*, b.BookName FROM OrderDetail od JOIN Books b ON od.BookId = b.BookId WHERE od.OrderId = ?";
         try {
                 conn = new DBContext().getConnection();
                 ps = conn.prepareStatement(query);

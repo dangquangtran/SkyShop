@@ -205,6 +205,7 @@
                                                 <h2>Feedback <b>Management</b></h2>
                                             </div>
                                             <form action="MainController" method="post">
+                                                 
                                                 <div class="input-group-prepend ">
                                                     <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage Account" name="btAction" >
@@ -222,8 +223,8 @@
                                                         <input class="btn btn-primary" type="submit" value="Manage Product" name="btAction" >
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Manage Buget" name="btAction" >
-                                                    </div>
+                                                        <input class="btn btn-primary" type="submit" value="Manage Revenue" name="btAction" >
+                                                    </div> 
                                                 </div>
                                             </form>
                                         </div>

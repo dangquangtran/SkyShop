@@ -43,6 +43,8 @@ public class MainController extends HttpServlet {
     private final String MANAGER_CATEGORY = "ManagerCatogoryController";
     private final String MANAGER_SUBCATEGORY = "ManagerSubCategoryController";
     
+    private final String MANAGER_REVENUE = "ManagerRevenueController";
+    
     private final String MANAGER_FEEDBACK = "ManagerFeedbacksController";
     private final String MANAGER_ORDERS = "ManagerOrderController";
     
@@ -77,7 +79,6 @@ public class MainController extends HttpServlet {
                 url = "404.jsp";
             } else if (button.equals("Login")) {
                 url = LOGIN;
-                
             } else if (button.equals("Sign up")) {
                 url = CREATE;
             } else if (button.equals("Show All Product")) {
@@ -106,13 +107,13 @@ public class MainController extends HttpServlet {
                 url = MANAGER_CATEGORY;
             }else if (button.equals("Manage SubCategory")){
                 url = MANAGER_SUBCATEGORY;
-            } 
-            else if (button.equals("Manage Orders")){
+            }else if (button.equals("Manage Orders")){
                 url = MANAGER_ORDERS;
             } else if (button.equals("Manage FeedBack")){
                 url = MANAGER_FEEDBACK;
-            } 
-            else if (button.equals("Staff FeedBack")){
+            }  else if (button.equals("Manage Revenue")){
+                url = MANAGER_REVENUE;
+            }else if (button.equals("Staff FeedBack")){
                 url = STAFF_FEEDBACK;
             }else if (button.equals("Staff Orders")){
                 url = STAFF_ORDERS;
