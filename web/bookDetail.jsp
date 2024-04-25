@@ -240,27 +240,31 @@
                                     <div class="col-lg-8">
                                         <div class="comment-list">
                                             <c:forEach var="feedback" items="${listFeedback}">
-                                            <div class="single-comment justify-content-between d-flex">
-                                                <div class="user justify-content-between d-flex">
-                                                    <div class="thumb text-center">
-                                                        <img src="assets/imgs/page/avatar-6.jpg" alt="">
-                                                        <h6><a href="#">${fullName}</a></h6>
-                                                    </div>
-                                                    <div class="desc">
-                                                        <div class="product-rate d-inline-block">
-                                                            <div class="product-rating" style="width:${feedback.getStar()*20}%">
+                                                <c:forEach var="account" items="${listAccount}">
+                                                    <c:if test="${feedback.getUserId() == account.userId}">
+                                                        <div class="single-comment justify-content-between d-flex">
+                                                            <div class="user justify-content-between d-flex">
+                                                                <div class="thumb text-center">
+                                                                    <img src="assets/imgs/page/avatar-6.jpg" alt="">
+                                                                    <h6><a href="#">${account.fullname}</a></h6>
+                                                                </div>
+                                                                <div class="desc">
+                                                                    <div class="product-rate d-inline-block">
+                                                                        <div class="product-rating" style="width:${feedback.getStar()*20}%">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p>${feedback.getDescription()}</p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <p>${feedback.getDescription()}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                    </c:if>
+                                                </c:forEach>
                                             </c:forEach>
-                                          
-                                            
+
+
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </div>
