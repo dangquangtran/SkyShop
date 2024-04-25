@@ -26,7 +26,7 @@ public class FeedbackDAO {
     public List<Feedback> getAllFeedback() throws ClassNotFoundException, SQLException {
         List<Feedback> listItems = new ArrayList<>();
         try {
-            String sql = "select * from FeedBack";
+            String sql = "select * from FeedBack ORDER BY FeedBackId DESC";
             PreparedStatement stm = getConnection().prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {

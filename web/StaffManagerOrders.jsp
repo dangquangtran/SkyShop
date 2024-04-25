@@ -262,17 +262,17 @@
                                                         <td>Đang Chờ</td>
                                                     </c:if>
                                                     <c:if test="${ac.status == 2}">
-                                                        <td>Đang Lấy Hàng</td>
+                                                        <td style="color: #0dcaf0;">Đang Lấy Hàng</td>
                                                     </c:if> 
                                                           <c:if test="${ac.status == 3}">
-                                                        <td>Đang Giao Hàng</td>
+                                                        <td style="color: buttontext;">Đang Giao Hàng</td>
                                                     </c:if> 
                                                           <c:if test="${ac.status == 4}">
-                                                        <td>Giao Hàng Thành Công</td>
+                                                              <td style="color: #0056b3;"><strong>Giao Hàng Thành Công</strong></td>
                                                     </c:if> 
                                                           <c:if test="${ac.status == 5}">
-                                                        <td>Hủy Đơn Hàng</td>
-                                                    </c:if> 
+                                                        <td style="color: red;">Hủy Đơn Hàng</td>
+                                                    </c:if>  
                                                          <td>
                                                             <button>
                                                                 <a href="DetailsOrdersController?ID=${ac.orderId}" > DETAIL </a>

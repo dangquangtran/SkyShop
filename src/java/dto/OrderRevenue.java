@@ -6,6 +6,7 @@
 package dto;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -13,15 +14,15 @@ import java.sql.Date;
  */
 public class OrderRevenue {
    
-    private Date orderDate;
+    private Timestamp orderDate;
     private int totalRevenue;
 
-    public OrderRevenue(Date orderDate, int totalRevenue) {
+    public OrderRevenue(Timestamp orderDate, int totalRevenue) {
         this.orderDate = orderDate;
         this.totalRevenue = totalRevenue;
     }
 
-    public Date getOrderDate() {
+    public Timestamp getOrderDate() {
         return orderDate;
     }
 

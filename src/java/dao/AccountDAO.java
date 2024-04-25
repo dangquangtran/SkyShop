@@ -139,14 +139,15 @@ public class AccountDAO extends DBContext {
     //Create account
     public Account createAccount(Account newItem) {
         try {
-            String sql = "insert into Users(email,Password,Fullname,number_Of_Lotus,RoleID) "
-                    + "values(?,?,?,?,?)";
+            String sql = "insert into Users(email,Password,Fullname,number_Of_Lotus,RoleID,Status) "
+                    + "values(?,?,?,?,?,?)";
             PreparedStatement stmt = getConnection().prepareStatement(sql);
             stmt.setString(1, newItem.getEmail());
             stmt.setString(2, newItem.getPassword());
             stmt.setString(3, newItem.getFullname());
             stmt.setInt(4, newItem.getNumberOfLotus());
             stmt.setInt(5, newItem.getRoleId());
+            stmt.setInt(6, newItem.getStatus());
             stmt.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());

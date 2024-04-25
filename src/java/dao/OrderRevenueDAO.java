@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import util.DBContext;
@@ -35,7 +36,7 @@ public class OrderRevenueDAO {
             ps.setString(2, endDate);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Date orderDate = rs.getDate("OrderDate");
+                Timestamp orderDate = rs.getTimestamp("OrderDate");
                 int totalRevenue = rs.getInt("TotalRevenue");
                 revenueList.add(new OrderRevenue(orderDate, totalRevenue));
             }
