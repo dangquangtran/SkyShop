@@ -1,25 +1,21 @@
 package controller;
 
-import dao.OrderDetailDAO;
-import dao.PictureDao;
-import dto.BookImages;
+import dao.FeedbackDAO;
+import dto.Account;
+import dto.Feedback;
 import dto.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-
-@WebServlet(name = "CreateFeedbackController", urlPatterns = {"/CreateFeedbackController"})
-public class CreateFeedbackController extends HttpServlet {
+@WebServlet(name = "SubmitFeedbackController", urlPatterns = {"/SubmitFeedbackController"})
+public class SubmitFeedbackController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,20 +29,26 @@ public class CreateFeedbackController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String orderId= request.getParameter("orderId");
-        OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
-        List<OrderDetail> listOrderDetail = orderDetailDAO.getOrderDetailByOrderIDAndBookName(Integer.parseInt(orderId));
-        request.setAttribute("listOrderDetail", listOrderDetail);
-        PictureDao pictureDao = new PictureDao();
-        List<BookImages> listBookImg = new ArrayList<>();
-        try {
-            listBookImg = pictureDao.getBookImages();
-        } catch (SQLException ex) {
-            Logger.getLogger(CreateFeedbackController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        request.setAttribute("listBookImg", listBookImg);
-        request.setAttribute("orderId", orderId);
-        request.getRequestDispatcher("createFeedback.jsp").forward(request, response);
+        String orderId = request.getParameter("orderId");
+        String bookIdStr = request.getParameter("bookId"); // ID của sách
+            String starStr = request.getParameter("star"); // Số sao
+            String comment = request.getParameter("comment"); // Bình luận
+        
+        HttpSession session = request.getSession();
+        Account account = (Account)session.getAttribute("LOGIN_USER");
+            // Chuyển đổi các tham số từ chuỗi sang kiểu dữ liệu thích hợp
+            int bookId = Integer.parseInt(bookIdStr);
+            int star = Integer.parseInt(starStr);
+
+            // Tạo đối tượng Feedback và gán các giá trị vừa lấy
+            Feedback feedback = new Feedback();
+            feedback.setBookId(bookId);
+            feedback.setStar(star);
+            feedback.setDescription(comment);
+            feedback.setUserId(account.getUserId());
+           FeedbackDAO dao = new FeedbackDAO();
+           dao.createFeedback(feedback);
+           request.getRequestDispatcher("CreateFeedbackController?orderId="+Integer.parseInt(orderId)).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

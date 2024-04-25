@@ -111,5 +111,20 @@ public class FeedbackDAO {
         } 
         return listFeedback;
     }
+    
+    public void createFeedback(Feedback feedback) {
+        try {
+            String sql = "insert into FeedBack(Star,Description,UserId,BookId) "
+                    + "values(?,?,?,?)";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.setInt(1, feedback.getStar());
+            stmt.setString(2, feedback.getDescription());
+            stmt.setInt(3, feedback.getUserId());
+            stmt.setInt(4, feedback.getBookId());
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 }
