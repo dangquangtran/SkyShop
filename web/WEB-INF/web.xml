@@ -160,6 +160,14 @@
         <servlet-name>ManagerRevenueController</servlet-name>
         <servlet-class>controller.ManagerRevenueController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerCreateAccountController</servlet-name>
+        <servlet-class>controller.ManagerCreateAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AminCreateAccountController</servlet-name>
+        <servlet-class>controller.AminCreateAccountController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -319,6 +327,14 @@
     <servlet-mapping>
         <servlet-name>ManagerRevenueController</servlet-name>
         <url-pattern>/ManagerRevenueController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerCreateAccountController</servlet-name>
+        <url-pattern>/ManagerCreateAccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AminCreateAccountController</servlet-name>
+        <url-pattern>/AminCreateAccountController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

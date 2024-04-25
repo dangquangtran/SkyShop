@@ -58,7 +58,7 @@ public class BookDAO{
 //    }
     public List<Book> getAllListBook() {
         List<Book> listBook = new ArrayList<>();
-        String query = "Select * from Books ORDER BY PublishYear DESC";
+        String query = "Select * from Books ORDER BY BookId DESC";
         try {
                 conn = new DBContext().getConnection();
                 ps = conn.prepareStatement(query);
