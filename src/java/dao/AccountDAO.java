@@ -109,6 +109,30 @@ public class AccountDAO extends DBContext {
         }
         return ac;
     }
+    
+    public Account detailAccountInt(int id) throws ClassNotFoundException, SQLException {
+        Account ac = null;
+        try {
+            String sql = "select * from Users where UserId=? ";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int _userId = rs.getInt("UserId");
+                String _email = rs.getString("Email");
+                String _password = rs.getString("Password");
+                String _fullname = rs.getString("Fullname");
+                int _numberOfLotus = rs.getInt("Number_of_Lotus");
+                int _roleID = rs.getInt("RoleID");
+                int _status = rs.getInt("Status");
+                ac = new Account(_userId, _email, _password, _fullname, _numberOfLotus, _roleID, _status);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ac;
+    }
+    
 //    public Account detailProfileAccount(String name) throws ClassNotFoundException, SQLException {
 //        Account ac = null;
 //        try {

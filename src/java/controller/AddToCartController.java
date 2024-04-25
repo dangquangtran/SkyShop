@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  */
 public class AddToCartController extends HttpServlet {
 
-    private static final String SUCCESS = "bookDetail.jsp";
+    private static final String SUCCESS = "BookDetailController";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

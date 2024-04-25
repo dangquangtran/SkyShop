@@ -1,7 +1,10 @@
 package controller;
 
+import dao.OrderDetailDAO;
+import dto.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +31,10 @@ public class CreateFeedbackController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String orderID= request.getParameter("orderId");
+        OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
+        List<OrderDetail> listOrderDetail = orderDetailDAO.getOrderDetailByOrderIDAndBookName(Integer.parseInt(orderID));
+        request.setAttribute("listOrderDetail", listOrderDetail);
+        request.getRequestDispatcher("createFeedback.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

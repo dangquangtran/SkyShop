@@ -208,11 +208,11 @@
                                         <table class="table shopping-summery text-center clean">
                                             <thead>
                                                 <tr class="main-heading">
-                                                    <th scope="col">Image</th>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Price</th>
-                                                    <th scope="col">Quantity</th>
-                                                    <th scope="col">Remove</th>
+                                                    <th scope="col">Hình ảnh</th>
+                                                    <th scope="col">Tên sách</th>
+                                                    <th scope="col">Giá</th>
+                                                    <th scope="col">Số lượng</th>
+                                                    <th scope="col">Xóa khỏi giỏ hàng</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -246,9 +246,9 @@
                                     <div class="row mb-50">
                                         <div class="col-lg-6 col-md-12">
                                             <div class="heading_s1 mb-3">
-                                                <h4>Calculate Shipping</h4>
+                                                <h4>Giao hàng</h4>
                                             </div>
-                                            <p class="mt-15 mb-30">Flat rate: <span class="font-xl text-brand fw-900">50000đ</span></p>
+                                            <p class="mt-15 mb-30">Phí ship: <span class="font-xl text-brand fw-900">50000đ</span></p>
                                             <form class="field_form shipping_calculator">
                                                 <div class="form-row">
                                                     <div class="form-group col-lg-12">
@@ -297,21 +297,21 @@
                                         <div class="col-lg-6 col-md-12">
                                             <div class="border p-md-4 p-30 border-radius cart-totals">
                                                 <div class="heading_s1 mb-3">
-                                                    <h4>Cart Totals</h4>
+                                                    <h4>Giỏ hàng</h4>
                                                 </div>
                                                 <div class="table-responsive">
                                                     <table class="table">
                                                         <tbody>
                                                             <tr>
-                                                                <td class="cart_total_label">Total Price</td>
+                                                                <td class="cart_total_label">Giá sản phẩm</td>
                                                                 <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">${cart.getTotalMoney()}đ</span></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="cart_total_label">Shipping</td>
-                                                                <td class="cart_total_amount"> <i class="ti-gift mr-5"></i>50000đ</td>
+                                                                <td class="cart_total_label">Phí Ship</td>
+                                                                <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">50000đ</span></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="cart_total_label">Final Price</td>
+                                                                <td class="cart_total_label">Đơn giá</td>
                                                                 <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">${cart.getTotalMoney() + 50000}đ</span></strong></td>
                                                             </tr>
                                                         </tbody>
