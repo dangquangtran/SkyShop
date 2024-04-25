@@ -11,7 +11,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" type="image/png" href="img/R.png">    
-        <title>SKY SHOP PAGE</title>
+        <title>SKYSHOP </title>
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/osahan.css" rel="stylesheet">
         <link href="font/stylesheet.css" rel="stylesheet">
@@ -44,14 +44,6 @@
                         <i class="mdi mdi-book-open"></i>
                         <span>Lịch Sử Đặt Hàng</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="setting.jsp">
-                        <i class="mdi mdi-cog"></i>
-                        <span>Cài Đặt</span></a>
-                </li>
-
-
-
 
 
                 <hr class="sidebar-divider d-none d-md-block">
@@ -89,12 +81,6 @@
                                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                                     </svg>  <b class="caret"> ${sessionScope.username} </b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="AccountInfoController"><i class="fa fa-user-o"></i><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-                                            </svg> Profile</a></li>
-                                    <li><a href="settings.jsp"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
-                                            </svg>  Settings</a></li>
                                     <li class="divider"></li>
                                     <li><a href="LogoutController"><i class="material-icons">&#xE8AC;</i>Logout</a></li>
                                 </ul>
@@ -136,7 +122,7 @@
                                     </a>
                                 </li>
                             </c:if>
-                            
+
                             <li class="nav-item dropdown no-arrow mx-2 osahan-t-pu">
                                 <a class="nav-link dropdown-toggle text-dark" href="contact.jsp">
                                     <i class="mdi mdi-shopping text-danger"></i><span class="ml-2">Liên Hệ</span>
@@ -169,39 +155,6 @@
 
                         </div>
                     </nav>
-
-
-
-                    <!-- 
-                                 //SHOW THONG TIN CAC LOAI SACH
-                                 //SHOW CAC LOAI SACH + THONG TIN CHI TIET LOAI SACH + ...    
-                    -->  
-                    <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
-                        <nav>
-                            <ul>
-                                <c:forEach var="category" items="${listCategory}">
-                                    <li>
-                                        <a href="SubCateController?cateId=${category.categoryID}">${category.categoryName} <i class="fi-rs-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <c:forEach var="subCategory" items="${listSubCategory}">
-                                                <c:if test="${subCategory.categoryId == category.categoryID}">
-                                                    <li>
-                                                        <a href="ListBookController?cateId=${category.categoryID}&subId=${subCategory.subcategoryID}">
-                                                            ${subCategory.subName}
-                                                        </a>
-                                                    </li>
-                                                </c:if>
-                                            </c:forEach>
-                                        </ul>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                        </nav>
-                    </div>
-
-                    
-
-
                     <!--BANNER VIEW -->
                     <div class="container-fluid">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -222,30 +175,35 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
-                        </br>
-
-
-
-
-
-
-
-
-                        <!--SAN PHAM -->
                         <section class="py-5">
                             <div class="container-fluid">
+                                <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
+                                    <nav>
+                                        <ul>
+                                            <c:forEach var="category" items="${listCategory}">
+                                                <li>
+                                                    <a href="SubCateController?cateId=${category.categoryID}">${category.categoryName} <i class="fi-rs-angle-down"></i></a>
+                                                    <ul class="sub-menu">
+                                                        <c:forEach var="subCategory" items="${listSubCategory}">
+                                                            <c:if test="${subCategory.categoryId == category.categoryID}">
+                                                                <li>
+                                                                    <a href="ListBookController?cateId=${category.categoryID}&subId=${subCategory.subcategoryID}">
+                                                                        ${subCategory.subName}
+                                                                    </a>
+                                                                </li>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </ul>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                </br>
                                 <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
                                     <h5 class="mb-0">CÁC SẢN PHẨM NỔI BẬT </h5>
-                                    <form action="ShowAllProductController" method="post">
-                                        <div class="input-group">
-                                            <div class="input-group-append">
-                                                <input class="btn btn-primary" type="submit" value="Show All Product" name="btAction" >
-                                            </div>
-                                        </div>
-                                    </form>
                                     <a href="listSPNB.jsp" class="small font-weight-bold text-dark">SEE ALL <i class="mdi mdi-chevron-right mr-2"></i></a>
                                 </div>
-
                             </div>
                             <div class="container px-4 px-lg-5 mt-5">
                                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -421,39 +379,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col mb-5">
-                                        <div class="card h-100">
-                                            <!-- Sale badge-->
-                                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Hot</div>
-                                            <!-- Product image-->
-                                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                            <!-- Product details-->
-                                            <div class="card-body p-4">
-                                                <div class="text-center">
-                                                    <!-- Product name-->
-                                                    <h5 class="fw-bolder">Special Item</h5>
-                                                    <!-- Product reviews-->
-                                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                    </div>
-                                                    <!-- Product price-->
-                                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                                    $18.00
-                                                </div>
-                                            </div>
-                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">XEM CHI TIẾT</a></div>
-                                            </div>
-                                            <!-- Product actions-->
-                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
+
 
 
                                     <div class="col mb-5">
@@ -517,34 +443,8 @@
                                 </div>
                             </div>
                         </section>
-
-
-
-
-
-                        
-                        
-
-
-                        <!-- 
-                            Show thêm các Sản Phẩm nổi bật
-                        -->       
-
-                        <!-- 
-                    
-                    //SHOW THUC AN THEO LOAI 
-                        -->  
-
                     </div>                       
                 </div>
-
-
-
-
-
-
-
-
                 <!-- 
                  //FOOTER                
                 -->   
@@ -560,10 +460,6 @@
 
             </div>
         </div>
-
-
-
-
         <!-- Vendor JS-->
         <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
         <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>

@@ -11,8 +11,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" type="image/png" href="img/logo1.png">    
-        <title>Onlinebookstore PAGE</title>
+        <link rel="icon" type="image/png" href="img/R.png">    
+        <title>SKYSHOP</title>
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/osahan.css" rel="stylesheet">
         <link href="font/stylesheet.css" rel="stylesheet">
@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="path/to/materialize.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
+
         <!-- Template CSS -->
         <link rel="stylesheet" href="assets/css/main.css?v=3.4">
     </head>
@@ -31,7 +31,7 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
                 <a class="sidebar-brand d-flex align-items-center" href="HomeController">
                     <div class="sidebar-brand-icon">
-                        <img src="img/logo1.png" width="50" class="img-fluid">
+                        <img src="img/R.png" width="50" class="img-fluid">
                     </div>
                 </a>
                 <li class="nav-item active">
@@ -39,20 +39,13 @@
                         <i class="mdi mdi-home-variant-outline"></i>
                         <span>Trang Chủ</span></a>
                 </li>
-               
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="HistoryOrderController">
                         <i class="mdi mdi-book-open"></i>
                         <span>Lịch Sử Đặt Hàng</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="setting.jsp">
-                        <i class="mdi mdi-cog"></i>
-                        <span>Cài Đặt</span></a>
-                </li>
-
-
 
 
 
@@ -138,7 +131,7 @@
                                     </a>
                                 </li>
                             </c:if>
-                            
+
                             <li class="nav-item dropdown no-arrow mx-2 osahan-t-pu">
                                 <a class="nav-link dropdown-toggle text-dark" href="contact.jsp">
                                     <i class="mdi mdi-shopping text-danger"></i><span class="ml-2">Liên Hệ</span>
@@ -171,14 +164,6 @@
                         </div>
                     </nav>
 
-
-
-
-                    <!-- 
-                                 //SHOW THONG TIN CAC LOAI SACH
-                                 //SHOW CAC LOAI SACH + THONG TIN CHI TIET LOAI SACH + ...    
-                    -->  
-                    
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                         <nav>
                             <ul>
@@ -201,8 +186,8 @@
                             </ul>
                         </nav>
                     </div> 
-                    
-                    
+
+
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
                             <h5 class="mb-0">Thể loại sách </h5>
@@ -225,28 +210,7 @@
                             </div>
                         </c:forEach>
                     </div>
-
-
-
-                    
-
-
-                    <!--SAN PHAM -->
                     <section class="py-5">
-                        <div class="container-fluid">
-                            <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
-                                <h5 class="mb-0">CÁC SẢN PHẨM NỔI BẬT </h5>
-                                <form action="ShowAllProductController" method="post">
-                                    <div class="input-group">
-                                        <div class="input-group-append">
-                                            <input class="btn btn-primary" type="submit" value="Show All Product" name="btAction" >
-                                        </div>
-                                    </div>
-                                </form>
-                                <a href="listSPNB.jsp" class="small font-weight-bold text-dark">SEE ALL <i class="mdi mdi-chevron-right mr-2"></i></a>
-                            </div>
-
-                        </div>
                         <div class="container px-4 px-lg-5 mt-5">
                             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
@@ -517,71 +481,7 @@
                             </div>
                         </div>
                     </section>
-
-
-
-
-
-                    <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
-                            <h5 class="mb-0">CÁC BLOG NỔI BẬT</h5>
-                            <a href="listBlog.jsp" class="small font-weight-bold text-dark">SEE ALL <i class="mdi mdi-chevron-right mr-2"></i></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <a href="blogchimchaomao.jsp" class="text-decoration-none col-xl-3 col-md-3 mb-3">
-                            <div class="card" style="width: 18rem; color: black" >
-                                <img class="card-img-top" src="img/bird/chimchaomao.jpg" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">We pride ourselves on providing only the highest quality vegetables, grown using sustainable farming.Taste the difference with our premium vegetable selection today!.</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="blogchimvet.jsp" class="text-decoration-none col-xl-3 col-md-3 mb-3">
-                            <div class="card" style="width: 18rem; color: black" >
-                                <img class="card-img-top" src="img/bird/chimvet1.jpg" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">We pride ourselves on providing only the highest quality vegetables, grown using sustainable farming.Taste the difference with our premium vegetable selection today!.</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="blogchimchichchoe.jsp" class="text-decoration-none col-xl-3 col-md-3 mb-3">
-                            <div class="card" style="width: 18rem; color: black" >
-                                <img class="card-img-top" src="img/bird/chimchitcheo1.jpg" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">We pride ourselves on providing only the highest quality vegetables, grown using sustainable farming.Taste the difference with our premium vegetable selection today!.</p>
-                                </div>
-                            </div>
-                        </a>       
-                        <a href="blogchimhoami.jsp" class="text-decoration-none col-xl-3 col-md-3 mb-3">
-                            <div class="card" style="width: 18rem; color: black" >
-                                <img class="card-img-top" src="img/bird/chimhoami.jpg" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">We pride ourselves on providing only the highest quality vegetables, grown using sustainable farming.Taste the difference with our premium vegetable selection today!.</p>
-                                </div>
-                            </div>
-                        </a>   
-                    </div>
-
-
-                    <!-- 
-                        Show thêm các Sản Phẩm nổi bật
-                    -->       
-
-                    <!-- 
-                
-                //SHOW THUC AN THEO LOAI 
-                    -->  
-
                 </div>                       
-
-
-
-
-
-
-
-
 
                 <!-- 
                  //FOOTER                
@@ -602,28 +502,28 @@
 
 
 
-<!-- Vendor JS-->
-    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
-    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/plugins/slick.js"></script>
-    <script src="assets/js/plugins/jquery.syotimer.min.js"></script>
-    <script src="assets/js/plugins/wow.js"></script>
-    <script src="assets/js/plugins/jquery-ui.js"></script>
-    <script src="assets/js/plugins/perfect-scrollbar.js"></script>
-    <script src="assets/js/plugins/magnific-popup.js"></script>
-    <script src="assets/js/plugins/select2.min.js"></script>
-    <script src="assets/js/plugins/waypoints.js"></script>
-    <script src="assets/js/plugins/counterup.js"></script>
-    <script src="assets/js/plugins/jquery.countdown.min.js"></script>
-    <script src="assets/js/plugins/images-loaded.js"></script>
-    <script src="assets/js/plugins/isotope.js"></script>
-    <script src="assets/js/plugins/scrollup.js"></script>
-    <script src="assets/js/plugins/jquery.vticker-min.js"></script>
-    <!-- Template  JS -->
-    <script src="./assets/js/main.js?v=3.4"></script>
-    <script src="./assets/js/shop.js?v=3.4"></script>
+        <!-- Vendor JS-->
+        <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+        <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+        <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+        <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/plugins/slick.js"></script>
+        <script src="assets/js/plugins/jquery.syotimer.min.js"></script>
+        <script src="assets/js/plugins/wow.js"></script>
+        <script src="assets/js/plugins/jquery-ui.js"></script>
+        <script src="assets/js/plugins/perfect-scrollbar.js"></script>
+        <script src="assets/js/plugins/magnific-popup.js"></script>
+        <script src="assets/js/plugins/select2.min.js"></script>
+        <script src="assets/js/plugins/waypoints.js"></script>
+        <script src="assets/js/plugins/counterup.js"></script>
+        <script src="assets/js/plugins/jquery.countdown.min.js"></script>
+        <script src="assets/js/plugins/images-loaded.js"></script>
+        <script src="assets/js/plugins/isotope.js"></script>
+        <script src="assets/js/plugins/scrollup.js"></script>
+        <script src="assets/js/plugins/jquery.vticker-min.js"></script>
+        <!-- Template  JS -->
+        <script src="./assets/js/main.js?v=3.4"></script>
+        <script src="./assets/js/shop.js?v=3.4"></script>
         <script data-cfasync="false" src="js/email-decode.min.js"></script>
         <script src="vendor/jquery/jquery.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>

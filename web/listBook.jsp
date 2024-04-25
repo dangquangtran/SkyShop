@@ -10,8 +10,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" type="image/png" href="img/logo1.png">    
-        <title>Onlinebookstore PAGE</title>
+        <link rel="icon" type="image/png" href="img/R.png">    
+        <title>SKYSHOP</title>
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/osahan.css" rel="stylesheet">
         <link href="font/stylesheet.css" rel="stylesheet">
@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="path/to/materialize.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
+      
         <!-- Template CSS -->
         <link rel="stylesheet" href="assets/css/main.css?v=3.4">
     </head>
@@ -30,7 +30,7 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
                 <a class="sidebar-brand d-flex align-items-center" href="HomeController">
                     <div class="sidebar-brand-icon">
-                        <img src="img/logo1.png" width="50" class="img-fluid">
+                        <img src="img/R.png" width="50" class="img-fluid">
                     </div>
                 </a>
                 <li class="nav-item active">
@@ -44,15 +44,6 @@
                         <i class="mdi mdi-book-open"></i>
                         <span>Lịch Sử Đặt Hàng</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="setting.jsp">
-                        <i class="mdi mdi-cog"></i>
-                        <span>Cài Đặt</span></a>
-                </li>
-
-
-
-
 
                 <hr class="sidebar-divider d-none d-md-block">
                 <div class="text-center d-none d-md-inline">
@@ -89,12 +80,7 @@
                                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                                     </svg>  <b class="caret"> ${sessionScope.username} </b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="AccountInfoController"><i class="fa fa-user-o"></i><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-                                            </svg> Profile</a></li>
-                                    <li><a href="settings.jsp"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
-                                            </svg>  Settings</a></li>
+                            
                                     <li class="divider"></li>
                                     <li><a href="LogoutController"><i class="material-icons">&#xE8AC;</i>Logout</a></li>
                                 </ul>

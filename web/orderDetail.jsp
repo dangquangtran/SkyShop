@@ -10,8 +10,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" type="image/png" href="img/logo1.png">    
-        <title>Onlinebookstore PAGE</title>
+        <link rel="icon" type="image/png" href="img/R.png">    
+        <title>SKYSHOP</title>
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="css/osahan.css" rel="stylesheet">
         <link href="font/stylesheet.css" rel="stylesheet">
@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="path/to/materialize.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
+     
         <!-- Template CSS -->
         <link rel="stylesheet" href="assets/css/main.css?v=3.4">
     </head>
@@ -30,7 +30,7 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
                 <a class="sidebar-brand d-flex align-items-center" href="HomeController">
                     <div class="sidebar-brand-icon">
-                        <img src="img/logo1.png" width="50" class="img-fluid">
+                        <img src="img/R.png" width="50" class="img-fluid">
                     </div>
                 </a>
                 <li class="nav-item active">
@@ -44,11 +44,7 @@
                         <i class="mdi mdi-book-open"></i>
                         <span>Lịch Sử Đặt Hàng</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="setting.jsp">
-                        <i class="mdi mdi-cog"></i>
-                        <span>Cài Đặt</span></a>
-                </li>
+              
 
 
 
