@@ -25,7 +25,7 @@ public class OrderRevenueDAO {
         String query = "SELECT CONVERT(date, OrderDate) AS OrderDate, " +
                        "SUM(TotalPrice) AS TotalRevenue " +
                        "FROM Orders " +
-                       "WHERE OrderDate >= ? AND OrderDate <= ? " +
+                       "WHERE OrderDate >= ? AND OrderDate <= ? AND Status = 4" +
                        "GROUP BY CONVERT(date, OrderDate) " +
                        "ORDER BY CONVERT(date, OrderDate) ASC";
         

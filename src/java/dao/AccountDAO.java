@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import util.DBContext;
@@ -186,5 +187,25 @@ public class AccountDAO extends DBContext {
             e.printStackTrace();
         }
         return null;
+    }
+    public void updateUserLotus() throws ClassNotFoundException, SQLException {
+        String sql = "UPDATE [BookStore].[dbo].[Users] " +
+                     "SET [Number_of_Lotus] = [Number_of_Lotus] + " +
+                     "(SELECT SUM(o.[TotalPrice] / 1000) " +
+                     " FROM [BookStore].[dbo].[Orders] o " +
+                     " WHERE o.[Status] = 4 AND [Users].[UserId] = o.[UserId] " +
+                     " GROUP BY o.[UserId]) " +
+                     "WHERE EXISTS ( " +
+                     " SELECT 1 " +
+                     " FROM [BookStore].[dbo].[Orders] o " +
+                     " WHERE o.[Status] = 4 AND [Users].[UserId] = o.[UserId])";
+        
+        try (Connection conn = new DBContext().getConnection();
+             Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 }
