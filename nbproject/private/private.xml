@@ -7,6 +7,11 @@
             <file>file:/D:/Dev/BE/SkyShop/web/ManagerRevenue.jsp</file>
             <file>file:/D:/Dev/BE/SkyShop/src/java/dao/OrderRevenueDAO.java</file>
             <file>file:/D:/Dev/BE/SkyShop/src/java/controller/MainController.java</file>
+<<<<<<< HEAD
+=======
+            <file>file:/D:/Dev/BE/SkyShop/web/ManagerOrders.jsp</file>
+
+>>>>>>> 5334e34a1dcd1ea84f65d58ce4c41087e42ec5aa
         </group>
     </open-files>
 </project-private>

@@ -24,15 +24,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
         <!-- Template CSS -->
         <link rel="stylesheet" href="assets/css/main.css?v=3.4">
-        <style>
-        footer {
-            position: fixed; /* Đảm bảo footer luôn ở cuối */
-            bottom: 50px;
-            width: 100%; /* Chiếm toàn bộ chiều rộng */
-            height: 60px; /* Chiều cao cố định của footer */
-            background-color: #f8f9fa; /* Màu nền của footer */
-        }
-        </style>
+        
     </head>
     <body id="page-top">
         <div id="wrapper">
@@ -208,31 +200,22 @@
                     </div>
 
 
-                    <a href="ViewCartController" class="btn btn-primary">Back</a>
-                    <div class="container">
-                        <div class="row justify-content-center"> <!-- Căn giữa theo chiều ngang -->
-                            <div class="col-md-6">
-                                <!-- Nội dung -->
-                                <div class="mb-25">
-                                    <h4>Tạo mới địa chỉ giao hàng</h4>
+                    <a href="HistoryOrderController?status=4" class="btn btn-primary">Back</a>
+                    <div class="container mt-5">
+                        <h2>Đánh giá các sản phẩm trong đơn hàng</h2>
+                        <form action="SubmitFeedbackController" method="post">
+                            <c:forEach var="book" items="${listOrderDetail}">
+                                <div>
+                                    <h4>${book.bookName}</h4>
+                                    <label >Đánh giá sao:</label>
+                                    <input type="number" min="1" max="5" required>
+                                    <label >Bình luận:</label>
+                                    <textarea required></textarea>
                                 </div>
-                                <form action="CreateRecipientController" method="post">
-                                    <div class="form-group">
-                                        <input type="text" required name="txtAddress" placeholder="Địa chỉ giao hàng" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" required name="txtName" placeholder="Tên người nhận" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <input required type="text" name="txtPhone" placeholder="Số điện thoại người nhận" class="form-control">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Tạo mới</button> <!-- Tạo nút submit -->
-                                </form>
-                            </div>
-                        </div>
+                            </c:forEach>
+                            <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                        </form>
                     </div>
-
-
 
 
 
@@ -286,7 +269,7 @@
             <script src="js/osahan.min.js" type="e83057937dd4e85910db8985-text/javascript"></script>
             <script src="js/rocket-loader.min.js" data-cf-settings="e83057937dd4e85910db8985-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f93a1e227d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
             <script src="path/to/your/bundle.js"></script>
-            
+
     </body>
 
     <!-- Mirrored from askbootstrap.com/preview/osahan-eat/theme-sidebar/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:04:56 GMT -->

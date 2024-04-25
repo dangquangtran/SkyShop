@@ -1,5 +1,6 @@
 package controller;
 
+import dao.AccountDAO;
 import dao.BookDAO;
 import dao.FeedbackDAO;
 import dto.Account;
@@ -7,8 +8,11 @@ import dto.Book;
 import dto.Feedback;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,16 +37,28 @@ public class BookDetailController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = "bookDetail.jsp";
         int bookId = Integer.parseInt(request.getParameter("bookId"));
-        HttpSession session = request.getSession();
-        Account account = (Account)session.getAttribute("LOGIN_USER");
         dao.BookDAO dao = new BookDAO();
         Book book = dao.getBookByID(bookId);
+        AccountDAO accountDao = new AccountDAO();
+        
+        List<Account> listAccount = new ArrayList<>();
         FeedbackDAO feedbackDao = new FeedbackDAO();
         List<Feedback> listFeedback = new ArrayList<>();
         listFeedback = feedbackDao.getALLFeedbackByBookID(bookId);
+        for (Feedback feedback : listFeedback) {
+            Account account = new Account();
+            try {
+                account =accountDao.detailAccountInt(feedback.getUserId());
+                listAccount.add(account);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(BookDetailController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(BookDetailController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         request.setAttribute("book", book);
         request.setAttribute("listFeedback", listFeedback);
-        request.setAttribute("fullName", account.getFullname());
+        request.setAttribute("listAccount", listAccount);
         request.getRequestDispatcher(url).forward(request, response);
     }
 
