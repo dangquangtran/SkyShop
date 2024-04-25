@@ -20,7 +20,7 @@
     <body id="page-top">
         <div id="wrapper">
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-                <a class="sidebar-brand d-flex align-items-center" href="ManagerAccountController">
+                <a class="sidebar-brand d-flex align-items-center" href="#">
                     <div class="sidebar-brand-icon">
                         <img src="img/R.png" class="img-fluid">
                     </div>
@@ -31,13 +31,6 @@
                         <i class="mdi mdi-home-variant-outline"></i>
                         <span>TRANG CHỦ</span></a>
                 </li>
-                <c:if test="${sessionScope.roleID == 2}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" >
-                            <i class="mdi mdi-book-open"></i>
-                            <span>DASHBOARD</span></a>
-                    </li>
-                </c:if>
                 <hr class="sidebar-divider d-none d-md-block">
                 <div class="text-center d-none d-md-inline">
                     <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -209,13 +202,15 @@
                                     <div class="table-title">
                                         <div class="row">
                                             <div class="col-xs-5">
-                                                <h2>Book <b>Management</b></h2>
+                                                <h2>Orders <b>Management</b></h2>
                                             </div>
+
                                             </br>
                                             </br>
                                             </br>
+
                                             <form action="MainController" method="post">
-                                                   
+
                                                 <div class="input-group-prepend ">
                                                     <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage Account" name="btAction" >
@@ -223,77 +218,48 @@
                                                     <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage Category" name="btAction" >
                                                     </div>
-                                                  <div class="input-group-append">
+                                                    <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage SubCategory" name="btAction" >
                                                     </div>  
                                                     <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Manage Orders" name="btAction" >
+                                                        <input class="btn btn-primary" type="submit" value="Manage Product" name="btAction" >
                                                     </div>
                                                     <div class="input-group-append">
                                                         <input class="btn btn-primary" type="submit" value="Manage FeedBack" name="btAction" >
                                                     </div>
-                                                   <div class="input-group-append">
-                                                        <input class="btn btn-primary" type="submit" value="Manage Revenue" name="btAction" >
+                                                    <div class="input-group-append">
+                                                        <input class="btn btn-primary" type="submit" value="Manage Orders" name="btAction" >
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
-                                    <form action="MainController">
-                                  
-                                            <div>
-                                                <input type="submit" value="Create Product" name="btAction" /> 
-                                            </div>
-                                            </br>   
-                                    </form>
+                                    </br>
+                                    <div>
+                                        <form action="ManagerRevenueController" method="POST">
+                                            Từ ngày: <input type="date" name="startDate" value="${param.startDate}"/>- Đến ngày: <input type="date" name="endDate" value="${param.endDate}" />
+                                            <button type="submit">Xem Doanh Thu</button>
+                                        </form>
+                                    </div>
+                                    </br>
+
                                     <table class="table table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th>BookId</th>
-                                                <th>BookName</th>  
-                                                <th>Description</th>
-                                                <th>AuthorName</th>
-                                                <th>TranslatorName</th>
-                                                <th>PublishDate</th>
-                                                <th>Quantity</th>
-                                                <th>UnitPrice</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>OrderDate</th>
+                                                <th>TotalPrice</th>  
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach items="${list}" var="bo" varStatus="counter">
-                                            <form action="MainController" method="post">
-                                               <tr>
-                                                        <td>${bo.bookId}</td>
-                                                        <td>${bo.bookName}</td>
-                                                        <td>${bo.description}</td>
-                                                        <td>${bo.authorName}</td>
-                                                        <td>${bo.translatorName}</td>
-                                                        <td>${bo.publishDate}</td>
-                                                        <td>${bo.quantity}</td>
-                                                        <td>${bo.unitPrice}</td>
-                                                        <c:if test="${bo.status == 1}">
-                                                            <td>Đang Hoạt Động</td>
-                                                        </c:if>
-                                                        <c:if test="${bo.status == 2}">
-                                                            <td>Ngừng Hoạt Động</td>
-                                                        </c:if>  
-                                                        <td>
-                                                            <button>
-                                                                <a href="UpdateProductController?ID=${bo.bookId}" > EDIT </a>
-                                                            </button>
-                                                        </td>
-                                                        <td>
-                                                            <button>
-                                                                <a href="DeleteProductController?ID=${bo.bookId}" > DELETE </a>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                            </form>
-                                        </c:forEach>
+                                            <c:forEach items="${revlist}" var="revenue">
+                                                <tr>
+                                                    <td>${revenue.getOrderDate()}</td>
+                                                    <td>${revenue.getTotalRevenue()}</td>
+                                                </tr>
+                                            </c:forEach>
                                         </tbody>
                                     </table>
+
                                 </div>
                             </div>      
                         </div>   
