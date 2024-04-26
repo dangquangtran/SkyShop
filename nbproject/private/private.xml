@@ -3,15 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Dev/BE/SkyShop/src/java/controller/ManagerRevenueController.java</file>
-            <file>file:/D:/Dev/BE/SkyShop/web/ManagerRevenue.jsp</file>
-            <file>file:/D:/Dev/BE/SkyShop/src/java/dao/OrderRevenueDAO.java</file>
-            <file>file:/D:/Dev/BE/SkyShop/src/java/controller/MainController.java</file>
-<<<<<<< HEAD
-=======
-            <file>file:/D:/Dev/BE/SkyShop/web/ManagerOrders.jsp</file>
-
->>>>>>> 5334e34a1dcd1ea84f65d58ce4c41087e42ec5aa
+            <file>file:/D:/Dev/BE/SkyShop/src/java/controller/HomeController.java</file>
+            <file>file:/D:/Dev/BE/SkyShop/web/signin.jsp</file>
+            <file>file:/D:/Dev/BE/SkyShop/web/signup.jsp</file>
+            <file>file:/D:/Dev/BE/SkyShop/web/homepage.jsp</file>
+            <file>file:/D:/Dev/BE/SkyShop/web/viewCart.jsp</file>
         </group>
     </open-files>
 </project-private>

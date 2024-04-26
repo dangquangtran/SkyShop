@@ -130,14 +130,7 @@
                             </li>
                         </ul>
                         <div class="ml-auto">
-                            <form class="d-none d-sm-inline-block form-inline mx-2 my-2 my-md-0 mw-100 navbar-search" action="MainController">
-                                <div class="input-group">
-                                    <input type="text" class="form-control bg-light text-dark font-weight-bold" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="txtSearchValue" value="">
-                                    <div class="input-group-append">
-                                        <input class="btn btn-primary" type="submit" value="Find Product" name="btAction" >
-                                    </div>
-                                </div>
-                            </form>
+
                             <a href="ViewCartController" class="btn btn-outline-dark">
                                 <i class="bi-cart-fill me-1"></i>
                                 Cart
@@ -159,12 +152,13 @@
                     <div class="container-fluid">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="img/banner/vn1.jpg" alt="First slide" height="450px">
-                                </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/banner/vn2.jpg" alt="Second slide" height="450px">
+                                    <img class="d-block w-100" src="img/banner/Hoisach.jpg" alt="First slide" height="450px">
                                 </div>
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="img/banner/Banner-sa.bmp" alt="Second slide" height="450px">
+                                </div>
+
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -201,6 +195,7 @@
                                 </div>
                                 </br>
                             </div>
+
                             <div class="container px-4 px-lg-5 mt-5">
                                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                                     <c:forEach var="list" items="${list}">
@@ -227,7 +222,7 @@
                                                         </div>
                                                         <!-- Product price-->
                                                         <span class="text-muted text-decoration-line-through"></span>
-                                                        ${list.unitPrice}
+                                                        ${list.unitPrice} vnđ
                                                     </div>
                                                 </div>
                                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">

@@ -80,7 +80,7 @@
 
                         <div class="mb-3">
                             <p class="text-center">BẠN ĐÃ CÓ TÀI KHOẢN ? <a href="signin.jsp" class="text-danger text-decoration-none">ĐĂNG NHẬP</a></p>
-                            <p class="text-center">VỀ <a href="index.jsp" class="text-danger text-decoration-none">TRANG CHỦ</a>
+                            <p class="text-center">VỀ <a href="HomeController" class="text-danger text-decoration-none">TRANG CHỦ</a>
                         </div>
 
 

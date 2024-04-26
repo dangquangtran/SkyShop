@@ -62,7 +62,7 @@
 
                         <p class="text-center">
                             <a href="forgot.jsp" class="text-red">QUÊN MẬT KHẨU ?</a>
-                            <a href="index.jsp" class="text-red" >&nbsp&nbsp&nbsp&nbsp TRANG CHỦ</a>
+                            <a href="HomeController" class="text-red" >&nbsp&nbsp&nbsp&nbsp TRANG CHỦ</a>
                         </p>
                         <p class="text-center">
                             <a href="signup.jsp" class="btn btn-light btn-block mb-2">TẠO TÀI KHOẢN</a>

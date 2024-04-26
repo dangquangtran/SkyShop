@@ -40,6 +40,17 @@ public class HomeController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        String bookName = request.getParameter("txtSearchValue");
+        if (bookName == null) {
+            bookName = "";
+        }
+        BookDAO bookDAO = new BookDAO();
+        List<Book> searchResult = bookDAO.searchBooksByName(bookName);
+        request.setAttribute("searchResult", searchResult);
+        
+        
+        
         String url = "homepage.jsp";
         dao.CategoryDAO cateDao = new CategoryDAO();
         dao.SubCategoryDAO subDao = new SubCategoryDAO();

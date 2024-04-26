@@ -27,8 +27,8 @@ public class MainController extends HttpServlet {
     private final String CREATE = "CreateNewAccountController";
     private final String SHOW_ALL_PRODUCT ="ShowAllProductController";
     
-    // Search accounts
-    private final String SEARCH = "SearchAccountController";
+    // Search Book
+    private final String SEARCH_BOOK = "SearchBookController";
     
     // function admin
     private final String ADMIN_ACCOUNT = "AdminController";
@@ -58,8 +58,6 @@ public class MainController extends HttpServlet {
     private final String MANAGER_UPDATE_ORDERS = "ManagerUpdateOrdersController";
     private final String UPDATE_BLOG = "UpdateBlogController";
     private final String UPDATE_PRODUCT = "UpdateProductController";
-   
-    
     
     
     // function staff
@@ -70,7 +68,6 @@ public class MainController extends HttpServlet {
     private final String STAFF_UPDATE_PRODUCT = "StaffUpdateProductController";
     private final String STAFF_CREATE_PRODUCT = "StaffCreateProductController";
     private final String STAFF_UPDATE_IMG_PRODUCT = "StaffUpdateImageController";
-  
     private final String STAFF_IMAGE = "StaffImageController";
     
     
@@ -153,6 +150,8 @@ public class MainController extends HttpServlet {
                 url = STAFF_IMAGE;
             }else if (button.equals("StaffUpdateImage")){
                 url = STAFF_UPDATE_IMG_PRODUCT;
+            }else if (button.equals("Find Product")){
+                url = SEARCH_BOOK;
             }
             
             

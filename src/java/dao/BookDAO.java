@@ -19,9 +19,10 @@ import static util.DBContext.getConnection;
  *
  * @author DELL
  */
-public class BookDAO{
-    Connection conn= null;
-    PreparedStatement ps =null;
+public class BookDAO {
+
+    Connection conn = null;
+    PreparedStatement ps = null;
     ResultSet rs = null;
 //    public Book findProductForCart(String Id, int quantity) throws ClassNotFoundException, SQLException {
 //        try {
@@ -56,86 +57,86 @@ public class BookDAO{
 //        } 
 //        return listProduct;
 //    }
+
     public List<Book> getAllListBook() {
         List<Book> listBook = new ArrayList<>();
         String query = "Select * from Books ORDER BY BookId DESC";
         try {
-                conn = new DBContext().getConnection();
-                ps = conn.prepareStatement(query);
-                rs = ps.executeQuery();
-                while (rs.next()) {
-                    listBook.add(new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9),rs.getInt(10), rs.getInt(11), rs.getInt(12),
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listBook.add(new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11), rs.getInt(12),
                         rs.getInt(13), rs.getInt(14)));
-                }
-            
-        } 
-        catch (Exception e) {
-            
+            }
+
+        } catch (Exception e) {
+
         }
         return listBook;
     }
 
-    public Book getBookByID(int id){
+    public Book getBookByID(int id) {
         String query = "Select * from Books where BookId = ?";
         try {
-                conn = new DBContext().getConnection();
-                ps = conn.prepareStatement(query);
-                ps.setInt(1, id);
-                rs = ps.executeQuery();
-                if (rs.next()) {
-                    return new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9),rs.getInt(10), rs.getInt(11), rs.getInt(12),
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11), rs.getInt(12),
                         rs.getInt(13), rs.getInt(14));
-                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
         return null;
     }
-    
-    public List<Book> getBookByCateAndSubCate(int cateId, int subCateId){
+
+    public List<Book> getBookByCateAndSubCate(int cateId, int subCateId) {
         List<Book> listBook = new ArrayList<>();
         String query = "Select * from Books where CategoryId=? and SubCategoryId = ?";
         try {
-                conn = new DBContext().getConnection();
-                ps = conn.prepareStatement(query);
-                ps.setInt(1, cateId);
-                ps.setInt(2, subCateId);
-                rs = ps.executeQuery();
-                while (rs.next()) {
-                    listBook.add(new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9),rs.getInt(10), rs.getInt(11), rs.getInt(12),
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, cateId);
+            ps.setInt(2, subCateId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listBook.add(new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11), rs.getInt(12),
                         rs.getInt(13), rs.getInt(14)));
-                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
         return listBook;
     }
-    
-    public Book getBookID(String id){
+
+    public Book getBookID(String id) {
         String query = "Select * from Books where BookId = ?";
         try {
-                conn = new DBContext().getConnection();
-                ps = conn.prepareStatement(query);
-                ps.setString(1, id);
-                rs = ps.executeQuery();
-                if (rs.next()) {
-                    return new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9),rs.getInt(10), rs.getInt(11), rs.getInt(12),
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11), rs.getInt(12),
                         rs.getInt(13), rs.getInt(14));
-                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
         return null;
     }
-    
-      public Book updateBook(Book edittedItem) {
+
+    public Book updateBook(Book edittedItem) {
         try {
             String sql = "update Books set BookName=?, Description=?, AuthorName=?, PublishingCompany=?,"
-                    +  "IssusingCompany=?, TranslatorName=?, PublishYear=?, Quantity=?, SubCategoryId=?, UnitPrice=?, CategoryID=?, Status=?, TotalFeedback=?  where BookId=? ";
+                    + "IssusingCompany=?, TranslatorName=?, PublishYear=?, Quantity=?, SubCategoryId=?, UnitPrice=?, CategoryID=?, Status=?, TotalFeedback=?  where BookId=? ";
             PreparedStatement stmt = getConnection().prepareStatement(sql);
             stmt.setString(1, edittedItem.getBookName());
             stmt.setString(2, edittedItem.getDescription());
@@ -153,45 +154,43 @@ public class BookDAO{
             stmt.setInt(14, edittedItem.getBookId());
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
-   
-            return edittedItem;
-        }
+
+                return edittedItem;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-         
-    //Create  
-  public Book createBook(Book newItem) throws ClassNotFoundException {
-    try {
-        String sql = "INSERT INTO Books (BookName, Description, AuthorName, PublishingCompany, IssusingCompany, TranslatorName, PublishYear, Quantity, SubCategoryId, UnitPrice, CategoryID, Status, TotalFeedback) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement stmt = getConnection().prepareStatement(sql);
-        stmt.setString(1, newItem.getBookName());
-        stmt.setString(2, newItem.getDescription());
-        stmt.setString(3, newItem.getAuthorName());
-        stmt.setString(4, newItem.getPublishingCompany());
-        stmt.setString(5, newItem.getIssusingCompany());
-        stmt.setString(6, newItem.getTranslatorName());
-        stmt.setInt(7, newItem.getPublishDate());
-        stmt.setInt(8, newItem.getQuantity());
-        stmt.setInt(9, newItem.getSubCategoryId());
-        stmt.setFloat(10, newItem.getUnitPrice());
-        stmt.setInt(11, newItem.getCategoryId());
-        stmt.setInt(12, newItem.getStatus());
-        stmt.setInt(13, newItem.getTotalFeedback());
-        stmt.executeUpdate();
-    } catch (SQLException e) {
-        // Log or throw the exception for proper error handling
-        e.printStackTrace();
-    }
-    return null;
-}
 
-   
-   
-   public Book deleteBook(String id) {
+    //Create  
+    public Book createBook(Book newItem) throws ClassNotFoundException {
+        try {
+            String sql = "INSERT INTO Books (BookName, Description, AuthorName, PublishingCompany, IssusingCompany, TranslatorName, PublishYear, Quantity, SubCategoryId, UnitPrice, CategoryID, Status, TotalFeedback) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.setString(1, newItem.getBookName());
+            stmt.setString(2, newItem.getDescription());
+            stmt.setString(3, newItem.getAuthorName());
+            stmt.setString(4, newItem.getPublishingCompany());
+            stmt.setString(5, newItem.getIssusingCompany());
+            stmt.setString(6, newItem.getTranslatorName());
+            stmt.setInt(7, newItem.getPublishDate());
+            stmt.setInt(8, newItem.getQuantity());
+            stmt.setInt(9, newItem.getSubCategoryId());
+            stmt.setFloat(10, newItem.getUnitPrice());
+            stmt.setInt(11, newItem.getCategoryId());
+            stmt.setInt(12, newItem.getStatus());
+            stmt.setInt(13, newItem.getTotalFeedback());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            // Log or throw the exception for proper error handling
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Book deleteBook(String id) {
         try {
             String sql = "delete from Books where BookId =? ";
             PreparedStatement stmt = getConnection().prepareStatement(sql);
@@ -204,41 +203,70 @@ public class BookDAO{
         return null;
     }
 
-   public List<Book> getAllListBook1() {
+    public List<Book> getAllListBook1() {
         List<Book> listBook = new ArrayList<>();
         String query = "Select * from Books where CategoryID = ? ORDER BY BookId DESC";
         try {
-                conn = new DBContext().getConnection();
-                ps = conn.prepareStatement(query);
-                rs = ps.executeQuery();
-                while (rs.next()) {
-                    listBook.add(new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9),rs.getInt(10), rs.getInt(11), rs.getInt(12),
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listBook.add(new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11), rs.getInt(12),
                         rs.getInt(13), rs.getInt(14)));
-                }
-            
-        } 
-        catch (Exception e) {
-            
+            }
+
+        } catch (Exception e) {
+
         }
         return listBook;
     }
-     public List<Book> getBookByCate(int cateId){
+
+    public List<Book> getBookByCate(int cateId) {
         List<Book> listBook = new ArrayList<>();
         String query = "Select * from Books where CategoryId=? ";
         try {
-                conn = new DBContext().getConnection();
-                ps = conn.prepareStatement(query);
-                ps.setInt(1, cateId);
-                rs = ps.executeQuery();
-                while (rs.next()) {
-                    listBook.add(new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9),rs.getInt(10), rs.getInt(11), rs.getInt(12),
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, cateId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listBook.add(new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11), rs.getInt(12),
                         rs.getInt(13), rs.getInt(14)));
-                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
         return listBook;
+    }
+
+    public List<Book> searchBooksByName(String bookName) {
+        List<Book> searchResult = new ArrayList<>();
+        String query = "SELECT * FROM Books WHERE BookName LIKE ?";
+
+        try (Connection conn = new DBContext().getConnection();
+                PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, "%" + bookName + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                // Tạo đối tượng Book từ kết quả truy vấn và thêm vào danh sách kết quả tìm kiếm
+                Book book = new Book();
+                book.setBookId(rs.getInt("BookId"));
+                book.setBookName(rs.getString("BookName"));
+                book.setDescription(rs.getString("Description"));
+                book.setAuthorName(rs.getString("AuthorName"));
+                book.setPublishingCompany(rs.getString("PublishingCompany"));
+                book.setIssusingCompany(rs.getString("IssusingCompany"));
+                book.setTranslatorName(rs.getString("TranslatorName"));
+                // Thêm các trường thông tin sách khác tương tự vào đối tượng Book
+                searchResult.add(book);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            // Xử lý các ngoại lệ nếu cần
+        }
+
+        return searchResult;
     }
 }
