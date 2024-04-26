@@ -300,8 +300,12 @@
                                                                     <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">${cart.getTotalMoney()}đ</span></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="cart_total_label">Phí Ship</td>
+                                                                    <td class="cart_total_label">Phí Ship</td>      
                                                                     <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">50000đ</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="cart_total_label">Phương thức thanh toán</td>
+                                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">Tiền mặt</span></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="cart_total_label">Đơn giá</td>

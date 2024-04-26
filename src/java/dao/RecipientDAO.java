@@ -61,7 +61,7 @@ public class RecipientDAO {
     }
 
     public Recipient getRecipientByOrderID(int orderID) {
-        String query = "SELECT r.recipientID, r.destAddress, r.recipientName, r.phoneNumber "
+            String query = "SELECT r.* "
                 + "FROM Orders o "
                 + "JOIN Recipient r ON o.RecipientId = r.recipientID "
                 + "WHERE o.orderID = ?";

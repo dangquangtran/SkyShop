@@ -31,6 +31,7 @@ import javax.servlet.http.HttpSession;
 public class ManagerImageController extends HttpServlet {
 
     private final String MANAGER_PAGE = "ManagerBookImage.jsp";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -45,24 +46,19 @@ public class ManagerImageController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = MANAGER_PAGE;
 
-        try {
-          
-            HttpSession session = request.getSession();
-            PictureDao dao = new PictureDao();
-            List<BookImages> listItem = dao.getBookImages();
-            request.setAttribute("list", listItem);
-            
-            BookDAO adao = new BookDAO();
-            List<Book> listItemss = adao.getAllListBook();
-            request.setAttribute("aclist", listItemss);
+        HttpSession session = request.getSession();
+        PictureDao dao = new PictureDao();
+        List<BookImages> listItem = dao.getBookImages();
+        request.setAttribute("list", listItem);
 
-            url = MANAGER_PAGE;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
-        }
+        BookDAO adao = new BookDAO();
+        List<Book> listItemss = adao.getAllListBook();
+        request.setAttribute("aclist", listItemss);
+
+        url = MANAGER_PAGE;
+
+        RequestDispatcher rd = request.getRequestDispatcher(url);
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

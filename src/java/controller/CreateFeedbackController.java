@@ -39,11 +39,6 @@ public class CreateFeedbackController extends HttpServlet {
         request.setAttribute("listOrderDetail", listOrderDetail);
         PictureDao pictureDao = new PictureDao();
         List<BookImages> listBookImg = new ArrayList<>();
-        try {
-            listBookImg = pictureDao.getBookImages();
-        } catch (SQLException ex) {
-            Logger.getLogger(CreateFeedbackController.class.getName()).log(Level.SEVERE, null, ex);
-        }
         request.setAttribute("listBookImg", listBookImg);
         request.setAttribute("orderId", orderId);
         request.getRequestDispatcher("createFeedback.jsp").forward(request, response);

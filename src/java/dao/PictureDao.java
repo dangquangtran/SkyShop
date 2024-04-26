@@ -20,12 +20,30 @@ import static util.DBContext.getConnection;
 public class PictureDao {
     
     
-    public List<BookImages> getBookImages() throws SQLException {
+    public List<BookImages> getBookImages()  {
         List<BookImages> listBook = new ArrayList<BookImages>();
         PreparedStatement pst = null;
         ResultSet rs = null;
         try {
                 pst = getConnection().prepareStatement("SELECT * FROM BookImages");
+                rs = pst.executeQuery();
+                while (rs.next()) {
+                    listBook.add(new BookImages(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4)));
+                }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+        return listBook;
+    }
+    
+    public List<BookImages> getBookImagesByBookID(int bookId){
+        List<BookImages> listBook = new ArrayList<BookImages>();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+                pst = getConnection().prepareStatement("SELECT * FROM BookImages where BookId = ?");
+                pst.setInt(1,bookId);
                 rs = pst.executeQuery();
                 while (rs.next()) {
                     listBook.add(new BookImages(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4)));

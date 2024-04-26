@@ -1,16 +1,27 @@
- package controller;
+package controller;
 
+import dao.BookDAO;
+import dao.OrderDAO;
 import dao.OrderDetailDAO;
+import dao.PictureDao;
+import dao.RecipientDAO;
+import dto.Account;
+import dto.BookImages;
+import dto.Order;
 import dto.OrderDetail;
+import dto.Recipient;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "OrderDetailController", urlPatterns = {"/OrderDetailController"})
 public class OrderDetailController extends HttpServlet {
@@ -28,11 +39,30 @@ public class OrderDetailController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = "orderDetail.jsp";
-        String orderId= request.getParameter("orderId");
-        OrderDetailDAO dao = new OrderDetailDAO();
+        String orderId = request.getParameter("orderId");
+        OrderDAO orderDao = new OrderDAO();
+        Order order = orderDao.detailOrdersByOrderID(Integer.parseInt(orderId));
+        request.setAttribute("order", order);
+
+        OrderDetailDAO orderDetailDao = new OrderDetailDAO();
         List<OrderDetail> listOrderDetail = new ArrayList<>();
-        listOrderDetail = dao.getOrderDetailByOrderID(Integer.parseInt(orderId));
+        listOrderDetail = orderDetailDao.getOrderDetailByOrderIDAndBookName(Integer.parseInt(orderId));
         request.setAttribute("listOrderDetail", listOrderDetail);
+
+        PictureDao pictureDao = new PictureDao();
+        List<BookImages> listBookImage = pictureDao.getBookImages();
+
+// Đặt map này vào request để sử dụng trong JSP
+        request.setAttribute("listBookImage", listBookImage);
+
+        HttpSession session = request.getSession();
+        Account user = (Account) session.getAttribute("LOGIN_USER");
+        request.setAttribute("user", user);
+
+        RecipientDAO recipientDAO = new RecipientDAO();
+        Recipient recipient = recipientDAO.getRecipientByOrderID(Integer.parseInt(orderId));
+        request.setAttribute("recipient", recipient);
+
         request.getRequestDispatcher(url).forward(request, response);
     }
 
