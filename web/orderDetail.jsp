@@ -132,7 +132,7 @@
                                     </a>
                                 </li>
                             </c:if>
-                            
+
                             <li class="nav-item dropdown no-arrow mx-2 osahan-t-pu">
                                 <a class="nav-link dropdown-toggle text-dark" href="contact.jsp">
                                     <i class="mdi mdi-shopping text-danger"></i><span class="ml-2">Liên Hệ</span>
@@ -171,28 +171,63 @@
                     <!-- 
                                  //SHOW THONG TIN OrderDetail
                     -->  
-                    <h2>Order Detail</h2>
-                    <c:choose>
-                        <c:when test="${not empty listOrderDetail}">
-                            <div class="card-container"> <!-- Container chứa các thẻ card -->
-                                <c:forEach var="detail" items="${listOrderDetail}">
-                                    <div class="card"> <!-- Mỗi thẻ là một chi tiết đơn hàng -->
-                                        <div class="card-header">
-                                            Book ID: ${detail.bookId}
-                                        </div>
-                                        <div class="card-body">
-                                            <p>Quantity: ${detail.quantity}</p>
-                                            <p>Unit Price: ${detail.unitPrice}</p>
-                                            <p>Total Price: ${detail.totalPrice}</p>
-                                        </div>
-                                    </div>
-                                </c:forEach>
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <p>No order details found.</p>
-                        </c:otherwise>
-                    </c:choose>
+                    <div class="container mt-5">
+    <h2 class="text-center">Thông tin chi tiết đơn hàng</h2>
+
+    <!-- Thông tin người dùng -->
+    <div class="mb-4">
+        <h3>Người dùng:</h3>
+        <p><strong>Tên:</strong> ${user.fullname}</p>
+        <p><strong>Email:</strong> ${user.email}</p>
+    </div>
+
+    <!-- Thông tin đơn hàng -->
+    <div class="mb-4">
+        <h3>Đơn hàng:</h3>
+        <p><strong>Ngày:</strong> ${order.orderDate}</p>
+        <p><strong>Tổng giá trị:</strong> ${order.totalPrice}đ</p>
+    </div>
+
+    <!-- Thông tin người nhận -->
+    <div class="mb-4">
+        <h3>Người nhận:</h3>
+        <p><strong>Tên:</strong> ${recipient.recipientName}</p>
+        <p><strong>Địa chỉ:</strong> ${recipient.destAddress}</p>
+        <p><strong>Số điện thoại:</strong> ${recipient.phoneNumber}</p>
+    </div>
+
+    <!-- Thông tin chi tiết đơn hàng -->
+    <div class="mb-4">
+        <h3>Chi tiết đơn hàng:</h3>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Hình ảnh</th>
+                    <th>Tên sách</th>
+                    <th>Số lượng</th>
+                    <th>Tổng giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="orderDetail" items="${listOrderDetail}">
+                    <tr>
+                        <td>
+                            <c:forEach var="bookImage" items="${listBookImage}">
+                                <c:if test="${bookImage.getBookId() == orderDetail.bookId}">
+                                    <img src="${bookImage.getUrl()}" alt="Hình ảnh sách" class="img-thumbnail" style="width: 50px; height: 50px;" />
+                                </c:if>
+                            </c:forEach>
+                        </td>
+                        <td>${orderDetail.bookName}</td>
+                        <td>${orderDetail.quantity}</td>
+                        <td>${orderDetail.totalPrice}đ</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 
 
 

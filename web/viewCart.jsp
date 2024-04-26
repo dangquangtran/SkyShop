@@ -194,6 +194,7 @@
                                                 <tbody>
                                                     <c:forEach var="bookEntry" items="${cart.cart}">
                                                         <tr>
+<<<<<<< HEAD
                                                             <td class="image product-thumbnail">
                                                                 <c:forEach var="blist" items="${blist}">
                                                                     <c:if test="${bookEntry.value.bookId == blist.getBookId()}">
@@ -201,6 +202,9 @@
                                                                     </c:if>
                                                                 </c:forEach>
                                                             </td>
+=======
+                                                            <td class="image product-thumbnail"><img src="assets/imgs/shop/product-1-2.jpg" alt="#"></td>
+>>>>>>> d6964513119860b95525848888c7cfde96785b63
                                                             <td class="product-des product-name">
                                                                 <h5 class="product-name"><a href="shop-product-right.html">${bookEntry.value.bookName}</a></h5>
                                                                 <p class="font-xs">${bookEntry.value.authorName}<br> ${bookEntry.value.publishingCompany}
@@ -214,6 +218,7 @@
                                                                     <c:if test="${not empty errorMessage}">
                                                                     <div class="alert alert-danger">
                                                                         <strong>Error:</strong> ${errorMessage}
+<<<<<<< HEAD
                                                                     </div>
                                                                 </c:if>
                                                             </td>
@@ -303,6 +308,94 @@
                                                         <i class="fi-rs-box-alt mr-10"></i> CheckOut
                                                     </button>
                                                 </div>
+=======
+                                                                    </div>
+                                                                </c:if>
+                                                            </td>
+                                                            <td class="action" data-title="Remove"><a href="DeleteBookCartController?bookId=${bookEntry.value.bookId}" class="text-muted"><i class="fi-rs-trash"></i></a></td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
+                                        <div class="row mb-50">
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="heading_s1 mb-3">
+                                                    <h4>Giao hàng</h4>
+                                                </div>
+                                                <p class="mt-15 mb-30">Phí ship: <span class="font-xl text-brand fw-900">50000đ</span></p>
+                                                <form class="field_form shipping_calculator">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-lg-12">
+                                                            <div class="custom_select">
+                                                                <select class="form-control" name = "recipientID">
+                                                                    <c:forEach var="recipient" items="${listRecipient}">
+                                                                        <option value="${recipient.recipientID}">
+                                                                            Địa chỉ giao hàng: ${recipient.destAddress}, 
+                                                                            Tên người nhận: ${recipient.recipientName},
+                                                                            Số điện thoại: 0${recipient.phoneNumber}
+                                                                        </option>
+                                                                    </c:forEach>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-row">
+                                                        <div class="form-group col-lg-12">
+                                                            <a href="createRecipient.jsp" class="btn  btn-sm"><i class="fi-rs-shuffle mr-10"></i>Thêm địa chỉ giao hàng</a>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+
+                                                <div class="mb-30 mt-50">
+                                                    <div class="heading_s1 mb-3">
+                                                        <h4>Bạn có: ${bupsen} búp sen. Bạn có muốn sử dụng không?</h4>
+                                                    </div>
+
+                                                    <!-- Checkbox to choose whether to use "búp sen" -->
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="useBupSen" value="yes">
+                                                        <label class="form-check-label" for="useBupSen">Sử dụng búp sen</label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="border p-md-4 p-30 border-radius cart-totals">
+                                                    <div class="heading_s1 mb-3">
+                                                        <h4>Giỏ hàng</h4>
+                                                    </div>
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="cart_total_label">Giá sản phẩm</td>
+                                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">${cart.getTotalMoney()}đ</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="cart_total_label">Phí Ship</td>      
+                                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">50000đ</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="cart_total_label">Phương thức thanh toán</td>
+                                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">Tiền mặt</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="cart_total_label">Đơn giá</td>
+                                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">${cart.getTotalMoney() + 50000}đ</span></strong></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <button type="submit" class="btn"> 
+                                                        <i class="fi-rs-box-alt mr-10"></i> CheckOut
+                                                    </button>
+                                                </div>
+>>>>>>> d6964513119860b95525848888c7cfde96785b63
                                             </div>
                                         </div>
                                     </div>

@@ -20,9 +20,10 @@ import javax.naming.NamingException;
 public class Test {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         dao.SubCategoryDAO daoo = new SubCategoryDAO();
-        dao.BookDAO daooo= new BookDAO();
-        System.out.println(daoo.getListSubCategoryByCategoryId(2));
-    }}
+        dao.RecipientDAO daooo= new dao.RecipientDAO();
+        System.out.println(daooo.getRecipientByOrderID(31));
+    }
+}
 
     
 

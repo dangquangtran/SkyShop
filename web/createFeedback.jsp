@@ -24,7 +24,7 @@
       
         <!-- Template CSS -->
         <link rel="stylesheet" href="assets/css/main.css?v=3.4">
-        
+
     </head>
     <body id="page-top">
         <div id="wrapper">
@@ -165,6 +165,7 @@
                         </div>
                     </nav>
 
+<<<<<<< HEAD
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                         <nav>
                             <ul>
@@ -187,24 +188,51 @@
                             </ul>
                         </nav>
                     </div>
+=======
+
+
+
+                    <!-- 
+                                 //SHOW THONG TIN Cart
+                    -->  
+
+>>>>>>> d6964513119860b95525848888c7cfde96785b63
 
 
                     <a href="HistoryOrderController?status=4" class="btn btn-primary">Back</a>
                     <div class="container mt-5">
                         <h2>Đánh giá các sản phẩm trong đơn hàng</h2>
-                        <form action="SubmitFeedbackController" method="post">
-                            <c:forEach var="book" items="${listOrderDetail}">
+                        <c:forEach var="book" items="${listOrderDetail}">
+                            <form action="SubmitFeedbackController?orderId=${orderId}" method="post">
+                                <c:set var="hasImage" value="false" />
                                 <div>
+                                    <!-- Kiểm tra và hiển thị hình ảnh nếu có -->
+                                    <c:forEach var="img" items="${listBookImg}">
+                                        <c:if test="${img.getBookId() == book.getBookId()}">
+                                            <c:if test="${img.getUrl() != null && !img.getUrl().isEmpty()}">
+                                                <c:set var="hasImage" value="true" />
+                                                <img src="${img.getUrl()}" alt="Book Image" />
+                                            </c:if>
+                                        </c:if>
+                                    </c:forEach>
+
+                                    <!-- Thông tin về sách -->
                                     <h4>${book.bookName}</h4>
-                                    <label >Đánh giá sao:</label>
-                                    <input type="number" min="1" max="5" required>
-                                    <label >Bình luận:</label>
-                                    <textarea required></textarea>
+                                    <input type="hidden" name="bookId" value="${book.getBookId()}" /> <!-- ID sách -->
+                                    <label>Đánh giá sao:</label>
+                                    <input type="number" name="star" min="1" max="5" required /> <!-- Số sao -->
+                                    <label>Bình luận:</label>
+                                    <textarea name="comment" required></textarea> <!-- Bình luận -->
+
+                                    <!-- Nút đánh giá -->
+                                    <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                                    <br/><br/><br/>
                                 </div>
-                            </c:forEach>
-                            <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
-                        </form>
+                            </form>
+                        </c:forEach>
+
                     </div>
+
 
 
 

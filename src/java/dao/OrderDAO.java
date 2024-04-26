@@ -154,6 +154,32 @@ public class OrderDAO {
             e.printStackTrace();
         }
     }
+     
+     public Order detailOrdersByOrderID(int id) {
+        Order ac = null;
+        try {
+            String sql = "select * from Orders where OrderId=? ";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int OrderId = rs.getInt("OrderId");
+                String Description = rs.getString("Description");
+                Timestamp OrderDate = rs.getTimestamp("OrderDate");
+                int ShipFee = rs.getInt("ShipFee");
+                int UsedLotusBub = rs.getInt("UsedLotusBub");
+                int TotalPrice = rs.getInt("TotalPrice");
+                int FinalPrice = rs.getInt("FinalPrice");
+                int UserId = rs.getInt("UserId");
+                int RecipientId = rs.getInt("RecipientId");
+                int Status = rs.getInt("Status");
+                ac = new Order(OrderId, Description, OrderDate, ShipFee, UsedLotusBub, TotalPrice, FinalPrice, Status, UserId, RecipientId);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ac;
+    }
     
    
 }

@@ -6,7 +6,6 @@
 package dao;
 
 import dto.BookImages;
-import dto.Picture;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +18,7 @@ import static util.DBContext.getConnection;
  * @author DELL
  */
 public class PictureDao {
+<<<<<<< HEAD
 
     public Picture getPictureByID(int Id) throws SQLException {
         Picture picture = new Picture();
@@ -57,6 +57,11 @@ public class PictureDao {
     }
 
     public List<BookImages> getBookImages() throws SQLException {
+=======
+    
+    
+    public List<BookImages> getBookImages()  {
+>>>>>>> d6964513119860b95525848888c7cfde96785b63
         List<BookImages> listBook = new ArrayList<BookImages>();
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -72,6 +77,7 @@ public class PictureDao {
         }
         return listBook;
     }
+<<<<<<< HEAD
 
     public BookImages detailBookImages(String id) throws ClassNotFoundException, SQLException {
         BookImages ac = null;
@@ -133,5 +139,24 @@ public class PictureDao {
             e.printStackTrace();
         }
         return null;
+=======
+    
+    public List<BookImages> getBookImagesByBookID(int bookId){
+        List<BookImages> listBook = new ArrayList<BookImages>();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+                pst = getConnection().prepareStatement("SELECT * FROM BookImages where BookId = ?");
+                pst.setInt(1,bookId);
+                rs = pst.executeQuery();
+                while (rs.next()) {
+                    listBook.add(new BookImages(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4)));
+                }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+        return listBook;
+>>>>>>> d6964513119860b95525848888c7cfde96785b63
     }
 }

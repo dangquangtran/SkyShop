@@ -1,36 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
-import dao.AccountDAO;
-import dao.BookDAO;
-import dao.PictureDao;
+import dao.FeedbackDAO;
 import dto.Account;
-import dto.Book;
-import dto.BookImages;
+import dto.Feedback;
+import dto.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author THUAN
- */
-public class ManagerImageController extends HttpServlet {
-
-    private final String MANAGER_PAGE = "ManagerBookImage.jsp";
+@WebServlet(name = "SubmitFeedbackController", urlPatterns = {"/SubmitFeedbackController"})
+public class SubmitFeedbackController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,23 +27,28 @@ public class ManagerImageController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = MANAGER_PAGE;
-
+        String orderId = request.getParameter("orderId");
+        String bookIdStr = request.getParameter("bookId"); // ID của sách
+            String starStr = request.getParameter("star"); // Số sao
+            String comment = request.getParameter("comment"); // Bình luận
+        
         HttpSession session = request.getSession();
-        PictureDao dao = new PictureDao();
-        List<BookImages> listItem = dao.getBookImages();
-        request.setAttribute("list", listItem);
+        Account account = (Account)session.getAttribute("LOGIN_USER");
+            // Chuyển đổi các tham số từ chuỗi sang kiểu dữ liệu thích hợp
+            int bookId = Integer.parseInt(bookIdStr);
+            int star = Integer.parseInt(starStr);
 
-        BookDAO adao = new BookDAO();
-        List<Book> listItemss = adao.getAllListBook();
-        request.setAttribute("aclist", listItemss);
-
-        url = MANAGER_PAGE;
-
-        RequestDispatcher rd = request.getRequestDispatcher(url);
-        rd.forward(request, response);
+            // Tạo đối tượng Feedback và gán các giá trị vừa lấy
+            Feedback feedback = new Feedback();
+            feedback.setBookId(bookId);
+            feedback.setStar(star);
+            feedback.setDescription(comment);
+            feedback.setUserId(account.getUserId());
+           FeedbackDAO dao = new FeedbackDAO();
+           dao.createFeedback(feedback);
+           request.getRequestDispatcher("CreateFeedbackController?orderId="+Integer.parseInt(orderId)).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,11 +63,7 @@ public class ManagerImageController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManagerImageController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -91,11 +77,7 @@ public class ManagerImageController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManagerImageController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
