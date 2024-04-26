@@ -204,7 +204,7 @@
                                             </div>
                                         </div>
                                         <table class="table table-striped table-hover">
-                                       
+
                                             <tr>
                                                 <td>Book Name</td>
                                                 <td>
@@ -254,63 +254,93 @@
                                                 </td>
                                             </tr>
                                             <tr>
+                                                <td>Category Id</td>
+                                                <td>
+                                                    <select name="CategoryID" id="categorySelect" >
+                                                        <c:forEach items="${categories}" var="category">
+                                                            <option value="${category.categoryID}">${category.categoryName}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
                                                 <td>Sub Category Id</td>
                                                 <td>
-                                                     <select name="SubCategoryId">
+                                                    <select name="SubCategoryId" id="subcategorySelect">
                                                         <c:forEach items="${subcategories}" var="subcategory">
                                                             <option value="${subcategory.subcategoryID}">${subcategory.subName}</option>
                                                         </c:forEach>
                                                     </select>
                                                 </td>
                                             </tr>  
+<script>
+    // Lắng nghe sự kiện thay đổi của dropdown chứa Category ID
+    document.getElementById('categorySelect').addEventListener('change', function () {
+        var categoryId = this.value; // Lấy giá trị của Category ID đã chọn
+        var subcategoryRow = document.getElementById('subcategoryRow');
+
+        // Xóa tất cả các option hiện tại trong dropdown Sub Category
+        document.getElementById('subcategorySelect').innerHTML = '';
+
+        // Nếu chọn category, hiển thị dropdown Sub Category
+        if (categoryId !== '') {
+            subcategoryRow.style.display = 'table-row';
+            // Lặp qua danh sách Sub Category để chọn các Sub Category tương ứng với Category ID đã chọn
+            var subCategories = ${subcategories}; // Sử dụng subcategories từ JSP
+            for (var i = 0; i < subCategories.length; i++) {
+                var subCategory = subCategories[i];
+                if (subCategory.categoryID == categoryId) {
+                    var option = document.createElement('option');
+                    option.value = subCategory.subcategoryID;
+                    option.textContent = subCategory.subName;
+                    document.getElementById('subcategorySelect').appendChild(option);
+                }
+            }
+        } else {
+            // Nếu không chọn category, ẩn dropdown Sub Category
+            subcategoryRow.style.display = 'none';
+        }
+    });
+</script>
                                             <tr>
                                                 <td>Unit Price</td>
                                                 <td>
                                                     <input type="number"  name="UnitPrice"  />
                                                 </td>
                                             </tr>
-                                              <tr>
-                                                <td>Category Id</td>
-                                                <td>
-                                                    <select name="CategoryID">
-                                                        <c:forEach items="${categories}" var="category">
-                                                            <option value="${category.categoryID}">${category.categoryName}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </td>
-                                            </tr>  
+
                                             <tr>
                                                 <td>Status</td>
                                                 <td>
-                                              
+
                                                     <select name="Status">
-                                                    <c:choose>
-                                                        <c:when test="${user.status eq 1}">
-                                                            <option value="1" selected>Đang Hoạt Động </option>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <option value="1">Đang Hoạt Động</option>
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                    <c:choose>
-                                                        <c:when test="${user.status eq 2}">
-                                                            <option value="2" selected>Ngừng Hoạt Động</option>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <option value="2">Ngừng Hoạt Động</option>
-                                                        </c:otherwise>
-                                                    </c:choose>                   
-                                                </select>
-                                         
+                                                        <c:choose>
+                                                            <c:when test="${user.status eq 1}">
+                                                                <option value="1" selected>Đang Hoạt Động </option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="1">Đang Hoạt Động</option>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <c:choose>
+                                                            <c:when test="${user.status eq 2}">
+                                                                <option value="2" selected>Ngừng Hoạt Động</option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="2">Ngừng Hoạt Động</option>
+                                                            </c:otherwise>
+                                                        </c:choose>                   
+                                                    </select>
+
                                                 </td>
                                             </tr>
-                                          
-                                            
+
+
                                             <tr>
                                                 <td>
-                                                     <button type="submit" name="btAction" value="Manage Product">BACK</button>
+                                                    <button type="submit" name="btAction" value="Manage Product">BACK</button>
                                                 </td>
-                                         
+
                                                 <td>
                                                     <button type="submit" name="btAction" value="Create Product">Create</button>
                                                 </td>
@@ -322,6 +352,9 @@
                         </form>
                     </c:if>
 
+                    
+                    
+                    
                     <script data-cfasync="false" src="js/email-decode.min.js"></script><script src="vendor/jquery/jquery.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
                     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="4673c51028ea841130b80adc-text/javascript"></script>
 
