@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="path/to/materialize.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Favicon -->
-      
+
         <!-- Template CSS -->
         <link rel="stylesheet" href="assets/css/main.css?v=3.4">
     </head>
@@ -80,7 +80,7 @@
                                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                                     </svg>  <b class="caret"> ${sessionScope.username} </b></a>
                                 <ul class="dropdown-menu">
-                            
+
                                     <li class="divider"></li>
                                     <li><a href="LogoutController"><i class="material-icons">&#xE8AC;</i>Logout</a></li>
                                 </ul>
@@ -122,7 +122,7 @@
                                     </a>
                                 </li>
                             </c:if>
-                            
+
                             <li class="nav-item dropdown no-arrow mx-2 osahan-t-pu">
                                 <a class="nav-link dropdown-toggle text-dark" href="contact.jsp">
                                     <i class="mdi mdi-shopping text-danger"></i><span class="ml-2">Liên Hệ</span>
@@ -155,16 +155,6 @@
                         </div>
                     </nav>
 
-
-
-
-                    <!-- 
-                                 //SHOW THONG TIN CAC LOAI SACH
-                                 //SHOW CAC LOAI SACH + THONG TIN CHI TIET LOAI SACH + ...    
-                    -->  
-
-
-
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                         <nav>
                             <ul>
@@ -195,52 +185,51 @@
                                     <h5 class="mb-0">TẤT CẢ SÁCH</h5>
                                 </div>
                             </div>
-                            <div class="container">
-                                <div class="row d-flex justify-content-around"> <!-- Đảm bảo mỗi hàng chứa 4 thẻ sách -->
-                                    <c:forEach var="book" items="${bookList}">
-                                        <div class="col-xl-3 col-md-4 mb-4"> <!-- Chia mỗi hàng 4 cuốn sách -->
-                                            <a href="BookDetailController?bookId=${book.bookId}" class="text-decoration-none">
-                                                <div class="card h-100"> <!-- Chiều cao cố định cho mỗi thẻ -->
-                                                    <img class="card-img-top" src="https://product.hstatic.net/200000017360/product/hh_nhungkhucnhac_hayvade_b1_10ed9b36960e4f44946fc10f9b8e520d_compact.jpg" alt="Hình minh họa" style="height: 200px; object-fit: cover;"> <!-- Chiều cao hình ảnh đồng đều -->
-                                                    <div class="card-body d-flex flex-column justify-content-between"> <!-- Sử dụng Flex để đảm bảo nội dung đồng đều -->
-                                                        <p class="card-text">${book.bookName}</p> <!-- Tên sách -->
-                                                        <p class="card-text text-danger font-weight-bold">${book.unitPrice}đ</p> <!-- Giá sách màu đỏ -->
+                            
+
+                            <section class="py-5">
+                                <div class="container px-4 px-lg-5 mt-5">
+                                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                                        <c:forEach var="list" items="${bookList}">
+                                            <div class="col mb-5">
+                                                <div class="card h-100">
+                                                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Hot</div>
+                                                    <!-- Product image-->
+                                                    <c:forEach var="blist" items="${blist}">
+                                                        <c:if test="${list.bookId == blist.bookId}">
+                                                            <img class="card-img-top" src="${blist.getUrl()}" width="50px" height="300" alt="..." />
+                                                        </c:if>
+                                                    </c:forEach>
+                                                    <!-- Product details-->
+                                                    <div class="card-body p-4">
+                                                        <div class="text-center">
+                                                            <!-- Product name-->
+                                                            <h5 class="fw-bolder">${list.bookName}</h5>
+                                                            <!-- Product reviews-->
+                                                            <div class="d-flex justify-content-center small text-warning mb-2">
+                                                                <div class="bi-star-fill"></div>
+                                                                <div class="bi-star-fill"></div>
+                                                                <div class="bi-star-fill"></div>    
+                                                            </div>
+                                                            <!-- Product price-->
+                                                            <span class="text-muted text-decoration-line-through"></span>
+                                                            ${list.unitPrice}
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="BookDetailController?bookId=${list.bookId}">CHI TIẾT</a></div>
                                                     </div>
                                                 </div>
-                                            </a>
-                                        </div>
-                                    </c:forEach>
+                                            </div>
+                                        </c:forEach>
+                                    </div>
                                 </div>
-                            </div>
-
-
+                            </section>
 
                         </div>
                     </div>
-
-
-                    <!-- 
-                        Show thêm các Sản Phẩm nổi bật
-                    -->       
-
-                    <!-- 
-                
-                //SHOW THUC AN THEO LOAI 
-                    -->  
-
                 </div>                       
 
-
-
-
-
-
-
-
-
-                <!-- 
-                 //FOOTER                
-                -->   
                 <footer class="sticky-footer bg-light" >
                     <div class="container my-auto ">
                         <div class="copyright text-center my-auto " style="color: #093b29" >

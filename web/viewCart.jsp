@@ -184,133 +184,139 @@
 
 
                     <form class="field_form shipping_calculator" action="AddOrderController" method="GET">
-                    <section class="mt-50 mb-50">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="table-responsive">
-                                        <table class="table shopping-summery text-center clean">
-                                            <thead>
-                                                <tr class="main-heading">
-                                                    <th scope="col">Hình ảnh</th>
-                                                    <th scope="col">Tên sách</th>
-                                                    <th scope="col">Giá</th>
-                                                    <th scope="col">Số lượng</th>
-                                                    <th scope="col">Xóa khỏi giỏ hàng</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <c:forEach var="bookEntry" items="${cart.cart}">
-                                                    <tr>
-                                                        <td class="image product-thumbnail"><img src="assets/imgs/shop/product-1-2.jpg" alt="#"></td>
-                                                        <td class="product-des product-name">
-                                                            <h5 class="product-name"><a href="shop-product-right.html">${bookEntry.value.bookName}</a></h5>
-                                                            <p class="font-xs">${bookEntry.value.authorName}<br> ${bookEntry.value.publishingCompany}
-                                                            </p>
-                                                        </td>
-                                                        <td class="price" data-title="Price"><span>${bookEntry.value.unitPrice}đ </span></td>
-                                                        <td class="text-center" data-title="Stock">
-                                                            <a href="QuantityBookCartController?bookId=${bookEntry.value.bookId}&quantity=-1" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                            <span class="qty-val">${bookEntry.value.quantity}</span>
-                                                            <a href="QuantityBookCartController?bookId=${bookEntry.value.bookId}&quantity=1" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                                            <c:if test="${not empty errorMessage}">
-                                                                <div class="alert alert-danger">
-                                                                    <strong>Error:</strong> ${errorMessage}
-                                                                </div>
-                                                            </c:if>
-                                                        </td>
-                                                        <td class="action" data-title="Remove"><a href="DeleteBookCartController?bookId=${bookEntry.value.bookId}" class="text-muted"><i class="fi-rs-trash"></i></a></td>
+                        <section class="mt-50 mb-50">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table class="table shopping-summery text-center clean">
+                                                <thead>
+                                                    <tr class="main-heading">
+                                                        <th scope="col">Hình ảnh</th>
+                                                        <th scope="col">Tên sách</th>
+                                                        <th scope="col">Giá</th>
+                                                        <th scope="col">Số lượng</th>
+                                                        <th scope="col">Xóa khỏi giỏ hàng</th>
                                                     </tr>
-                                                </c:forEach>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                    <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
-                                    <div class="row mb-50">
-                                        <div class="col-lg-6 col-md-12">
-                                            <div class="heading_s1 mb-3">
-                                                <h4>Giao hàng</h4>
-                                            </div>
-                                            <p class="mt-15 mb-30">Phí ship: <span class="font-xl text-brand fw-900">50000đ</span></p>
-                                            <form class="field_form shipping_calculator">
-                                                <div class="form-row">
-                                                    <div class="form-group col-lg-12">
-                                                        <div class="custom_select">
-                                                            <select class="form-control" name = "recipientID">
-                                                                <c:forEach var="recipient" items="${listRecipient}">
-                                                                    <option value="${recipient.recipientID}">
-                                                                        Địa chỉ giao hàng: ${recipient.destAddress}, 
-                                                                        Tên người nhận: ${recipient.recipientName},
-                                                                        Số điện thoại: 0${recipient.phoneNumber}
-                                                                    </option>
+                                                </thead>
+                                                <tbody>
+                                                    <c:forEach var="bookEntry" items="${cart.cart}">
+                                                        <tr>
+                                                            <td class="image product-thumbnail">
+                                                                <c:forEach var="blist" items="${blist}">
+                                                                    <c:if test="${bookEntry.value.bookId == blist.getBookId()}">
+                                                                        <img class="card-img-top" src="${blist.getUrl()}" alt="..." />
+                                                                    </c:if>
                                                                 </c:forEach>
-                                                            </select>
+                                                            </td>
+                                                            <td class="product-des product-name">
+                                                                <h5 class="product-name"><a href="shop-product-right.html">${bookEntry.value.bookName}</a></h5>
+                                                                <p class="font-xs">${bookEntry.value.authorName}<br> ${bookEntry.value.publishingCompany}
+                                                                </p>
+                                                            </td>
+                                                            <td class="price" data-title="Price"><span>${bookEntry.value.unitPrice}đ </span></td>
+                                                            <td class="text-center" data-title="Stock">
+                                                                <a href="QuantityBookCartController?bookId=${bookEntry.value.bookId}&quantity=-1" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                                                <span class="qty-val">${bookEntry.value.quantity}</span>
+                                                                <a href="QuantityBookCartController?bookId=${bookEntry.value.bookId}&quantity=1" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                                                    <c:if test="${not empty errorMessage}">
+                                                                    <div class="alert alert-danger">
+                                                                        <strong>Error:</strong> ${errorMessage}
+                                                                    </div>
+                                                                </c:if>
+                                                            </td>
+                                                            <td class="action" data-title="Remove"><a href="DeleteBookCartController?bookId=${bookEntry.value.bookId}" class="text-muted"><i class="fi-rs-trash"></i></a></td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
+                                        <div class="row mb-50">
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="heading_s1 mb-3">
+                                                    <h4>Giao hàng</h4>
+                                                </div>
+                                                <p class="mt-15 mb-30">Phí ship: <span class="font-xl text-brand fw-900">50000đ</span></p>
+                                                <form class="field_form shipping_calculator">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-lg-12">
+                                                            <div class="custom_select">
+                                                                <select class="form-control" name = "recipientID">
+                                                                    <c:forEach var="recipient" items="${listRecipient}">
+                                                                        <option value="${recipient.recipientID}">
+                                                                            Địa chỉ giao hàng: ${recipient.destAddress}, 
+                                                                            Tên người nhận: ${recipient.recipientName},
+                                                                            Số điện thoại: 0${recipient.phoneNumber}
+                                                                        </option>
+                                                                    </c:forEach>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-row">
-                                                    <div class="form-group col-lg-12">
-                                                        <a href="createRecipient.jsp" class="btn  btn-sm"><i class="fi-rs-shuffle mr-10"></i>Thêm địa chỉ giao hàng</a>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-lg-12">
+                                                            <a href="createRecipient.jsp" class="btn  btn-sm"><i class="fi-rs-shuffle mr-10"></i>Thêm địa chỉ giao hàng</a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </form>
-                                            <div class="mb-30 mt-50">
-                                                <div class="heading_s1 mb-3">
-                                                    <h4>Apply Coupon</h4>
-                                                </div>
-                                                <div class="total-amount">
-                                                    <div class="left">
-                                                        <div class="coupon">
-                                                            <form action="#" target="_blank">
-                                                                <div class="form-row row justify-content-center">
-                                                                    <div class="form-group col-lg-6">
-                                                                        <input class="font-medium" name="Coupon" placeholder="Enter Your Coupon">
+                                                </form>
+                                                <div class="mb-30 mt-50">
+                                                    <div class="heading_s1 mb-3">
+                                                        <h4>Apply Coupon</h4>
+                                                    </div>
+                                                    <div class="total-amount">
+                                                        <div class="left">
+                                                            <div class="coupon">
+                                                                <form action="#" target="_blank">
+                                                                    <div class="form-row row justify-content-center">
+                                                                        <div class="form-group col-lg-6">
+                                                                            <input class="font-medium" name="Coupon" placeholder="Enter Your Coupon">
+                                                                        </div>
+                                                                        <div class="form-group col-lg-6">
+                                                                            <button class="btn  btn-sm"><i class="fi-rs-label mr-10"></i>Apply</button>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="form-group col-lg-6">
-                                                                        <button class="btn  btn-sm"><i class="fi-rs-label mr-10"></i>Apply</button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
+                                                                </form>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12">
-                                            <div class="border p-md-4 p-30 border-radius cart-totals">
-                                                <div class="heading_s1 mb-3">
-                                                    <h4>Giỏ hàng</h4>
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="border p-md-4 p-30 border-radius cart-totals">
+                                                    <div class="heading_s1 mb-3">
+                                                        <h4>Giỏ hàng</h4>
+                                                    </div>
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="cart_total_label">Giá sản phẩm</td>
+                                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">${cart.getTotalMoney()}đ</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="cart_total_label">Phí Ship</td>
+                                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">50000đ</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="cart_total_label">Đơn giá</td>
+                                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">${cart.getTotalMoney() + 50000}đ</span></strong></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <button type="submit" class="btn"> 
+                                                        <i class="fi-rs-box-alt mr-10"></i> CheckOut
+                                                    </button>
                                                 </div>
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="cart_total_label">Giá sản phẩm</td>
-                                                                <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">${cart.getTotalMoney()}đ</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="cart_total_label">Phí Ship</td>
-                                                                <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">50000đ</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="cart_total_label">Đơn giá</td>
-                                                                <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">${cart.getTotalMoney() + 50000}đ</span></strong></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <button type="submit" class="btn"> 
-                                                    <i class="fi-rs-box-alt mr-10"></i> CheckOut
-                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
                     </form>
 
 

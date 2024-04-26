@@ -3,8 +3,10 @@ package controller;
 import dao.AccountDAO;
 import dao.BookDAO;
 import dao.FeedbackDAO;
+import dao.PictureDao;
 import dto.Account;
 import dto.Book;
+import dto.BookImages;
 import dto.Feedback;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,7 +35,7 @@ public class BookDetailController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         String url = "bookDetail.jsp";
         int bookId = Integer.parseInt(request.getParameter("bookId"));
@@ -56,6 +58,15 @@ public class BookDetailController extends HttpServlet {
                 Logger.getLogger(BookDetailController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
+        BookDAO bdao = new BookDAO();
+        List<Book> listItem = bdao.getAllListBook();
+        request.setAttribute("list", listItem);
+        
+        PictureDao pdao = new PictureDao();
+        List<BookImages> listBook = pdao.getBookImages();
+        request.setAttribute("blist", listBook);
+        
         request.setAttribute("book", book);
         request.setAttribute("listFeedback", listFeedback);
         request.setAttribute("listAccount", listAccount);
@@ -74,7 +85,11 @@ public class BookDetailController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDetailController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -88,7 +103,11 @@ public class BookDetailController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDetailController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

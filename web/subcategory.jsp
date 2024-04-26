@@ -188,301 +188,46 @@
                     </div> 
 
 
-                    <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
-                            <h5 class="mb-0">Thể loại sách </h5>
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <c:forEach var="subCate" items="${subList}">
-                            <div class="col-xl-4 col-lg-4 col-md-4">
-                                <a href="ListBookController?cateId=${subCate.categoryId}&subId=${subCate.subcategoryID}" class="text-dark text-decoration-none">
-                                    <div class="bg-white shadow-sm rounded d-flex align-items-center p-1 mb-2 osahan-list">
-                                        <div class="mx-3 py-2 w-100">
-                                            <p class="mb-2 text-black">${subCate.subName}</p>
-                                            <p class="small mb-2">
-                                                <i class="mdi mdi-star text-warning mr-1"></i> <span class="font-weight-bold text-dark">3.9</span> (803)
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </c:forEach>
-                    </div>
                     <section class="py-5">
                         <div class="container px-4 px-lg-5 mt-5">
                             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
-                                <div class="col mb-5">
-                                    <div class="card h-100">
-                                        <!-- Sale badge-->
-                                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Hot</div>
-                                        <!-- Product image-->
-                                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                        <!-- Product details-->
-                                        <div class="card-body p-4">
-                                            <div class="text-center">
-                                                <!-- Product name-->
-                                                <h5 class="fw-bolder">Special Item</h5>
-                                                <!-- Product reviews-->
-                                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>    
+                                <c:forEach var="list" items="${listbook}">
+                                    <div class="col mb-5">
+                                        <div class="card h-100">
+                                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Hot</div>
+                                            <!-- Product image-->
+                                            <c:forEach var="blist" items="${blist}">
+                                                <c:if test="${list.bookId == blist.bookId}">
+                                                    <img class="card-img-top" src="${blist.getUrl()}" width="50px" height="300" alt="..." />
+                                                </c:if>
+                                            </c:forEach>
+                                            <!-- Product details-->
+                                            <div class="card-body p-4">
+                                                <div class="text-center">
+                                                    <!-- Product name-->
+                                                    <h5 class="fw-bolder">${list.bookName}</h5>
+                                                    <!-- Product reviews-->
+                                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                                        <div class="bi-star-fill"></div>
+                                                        <div class="bi-star-fill"></div>
+                                                        <div class="bi-star-fill"></div>    
+                                                    </div>
+                                                    <!-- Product price-->
+                                                    <span class="text-muted text-decoration-line-through"></span>
+                                                    ${list.unitPrice}
                                                 </div>
-                                                <!-- Product price-->
-                                                <span class="text-muted text-decoration-line-through">$20.00</span>
-                                                $18.00
+                                            </div>
+                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="BookDetailController?bookId=${list.bookId}">CHI TIẾT</a></div>
                                             </div>
                                         </div>
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="detailsProducts.jsp">CHI TIẾT</a></div>
-
-                                        </div>
-                                        <!-- Product actions-->
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="col mb-5">
-                                    <div class="card h-100">
-                                        <!-- Sale badge-->
-                                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Hot</div>
-                                        <!-- Product image-->
-                                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                        <!-- Product details-->
-                                        <div class="card-body p-4">
-                                            <div class="text-center">
-                                                <!-- Product name-->
-                                                <h5 class="fw-bolder">Special Item</h5>
-                                                <!-- Product reviews-->
-                                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                </div>
-                                                <!-- Product price-->
-                                                <span class="text-muted text-decoration-line-through">$20.00</span>
-                                                $18.00
-                                            </div>
-                                        </div>
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">XEM CHI TIẾT</a></div>
-                                        </div>
-                                        <!-- Product actions-->
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col mb-5">
-                                    <div class="card h-100">
-                                        <!-- Sale badge-->
-                                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Hot</div>
-                                        <!-- Product image-->
-                                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                        <!-- Product details-->
-                                        <div class="card-body p-4">
-                                            <div class="text-center">
-                                                <!-- Product name-->
-                                                <h5 class="fw-bolder">Special Item</h5>
-                                                <!-- Product reviews-->
-                                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                </div>
-                                                <!-- Product price-->
-                                                <span class="text-muted text-decoration-line-through">$20.00</span>
-                                                $18.00
-                                            </div>
-                                        </div>
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">XEM CHI TIẾT</a></div>
-                                        </div>
-                                        <!-- Product actions-->
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col mb-5">
-                                    <div class="card h-100">
-                                        <!-- Sale badge-->
-                                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Hot</div>
-                                        <!-- Product image-->
-                                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                        <!-- Product details-->
-                                        <div class="card-body p-4">
-                                            <div class="text-center">
-                                                <!-- Product name-->
-                                                <h5 class="fw-bolder">Special Item</h5>
-                                                <!-- Product reviews-->
-                                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                </div>
-                                                <!-- Product price-->
-                                                <span class="text-muted text-decoration-line-through">$20.00</span>
-                                                $18.00
-                                            </div>
-                                        </div>
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">XEM CHI TIẾT</a></div>
-                                        </div>
-                                        <!-- Product actions-->
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="col mb-5">
-                                    <div class="card h-100">
-                                        <!-- Sale badge-->
-                                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Hot</div>
-                                        <!-- Product image-->
-                                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                        <!-- Product details-->
-                                        <div class="card-body p-4">
-                                            <div class="text-center">
-                                                <!-- Product name-->
-                                                <h5 class="fw-bolder">Special Item</h5>
-                                                <!-- Product reviews-->
-                                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                </div>
-                                                <!-- Product price-->
-                                                <span class="text-muted text-decoration-line-through">$20.00</span>
-                                                $18.00
-                                            </div>
-                                        </div>
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">XEM CHI TIẾT</a></div>
-                                        </div>
-                                        <!-- Product actions-->
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col mb-5">
-                                    <div class="card h-100">
-                                        <!-- Sale badge-->
-                                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Hot</div>
-                                        <!-- Product image-->
-                                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                        <!-- Product details-->
-                                        <div class="card-body p-4">
-                                            <div class="text-center">
-                                                <!-- Product name-->
-                                                <h5 class="fw-bolder">Special Item</h5>
-                                                <!-- Product reviews-->
-                                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                </div>
-                                                <!-- Product price-->
-                                                <span class="text-muted text-decoration-line-through">$20.00</span>
-                                                $18.00
-                                            </div>
-                                        </div>
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">XEM CHI TIẾT</a></div>
-                                        </div>
-                                        <!-- Product actions-->
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col mb-5">
-                                    <div class="card h-100">
-                                        <!-- Sale badge-->
-                                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Hot</div>
-                                        <!-- Product image-->
-                                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                        <!-- Product details-->
-                                        <div class="card-body p-4">
-                                            <div class="text-center">
-                                                <!-- Product name-->
-                                                <h5 class="fw-bolder">Sale Item</h5>
-                                                <!-- Product reviews-->
-                                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                </div>
-                                                <!-- Product price-->
-                                                <span class="text-muted text-decoration-line-through">$50.00</span>
-                                                $25.00
-                                            </div>
-                                        </div>
-                                        <!-- Product actions-->
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col mb-5">
-                                    <div class="card h-100">
-                                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Hot</div>
-                                        <!-- Product image-->
-                                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                        <!-- Product details-->
-                                        <div class="card-body p-4">
-                                            <div class="text-center">
-                                                <!-- Product name-->
-                                                <h5 class="fw-bolder">Popular Item</h5>
-                                                <!-- Product reviews-->
-                                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                    <div class="bi-star-fill"></div>
-                                                </div>
-                                                <!-- Product price-->
-                                                $40.00
-                                            </div>
-                                        </div>
-                                        <!-- Product actions-->
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </c:forEach>
                             </div>
                         </div>
                     </section>
                 </div>                       
-
                 <!-- 
                  //FOOTER                
                 -->   

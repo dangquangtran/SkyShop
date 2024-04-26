@@ -1,13 +1,20 @@
 package controller;
 
+import dao.BookDAO;
 import dao.CategoryDAO;
+import dao.PictureDao;
 import dao.SubCategoryDAO;
+import dto.Book;
+import dto.BookImages;
 import dto.Category;
 import dto.SubCategory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,13 +38,14 @@ public class SubCateController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         dao.CategoryDAO cateDao = new CategoryDAO();
         dao.SubCategoryDAO subDao = new  SubCategoryDAO();
         List<Category> listCategory = new ArrayList<>();
         listCategory = cateDao.getAllListCategory();
         request.setAttribute("listCategory", listCategory);
+        
         List<SubCategory> listSubCate = new ArrayList<>();
         listSubCate = subDao.getAllListSubCategory();
         request.setAttribute("listSubCategory", listSubCate);
@@ -45,10 +53,28 @@ public class SubCateController extends HttpServlet {
         
         String url = "subcategory.jsp";
         String cateId = request.getParameter("cateId");
+        
         List<SubCategory> subList = new ArrayList<>();
         SubCategoryDAO dao = new SubCategoryDAO();
         subList =dao.getListSubCategoryByCategoryId(Integer.parseInt(cateId));
         request.setAttribute("subList", subList);
+        
+        
+        BookDAO bdao = new BookDAO();
+        List<Book> listItem = bdao.getAllListBook();
+        List<Book> listbook = bdao.getBookByCate(Integer.parseInt(cateId));
+        request.setAttribute("listbook", listbook);
+        
+        
+        request.setAttribute("list", listItem);
+        
+        PictureDao pdao = new PictureDao();
+        List<BookImages> listBook = pdao.getBookImages();
+        request.setAttribute("blist", listBook);
+        
+        
+        
+        
         request.getRequestDispatcher(url).forward(request, response);
     }
 
@@ -64,7 +90,11 @@ public class SubCateController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(SubCateController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -78,7 +108,11 @@ public class SubCateController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(SubCateController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

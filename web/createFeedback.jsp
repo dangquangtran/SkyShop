@@ -165,12 +165,6 @@
                         </div>
                     </nav>
 
-
-
-
-                    <!-- 
-                                 //SHOW THONG TIN Cart
-                    -->  
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                         <nav>
                             <ul>
